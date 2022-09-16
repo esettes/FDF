@@ -12,19 +12,6 @@
 
 #include "fdf.h"
 
-double	ft_percent(int start, int end, int current)
-{
-	double	dist_2;
-	double	distance;
-
-	dist_2 = current - start;
-	distance = end - start;
-	if (distance == 0)
-		return (1.0);
-	else
-		return (dist_2 / distance);
-}
-
 int	get_r(int trgb)
 {
 	return ((trgb >> 24) & 0xFF);

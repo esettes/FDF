@@ -20,10 +20,9 @@
  */
 void	bresen_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end);
 void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction);
-void	f_bresen_right(t_fdf *fdf, t_vec2 start, t_vec2 end);
-void	f_bresen_left(t_fdf *fdf, t_vec2 start, t_vec2 end);
 void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth);
-void	iso(t_fdf *fdf, t_vec2 *coord, int z);
-void	bresen_line(t_fdf *fdf);
+float	f_max(float a, float b);
+float	f_abs(float a);
+int		check_image_limits(t_vec2 start, t_vec2 end, t_vec2 offset);
 
 #endif

@@ -36,7 +36,7 @@ float	f_max(float a, float b)
 		return (b);
 }
 
-float	f_mod(float a)
+float	f_abs(float a)
 {
 	if (a < 0)
 		return (a * -1);

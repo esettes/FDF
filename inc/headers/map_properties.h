@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATRIX_PROPERTIES_H
-# define MATRIX_PROPERTIES_H
+#ifndef MAP_PROPERTIES_H
+# define MAP_PROPERTIES_H
 
 # include "structs.h"
 

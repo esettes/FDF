@@ -13,7 +13,6 @@
 #include "fdf.h"
 
 void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction);
-int ft_sgn(double v) ;
 
 void	print_map(t_fdf *fdf)
 {
@@ -74,7 +73,7 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 
 	step.x = (end.x - start.x);
 	step.y = (end.y - start.y);
-	max = f_max(f_mod(step.x), f_mod(step.y));
+	max = f_max(f_abs(step.x), f_abs(step.y));
 	step.x /= max + 3;
 	step.y /= max + 3;
 
@@ -89,9 +88,3 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 	}
 }
 
-int ft_sgn(double v) 
-{
-  if (v < 0) return -1;
-  if (v > 0) return 1;
-  return 0;
-}

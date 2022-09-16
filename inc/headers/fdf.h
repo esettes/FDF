@@ -28,9 +28,8 @@
 # include "structs.h"
 # include "mlx_utils.h"
 # include "draw.h"
-# include "views.h"
 # include "read_file.h"
-# include "matrix_properties.h"
+# include "map_properties.h"
 # include "bresen_utils.h"
 
 #endif

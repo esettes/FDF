@@ -19,5 +19,7 @@ void	draw_segment_to_right(t_vec2 start, t_vec2 end, t_fdf *fdf, float color);
 void	draw_segment_to_left(t_vec2 start, t_vec2 end, t_fdf *fdf, float color);
 void	draw_menu(t_fdf *fdf);
 void	print_box_menu(t_fdf *fdf, int color, int max_x, int max_y);
+void	print_map(t_fdf *fdf);
+void	zoom(t_fdf *fdf);
 
 #endif
