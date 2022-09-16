@@ -95,26 +95,32 @@ void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
         }
         else
         {
-            if (iter.i >= 600)
-                *(int_color + iter.j) = str_to_color("dddccc");
-            if (iter.i < 600 && iter.i >= 450)
-                *(int_color + iter.j) = str_to_color("c46829");
-            if (iter.i < 450 && iter.i >= 220)
+            if (iter.i >= 720)
+                *(int_color + iter.j) = str_to_color("deddcc");
+            if (iter.i < 720 && iter.i >= 400)
                 *(int_color + iter.j) = str_to_color("c56930");
-            if (iter.i < 220 && iter.i >= 130)
-                *(int_color + iter.j) = str_to_color("d67a33");
-            if (iter.i < 130 && iter.i >= 50)
-                *(int_color + iter.j) = str_to_color("e69a33");
+            if (iter.i < 400 && iter.i >= 200)
+                *(int_color + iter.j) = str_to_color("c66a31");
+            if (iter.i < 200 && iter.i >= 90)
+                *(int_color + iter.j) = str_to_color("d77b34");
+            if (iter.i < 90 && iter.i >= 50)
+                *(int_color + iter.j) = str_to_color("e79b34");
             if (iter.i < 50 && iter.i >= 35)
-                *(int_color + iter.j) = str_to_color("e7cab1");
+                *(int_color + iter.j) = str_to_color("e9cab3");
             if (iter.i < 35 && iter.i >= 15)
-                *(int_color + iter.j) = str_to_color("b5b9a4");
+                *(int_color + iter.j) = str_to_color("b5baa6");
             if (iter.i < 15 && iter.i >= 0)
-                *(int_color + iter.j) = str_to_color("b2b7a4");
-            if (iter.i < 0 && iter.i >= -40)
-                *(int_color + iter.j) = str_to_color("31baad");//3bb143
-            if (iter.i < -40)// && iter.i >= -30)
-                *(int_color + iter.j) = str_to_color("3997ad");
+                *(int_color + iter.j) = str_to_color("b2b8a5");
+            if (iter.i < 0 && iter.i >= -5)
+                *(int_color + iter.j) = str_to_color("3babbf"); //31a9ac
+            if (iter.i < -5 && iter.i >= -20)
+                *(int_color + iter.j) = str_to_color("3aaaaf");
+            if (iter.i < -20 && iter.i >= -70)
+                *(int_color + iter.j) = str_to_color("3ca9af");//3bb143
+            if (iter.i < -70 && iter.i >= -200)
+                *(int_color + iter.j) = str_to_color("3a98ae");
+            if (iter.i < -200)// && iter.i >= -30)
+                *(int_color + iter.j) = str_to_color("3797ad");
             //if (iter.i == 0)
              //   *(int_color + iter.j) = str_to_color("29ab87");
         }

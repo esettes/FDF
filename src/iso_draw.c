@@ -75,11 +75,11 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 	step.x = (end.x - start.x);
 	step.y = (end.y - start.y);
 	max = f_max(f_mod(step.x), f_mod(step.y));
-	step.x /= max + 1;
-	step.y /= max + 1;
+	step.x /= max + 3;
+	step.y /= max + 3;
 
 	int i = 0;
-	while (i <= max + 1)
+	while (i <= max + 3)
 	{
 		if (check_image_limits(start, end, offset))
 			mlx_put_pixel(fdf->img, start.x + offset.x , start.y + offset.y, fdf->mtrx.colors[curr.j][curr.i]);
