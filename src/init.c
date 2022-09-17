@@ -12,26 +12,33 @@
 
 #include "fdf.h"
 
+void	open_fd(t_fdf *fdf, char *raw_map);
+
 void	init_mlx(t_fdf *fdf, char *raw_map)
 {
-	t_vec2	aux;
-
-	int i = 0;
-	int j = 0;
-	aux.x  = (WIDTH * IMG_AUMENT) / 2 - (WIDTH * 0.25);
-	aux.y = (HEIGHT * IMG_AUMENT) / 2 - (HEIGHT * 0.25);
 	fdf->control.zoom = 2;
 	fdf->control.rot_angle = 0;
 	fdf->control.height = 1;
 	fdf->control.vert = 1;
 	fdf->control.horiz = 1;
 	fdf->control.perspective = ISOMETRIC;// TOP_VIEW;
-	set_map_info(fdf, raw_map);
-	//obtain_split_fd(fdf->fd, &fdf->map);
+	//set_map_info(fdf, raw_map);
+	open_fd(fdf, raw_map);
+	obtain_split_fd(fdf->fd, &fdf->map);
 	
 	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
 	create_image(fdf);
 	draw_menu(fdf);
 	draw_image(fdf);
 	loop_fdf(fdf);
+}
+
+void	open_fd(t_fdf *fdf, char *raw_map)
+{
+	fdf->fd = open(raw_map, O_RDONLY);
+	if (fdf->fd < 0)
+	{
+		printf("Error: File not found.\n");
+		exit(0);
+	}
 }

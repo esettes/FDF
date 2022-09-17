@@ -34,15 +34,15 @@ void	set_bresen_offset(t_fdf *fdf, t_vec2 *off)
     top_offset = 2;
     if (fdf->control.perspective == ISOMETRIC)
 	{
-        off->x = IMG_CENTER_X - (fdf->map.px_size.x / iso_offset.x);
-        off->y = IMG_CENTER_Y - (fdf->map.px_size.y / iso_offset.y);
+        off->x = IMG_CENTER_X - (fdf->map.px_size.x / (iso_offset.x * 6));
+        off->y = IMG_CENTER_Y - (fdf->map.px_size.y / (iso_offset.y * 6));
         fdf->map.offset.x = iso_offset.x;
         fdf->map.offset.y = iso_offset.y;
     }
     else if (fdf->control.perspective == TOP_VIEW)
     {
-        off->x = IMG_CENTER_X - (fdf->map.px_size.x / top_offset);
-        off->y = IMG_CENTER_Y - (fdf->map.px_size.y / top_offset);
+        off->x = IMG_CENTER_X - (fdf->map.px_size.x / (top_offset * 4));
+        off->y = IMG_CENTER_Y - (fdf->map.px_size.y / (top_offset * 6));
         fdf->map.offset.x = top_offset;
         fdf->map.offset.y = top_offset;
     }

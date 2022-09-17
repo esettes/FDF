@@ -63,6 +63,19 @@ void	get_color_points(t_map *m, char *str, int pos)
     free (str);
 }
 
+void    count_line_elements(char *str, int *count)
+{
+    char	**ch_aux;
+    int     i;
+
+    i = 0;
+    ch_aux = ft_split(str, ' ');
+    while (ch_aux[i])
+        i++;
+    *count = i;
+    free (ch_aux);
+}
+
 void	obtain_z_and_color(t_map *m, char *str, int pos)
 {
     char	**ch_aux;
@@ -75,25 +88,28 @@ void	obtain_z_and_color(t_map *m, char *str, int pos)
 
     iter.i = 0;
     iter.j = 0;
+    //count_line_elements(str, &aux.j);
     ch_aux = ft_split(str, ' ');
     while (ch_aux[iter.j])
-		iter.j++;
-    int_mtrx = malloc(sizeof(int) * iter.j + 1);
-    int_color = malloc(sizeof(int) * iter.j + 1);
+	 	iter.j++;
+    int_mtrx = malloc(sizeof(int) * iter.j);
+    int_color = malloc(sizeof(int) * iter.j);
     iter.j = 0;
 	while (ch_aux[iter.j])
     {
         extract = ft_strchr(ch_aux[iter.j], 'x');
         iter.i = ft_atoi(ch_aux[iter.j]);
-		*(int_mtrx + iter.j) = iter.i;
+		//*(int_mtrx + iter.j) = iter.i;
+        int_mtrx[iter.j] = iter.i;
         if (extract)// && extract != "")
         {
             extract++;
             i_color = str_to_color(extract);
-            *(int_color + iter.j) = i_color;
+            int_color[iter.j] = i_color;
+            //*(int_color + iter.j) = i_color;
             extract = ""; 
         }
-        else
+        else if (!extract)
         {
             if (iter.i >= 720)
                 *(int_color + iter.j) = str_to_color("deddcc");

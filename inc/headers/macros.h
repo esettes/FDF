@@ -20,8 +20,6 @@
 # define Y_ORIGIN_OFF	( HEIGHT / 2 )
 # define IMG_CENTER_X	((WIDTH * IMG_AUMENT) / 2)
 # define IMG_CENTER_Y	((HEIGHT * IMG_AUMENT) / 2)
-# define HEX_L			"0123456789abcdef"
-# define HEX_U			"0123456789ABCDEF"
 # define ISOMETRIC		0
 # define TOP_VIEW		1
 # define ADDIT_STEPS    3

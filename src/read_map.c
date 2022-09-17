@@ -61,25 +61,22 @@ void	set_z_points(t_fdf *fdf, char *raw_map)
 {
 	t_iter	iter;
 	int		fd;
-	char	**lines;
+	char	*lines;
 	int		aux;
 	int		trigger = TRUE;
 
 	aux = 0;
 	iter.i = 0;
 	iter.j = 0;
-	lines = malloc(sizeof(char *) * BUFFER_SIZE * 2);
+	//lines = malloc(sizeof(char *) * BUFFER_SIZE * 2);
 	fd = open(raw_map, O_RDONLY);
 	while (true)
 	{
-		lines[iter.i] = get_next_line(fd);
-		if (check_fd_end(lines[iter.i]))
-		{
-			printf("empty line \n");
+		lines = get_next_line(fd);
+		if (check_fd_end(lines))
 			break ;
-		}
-		set_line_z_points(fdf, lines[iter.i], iter.i);
-		free(lines[iter.i]);
+		set_line_z_points(fdf, lines, iter.i);
+		free(lines);
 		iter.i++;
 	}
 	close(fd);
@@ -104,11 +101,9 @@ void    set_line_z_points(t_fdf *fdf, char *str, int pos)
         iter.i = ft_atoi(ch_aux[iter.j]);
 		if (iter.i == "" && iter.i == NULL)
 			break;
-		printf("z: %i, ", iter.i);
 		*(z_point + iter.j) = iter.i;
 		iter.j++;
     }
-	printf("\n");
     fdf->map.map[pos] = z_point;
     if (ch_aux)
         free (ch_aux);
@@ -118,22 +113,22 @@ void	set_color_points(t_fdf *fdf, char *raw_map)
 {
 	t_iter	iter;
 	int		fd;
-	char	**lines;
+	char	*lines;
 	int		aux;
 	int		trigger = TRUE;
 
 	aux = 0;
 	iter.i = 0;
 	iter.j = 0;
-	lines = malloc(sizeof(char *) * BUFFER_SIZE * 2);
+	//lines = malloc(sizeof(char *) * BUFFER_SIZE * 2);
 	fd = open(raw_map, O_RDONLY);
 	while (true)
 	{
-		lines[iter.i] = get_next_line(fd);
-		if (check_fd_end(lines[iter.i]))
+		lines = get_next_line(fd);
+		if (check_fd_end(lines))
 			break ;
-		set_line_color_points(fdf, lines[iter.i], iter.i);
-		free(lines[iter.i]);
+		set_line_color_points(fdf, lines, iter.i);
+		free(lines);
 		iter.i++;
 	}
 	close(fd);
@@ -157,12 +152,12 @@ void	set_line_color_points(t_fdf *fdf, char *str, int pos)
 	while (ch_aux[iter.j])
     {
         extract = ft_strchr(ch_aux[iter.j], 'x');
+		iter.i = fdf->map.map[pos][iter.j];
 		if (extract)
         {
             extract++;
             i_color = str_to_color(extract);
             *(int_color + iter.j) = i_color;
-			printf("%i, ", int_color);
             extract = ""; 
         }
         else
@@ -198,7 +193,6 @@ void	set_line_color_points(t_fdf *fdf, char *str, int pos)
 		
 		iter.j++;
     }
-	printf("\n");
     fdf->map.colors[pos] = int_color;
     if (ch_aux)
         free (ch_aux);
@@ -239,11 +233,11 @@ void	obtain_split_fd(int fd, t_map *m)
 	//printf("\nm->size->y: %f \n", m->vertices.y);
 	printf("m->size->x: %f \n\n", m->vertices.x);
 	iter.i = 0;
-
+	printf("\e[1;35mReading map...\e[0m\n");
 	while (split_fd[iter.i])
 	{
-		if (iter.i % 20 == 0)
-			printf("\e[2;35mloading...\e[0m\n");
+		if (iter.i % 50 == 0)
+			printf("\e[2;35m%i lines processed...\e[0m\n", iter.i);
 		obtain_z_and_color(m, split_fd[iter.i], iter.i);
 		//get_z_points(m, split_fd[iter.i], iter.i);
 		//get_color_points(m, split_fd[iter.i], iter.i);

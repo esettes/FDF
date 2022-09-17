@@ -12,15 +12,17 @@
 
 #include "fdf.h"
 
-void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end);
+void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, t_vec2 offset);
 
 void	print_map(t_fdf *fdf)
 {
 	t_vec2	coord;
 	t_vec2	h_end;
 	t_vec2	v_end;
+	t_vec2	offset;
 
 	coord.y = 0;
+	set_bresen_offset(fdf, &offset);
 	while (coord.y < fdf->map.vertices.y)
 	{
 		coord.x = 0;
@@ -30,15 +32,13 @@ void	print_map(t_fdf *fdf)
 			{
 				v_end.y = coord.y;
 				v_end.x = coord.x + 1;
-				//printf("coord.x: %d, ", coord.x);
-				//printf("y: %d\n", coord.x);
-				f_bresen(fdf, coord, v_end);
+				f_bresen(fdf, coord, v_end, offset);
 			}
 			if (coord.y < fdf->map.vertices.y - 1)
 			{
 				h_end.x = coord.x;
 				h_end.y = coord.y + 1;
-				f_bresen(fdf, coord, h_end);
+				f_bresen(fdf, coord, h_end, offset);
 			}
 			coord.x++;
 		}
@@ -46,19 +46,16 @@ void	print_map(t_fdf *fdf)
 	}
 }
 
-void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
+void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, t_vec2 offset)
 {
 	t_vec2	step;
 	t_iter	max;
-	t_vec2	offset;
 	t_depth	depth;
 	t_iter	curr;
 
 	get_current_position(start, &curr);
 	set_bresen_depth(fdf, &depth, start, end);
 	set_control_zoom(fdf, &start, &end);
-	set_bresen_offset(fdf, &offset);
-	
 	set_perspective(fdf, &start, &end, depth);
 	rotate_point(fdf, &start, &end, &depth);
 	//rotate_top_on_y_3d(fdf, &start, &end, &depth);
