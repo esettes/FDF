@@ -10,19 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRESEN_UTILS_H
-# define BRESEN_UTILS_H
+#ifndef DRAW_UTILS_H
+# define DRAW_UTILS_H
 
 # include "structs.h"
 
-/**
- * Applies zoom of each start and end points.
- */
-void	bresen_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end);
 void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction);
 void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth);
 float	f_max(float a, float b);
 float	f_abs(float a);
+
+void	set_perspective(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth);
+void	set_bresen_step_increment(t_vec2 *step, t_iter max);
+void	set_control_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end);
+void	set_control_movement(t_fdf *fdf, t_vec2 *start, t_vec2 *end);
+void	set_bresen_offset(t_fdf *fdf, t_vec2 *off);
+void	set_bresen_depth(t_fdf *fdf, t_depth *depth, t_vec2 start, t_vec2 end);
+void	set_bresen_step(t_vec2 *step, t_vec2 start, t_vec2 end);
+
 int		check_image_limits(t_vec2 start, t_vec2 end, t_vec2 offset);
+void	step_increment(t_vec2 *start, t_vec2 step);
+void	get_current_position(t_vec2 start, t_iter *current);
 
 #endif

@@ -45,7 +45,7 @@ int	main(int argc, char	*argv[])
 			return (EXIT_FAILURE);
 		}
 		init_mlx(fdf);
-		if (!fdf->mlx || !fdf->mtrx.mtrx)
+		if (!fdf->mlx || !fdf->map.map)
 			exit(EXIT_FAILURE);
 		close(fdf->fd);
 		return (EXIT_SUCCESS);

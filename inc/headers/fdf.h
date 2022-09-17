@@ -29,7 +29,7 @@
 # include "mlx_utils.h"
 # include "draw.h"
 # include "read_file.h"
-# include "map_properties.h"
-# include "bresen_utils.h"
+# include "map_utils.h"
+# include "draw_utils.h"
 
 #endif

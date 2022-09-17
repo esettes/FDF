@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	bresen_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
+void	set_control_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
 {
 	start->x *= fdf->control.zoom;
 	start->y *= fdf->control.zoom;
@@ -20,12 +20,12 @@ void	bresen_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
 	end->y *= fdf->control.zoom;
 }
 
-void	bresen_height(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
+void	set_control_movement(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
 {
-	start->x *= fdf->control.height;
-	start->y *= fdf->control.height;
-	end->x *= fdf->control.height;
-	end->y *= fdf->control.height;
+	start->x += fdf->control.horiz;
+	start->y += fdf->control.vert;
+	end->x += fdf->control.horiz;
+	end->y += fdf->control.vert;
 }
 
 float	f_max(float a, float b)
@@ -44,26 +44,19 @@ float	f_abs(float a)
 		return (a);
 }
 
-void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth)//, t_vec2 *end, t_depth dep)
+int	check_image_limits(t_vec2 start, t_vec2 end, t_vec2 off)
 {
-	float	z_zoom;
-	
-	z_zoom = 0.5;
-	if (z_zoom >= 0 && z_zoom <= 50)
-		start->x = (start->x - start->y) * cos(45) * 1;
-		start->y = (start->x + start->y) * (sin(45) * z_zoom) - (depth.z *  z_zoom * (fdf->control.zoom * 0.2));
-		end->x = (end->x - end->y) * cos(45) * 1;
-		end->y = (end->x + end->y) * (sin(45) * z_zoom) - (depth.z1 *  z_zoom * (fdf->control.zoom * 0.2));
-	(void)fdf;
-}
+	float	max_w;
+	float	max_h;
+	int		min;
 
-int	check_image_limits(t_vec2 start, t_vec2 end, t_vec2 offset)
-{
-	if ((end.x + offset.x < (WIDTH * IMG_AUMENT) - 100) && (end.y + offset.y < (HEIGHT * IMG_AUMENT) - 100) && (end.x + offset.x > 100) 
-		&& (end.y + offset.y > 100) && (start.x + offset.x < (WIDTH * IMG_AUMENT) - 100) && (start.y + offset.y < (HEIGHT * IMG_AUMENT) - 100) 
-		&& (start.x + offset.x > 10) && (start.y + offset.y > 10))if ((end.x + offset.x < (WIDTH * IMG_AUMENT) - 100) && (end.y + offset.y < (HEIGHT * IMG_AUMENT) - 100) && (end.x + offset.x > 100) 
-		&& (end.y + offset.y > 100) && (start.x + offset.x < (WIDTH * IMG_AUMENT) - 100) && (start.y + offset.y < (HEIGHT * IMG_AUMENT) - 100) 
-		&& (start.x + offset.x > 10) && (start.y + offset.y > 10))
+	max_w = WIDTH * IMG_AUMENT - 100;
+	max_h = HEIGHT * IMG_AUMENT - 100;
+	min = 100;
+	if ((end.x + off.x < max_w) && (end.y + off.y < max_h) 
+		&& (end.x + off.x > min) && (end.y + off.y > min) 
+		&& (start.x + off.x < max_w) && (start.y + off.y < max_h) 
+		&& (start.x + off.x > min) && (start.y + off.y > min))
 	{
 		return TRUE;
 	}

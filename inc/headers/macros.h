@@ -24,5 +24,6 @@
 # define HEX_U			"0123456789ABCDEF"
 # define ISOMETRIC		0
 # define TOP_VIEW		1
+# define ADDIT_STEPS    3
 
 #endif

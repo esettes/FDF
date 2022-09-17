@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_PROPERTIES_H
-# define MAP_PROPERTIES_H
+#ifndef MAP_UTILS_H
+# define MAP_UTILS_H
 
 # include "structs.h"
 
@@ -34,9 +34,9 @@ void	free_props(t_fdf *fdf);
 /**
  * Sets the position of the first pixel to start drawing.
  * 
- * @param mtrx The struct mtrx.
+ * @param map The struct map.
  */
-void	set_limits(t_mtrx *mtrx);
+void	set_limits(t_map *map);
 void	set_new_limits(t_fdf *fdf);
 void	set_start_to_print_iso(t_fdf *fdf, t_vec2 *start, t_vec2 *end);
 

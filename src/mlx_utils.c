@@ -19,8 +19,6 @@ void	loop_fdf(t_fdf *fdf)
 	//mlx_loop_hook(fdf->mlx, &move_img, fdf->mlx);
 	mlx_key_hook(fdf->mlx, &move_img, fdf);
 	//draw_menu(fdf);
-	//new_view_iso_testing(fdf);
-	//draw_image(fdf);
 	mlx_loop(fdf->mlx);
 	//mlx_delete_image(fdf->mlx, fdf->img); // Once app request exit, cleanup.
 	mlx_terminate(fdf->mlx);
@@ -33,25 +31,18 @@ void	create_image(t_fdf *fdf)
 	if (fdf->img)
 	{
 		mlx_delete_image(fdf->mlx, fdf->img);
-		
 	}
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH * IMG_AUMENT, HEIGHT * IMG_AUMENT);    // Creates a new image.
 	offset.x  = ((WIDTH * IMG_AUMENT) / 2) - (WIDTH /2);
 	offset.y  = ((HEIGHT * IMG_AUMENT) / 2) - (HEIGHT /2);
 	//ft_memset(fdf->img->pixels, 20, fdf->img->width * fdf->img->height * 4);
 	mlx_image_to_window(fdf->mlx, fdf->img, -offset.x, -offset.y);   // Adds an image to the render queue.
-	
 }
 
 void	draw_image(t_fdf *fdf)
 {
 	set_new_zoom(fdf);
-
-	//if (fdf->control.perspective == TOP_VIEW)
-	//	view_on_top(fdf);
-	//else
 	print_map(fdf);
-	//draw_menu(fdf);
 }
 
 void	modify_mesh(t_fdf *fdf)

@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-void    get_z_points(t_mtrx *m, char *str, int pos)
+void    get_z_points(t_map *m, char *str, int pos)
 {
     char	**ch_aux;
     int		*z_point;
@@ -20,13 +20,13 @@ void    get_z_points(t_mtrx *m, char *str, int pos)
 		*(z_point + iter.j) = iter.i;
 		iter.j++;
     }
-    m->mtrx[pos] = z_point;
+    m->map[pos] = z_point;
     if (ch_aux)
         free (ch_aux);
     free (str);
 }
 
-void	get_color_points(t_mtrx *m, char *str, int pos)
+void	get_color_points(t_map *m, char *str, int pos)
 {
     char	**ch_aux;
     char    *extract;
@@ -63,7 +63,7 @@ void	get_color_points(t_mtrx *m, char *str, int pos)
     free (str);
 }
 
-void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
+void	obtain_z_and_color(t_map *m, char *str, int pos)
 {
     char	**ch_aux;
     char    *extract;
@@ -127,7 +127,7 @@ void	obtain_z_and_color(t_mtrx *m, char *str, int pos)
 		iter.j++;
     }
     m->colors[pos] = int_color;
-    m->mtrx[pos] = int_mtrx;
+    m->map[pos] = int_mtrx;
     //free (int_mtrx);
     if (ch_aux)
         free (ch_aux);

@@ -42,7 +42,7 @@ t_iter	get_map_size(int fd)
 	return (iter);
 }
 
-void	obtain_split_fd(int fd, t_mtrx *m)
+void	obtain_split_fd(int fd, t_map *m)
 {
 	char	**split_fd;
 	t_iter	iter;
@@ -70,7 +70,7 @@ void	obtain_split_fd(int fd, t_mtrx *m)
 		iter.i++;
 	}
 	m->vertices = set_mtrx_size(aux, iter.i);
-	m->mtrx = malloc(sizeof(int *) * iter.j);
+	m->map = malloc(sizeof(int *) * iter.j);
 	m->colors = malloc(sizeof(int *) * iter.j);
 	printf("\nm->size->y: %f \n", m->vertices.y);
 	printf("m->size->x: %f \n\n", m->vertices.x);

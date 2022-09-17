@@ -16,24 +16,39 @@
 # include "MLX42.h"
 # include <math.h>
 
+/*
+ * @param[in] x float
+ * @param[in] y float
+ */
 typedef struct s_vec2
 {
 	float	x;
 	float	y;
 }				t_vec2;
-
+/*
+ * @param[in] z int
+ * @param[in] z1 int
+ */
 typedef struct s_depth
 {
 	int	z;
 	int	z1;
 }				t_depth;
-
+/*
+ * @param[in] i int
+ * @param[in] j int
+ */
 typedef struct s_iter
 {
 	int	i;
 	int	j;
 }				t_iter;
-
+/*
+ * @param[in] r unsigned int
+ * @param[in] g unint
+ * @param[in] b unint
+ * @param[in] a unint
+ */
 typedef struct s_rgba
 {
 	unsigned int	r;
@@ -41,7 +56,13 @@ typedef struct s_rgba
 	unsigned int	b;
 	unsigned int	a;
 }				t_rgba;
-
+/*
+ * @param[in] height float
+ * @param[in] zoom float
+ * @param[in] perspective size_t
+ * @param[in] horiz int
+ * @param[in] vert int
+ */
 typedef	struct s_controls
 {
 	float	height;
@@ -50,61 +71,40 @@ typedef	struct s_controls
 	int		horiz;
 	int		vert;
 }				t_controls;
-
-/**
- * Sets the params to print two lines, vertical and horizontal, starting from
- * the same point.
- * 
- * @param[in] start Image coordinates where lines start.
- * @param[in] h_end Img coord where horizontal line ends.
- * @param[in] v_end Img coord where vertical line ends.
- */
-typedef	struct s_lines
-{
-	t_vec2	start;
-	t_vec2	end;
-	t_vec2	step;
-	t_vec2	h_end;
-	t_vec2	v_end;
-	t_vec2	delta;
-	int		color;
-}				t_lines;
 /**
  * Save all the values ​​necessary for the mesh construction.
  * 
- * @param[in] mtrx Mesh integer array of 'z' points.
+ * @param[in] map Mesh integer array of 'z' points.
  * @param[in] z Mesh's depth.
  * @param[in] zoom Value that sets the distance between adjoining vertices.
- * @param[in] line Struct which have coords to draw segments.
  * @param[in] vertices number of vertices in width(x) and height(y)
  * @param[in] px_size Pixel size of width(x) and height(y).
  * @param[in] start Coord where to start to draw in the img.
  * @param[in] end Coord where to finish to draw in the img.
  */
-typedef struct s_mtrx
+typedef struct s_map
 {
-	int			**mtrx;
+	int			**map;
 	int			**colors;
 	int			z;
 	float		zoom;
-	t_lines		line;
 	t_vec2		vertices;
 	t_vec2		px_size;
 	t_vec2		start;
 	t_vec2		end;
-}				t_mtrx;
+}				t_map;
 /**
  * Main struct of the program, used to store structs initializations
  * required by MLX and program variables. Simplifies the use of the mesh data.
  * 
  * @param mlx Struct required by mlx.
- * @param mtrx Structure for the mesh data.
+ * @param map Structure for the mesh data.
  * @param img Struct required by mlx.
  */
 typedef struct s_fdf
 {
 	mlx_t		*mlx;
-	t_mtrx		mtrx;
+	t_map		map;
 	t_controls	control;
 	mlx_image_t	*img;		// Has position
 	int			fd;

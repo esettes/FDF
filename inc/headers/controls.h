@@ -17,8 +17,8 @@
 
 /* Include that functions which are called directly from inputs */
 
-double	get_iso_pos_x(t_mtrx mtrx);
-double	get_iso_pos_y(t_mtrx mtrx);
+double	get_iso_pos_x(t_map map);
+double	get_iso_pos_y(t_map map);
 void	set_zoom(double x_delta, double y_delta, void *fdf_void);
 void	set_new_zoom(t_fdf *fdf);
 void	move_img(mlx_key_data_t keydata, void* param);

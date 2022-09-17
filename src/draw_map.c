@@ -21,18 +21,18 @@ void	print_map(t_fdf *fdf)
 	t_vec2	v_end;
 
 	coord.y = 0;
-	while (coord.y < fdf->mtrx.vertices.y)
+	while (coord.y < fdf->map.vertices.y)
 	{
 		coord.x = 0;
-		while (coord.x < fdf->mtrx.vertices.x)
+		while (coord.x < fdf->map.vertices.x)
 		{
-			if (coord.x < fdf->mtrx.vertices.x - 1)
+			if (coord.x < fdf->map.vertices.x - 1)
 			{
 				v_end.y = coord.y;
 				v_end.x = coord.x + 1;
 				f_bresen(fdf, coord, v_end, 0);
 			}
-			if (coord.y < fdf->mtrx.vertices.y - 1)
+			if (coord.y < fdf->map.vertices.y - 1)
 			{
 				h_end.x = coord.x;
 				h_end.y = coord.y + 1;
@@ -47,44 +47,56 @@ void	print_map(t_fdf *fdf)
 void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
 {
 	t_vec2	step;
-	int		max;
-	int		p;
+	t_iter	max;
 	t_vec2	offset;
 	t_depth	depth;
 	t_iter	curr;
 
-	curr.i = (int)start.x;
-	curr.j = (int)start.y;
-	depth.z = fdf->mtrx.mtrx[(int)start.y][(int)start.x] * fdf->control.height;
-	depth.z1 = fdf->mtrx.mtrx[(int)end.y][(int)end.x] * fdf->control.height;
-	bresen_zoom(fdf, &start, &end);
-	offset.x = IMG_CENTER_X - (fdf->mtrx.px_size.x / 2);
-	offset.y = IMG_CENTER_Y - (fdf->mtrx.px_size.y / 2);
-	if (fdf->control.perspective == ISOMETRIC)
-	{
-		offset.x = IMG_CENTER_X - (fdf->mtrx.px_size.x / 9);
-		offset.y = IMG_CENTER_Y - (fdf->mtrx.px_size.y / 3.5);
-		isometric(fdf, &start, &end, depth);
-	}
-	start.x += fdf->control.horiz;
-	start.y += fdf->control.vert;
-	end.x += fdf->control.horiz;
-	end.y += fdf->control.vert;
-
-	step.x = (end.x - start.x);
-	step.y = (end.y - start.y);
-	max = f_max(f_abs(step.x), f_abs(step.y));
-	step.x /= max + 3;
-	step.y /= max + 3;
-
-	int i = 0;
-	while (i <= max + 3)
+	get_current_position(start, &curr);
+	set_bresen_depth(fdf, &depth, start, end);
+	set_control_zoom(fdf, &start, &end);
+	set_bresen_offset(fdf, &offset);
+	set_perspective(fdf, &start, &end, depth);
+	set_control_movement(fdf, &start, &end);
+	set_bresen_step(&step, start, end);
+	max.i = f_max(f_abs(step.x), f_abs(step.y));
+	set_bresen_step_increment(&step, max);
+	max.j = 0;
+	while (max.j++ <= max.i + ADDIT_STEPS)
 	{
 		if (check_image_limits(start, end, offset))
-			mlx_put_pixel(fdf->img, start.x + offset.x , start.y + offset.y, fdf->mtrx.colors[curr.j][curr.i]);
-		start.x += step.x;
-		start.y += step.y;
-		i ++;
+			mlx_put_pixel(fdf->img, start.x + offset.x , start.y + offset.y, 
+			fdf->map.colors[curr.j][curr.i]);
+		step_increment(&start, step);
 	}
 }
 
+void	set_color_array(t_fdf *fdf)
+{
+	fdf->map.colors = (int **)malloc(sizeof(int *) * fdf->map.vertices.y);
+	fdf->map.colors[0] = (int *)malloc(sizeof(int) * fdf->map.vertices.x);
+	fdf->map.colors[0][0] = 0x00FF00;
+	fdf->map.colors[0][1] = 0x00FF00;
+}
+
+void	palette_colormap(t_fdf *fdf)
+{
+
+}
+
+// void	free_current_color_array(t_fdf *fdf)
+// {
+// 	t_iter	iter;
+
+// 	iter.i = 0;
+// 	iter.j = 0;
+// 	while (iter.i < fdf->map.vertices.y)
+// 	{
+// 		while (iter.j < fdf->map.vertices.y)
+// 		{
+// 			free(fdf->map.colors[i]);
+// 			i++;
+// 		}
+// 	}
+// 	free(fdf->map.colors);
+// }

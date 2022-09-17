@@ -23,43 +23,43 @@ t_vec2	set_mtrx_size(int x, int y)
 
 void	set_pixel_size(t_fdf *fdf)
 {
-	fdf->mtrx.px_size.x = fdf->control.zoom * fdf->mtrx.vertices.x;
-	fdf->mtrx.px_size.y = fdf->control.zoom * fdf->mtrx.vertices.y;
+	fdf->map.px_size.x = fdf->control.zoom * fdf->map.vertices.x;
+	fdf->map.px_size.y = fdf->control.zoom * fdf->map.vertices.y;
 }
 
 void	set_new_zoom(t_fdf *fdf)
 {
-	fdf->mtrx.px_size.x = fdf->control.zoom * (fdf->mtrx.vertices.x - 1);
-	fdf->mtrx.px_size.y = fdf->control.zoom * (fdf->mtrx.vertices.y - 1);
-	set_limits(&fdf->mtrx);
+	fdf->map.px_size.x = fdf->control.zoom * (fdf->map.vertices.x - 1);
+	fdf->map.px_size.y = fdf->control.zoom * (fdf->map.vertices.y - 1);
+	set_limits(&fdf->map);
 }
 
 // void	set_new_zoom(t_fdf *fdf)
 // {
 // 	t_vec2	segm;
 
-// 	segm.x = fdf->mtrx.vertices.x;
-// 	segm.y = fdf->mtrx.vertices.y;
-// 	fdf->mtrx.px_size.x = ((segm.y - 1) * fdf->control.zoom);
-// 	fdf->mtrx.px_size.y = ((segm.x - 1) * fdf->control.zoom);
+// 	segm.x = fdf->map.vertices.x;
+// 	segm.y = fdf->map.vertices.y;
+// 	fdf->map.px_size.x = ((segm.y - 1) * fdf->control.zoom);
+// 	fdf->map.px_size.y = ((segm.x - 1) * fdf->control.zoom);
 // 	set_new_limits(fdf);
 // }
 
-void	set_limits(t_mtrx *mtrx)
+void	set_limits(t_map *map)
 {
-	mtrx->start.x = (IMG_CENTER_X - (mtrx->px_size.x / 2));
-	mtrx->start.y = (IMG_CENTER_Y - (mtrx->px_size.y / 2));
-	mtrx->end.x = mtrx->start.x + mtrx->px_size.x;
-	mtrx->end.y = mtrx->start.y + mtrx->px_size.y;
+	map->start.x = (IMG_CENTER_X - (map->px_size.x / 2));
+	map->start.y = (IMG_CENTER_Y - (map->px_size.y / 2));
+	map->end.x = map->start.x + map->px_size.x;
+	map->end.y = map->start.y + map->px_size.y;
 }
 
 
 /* limits functons when I try to draw vertices at the ssame time */
-// void	set_limits(t_mtrx *mtrx)
+// void	set_limits(t_map *map)
 // {
-// 	mtrx->start.x = (IMG_CENTER_X - (mtrx->px_size.x / 2));
-// 	mtrx->start.y = (IMG_CENTER_Y - (mtrx->px_size.y / 2));
-// 	mtrx->end.x = mtrx->start.x + (mtrx->px_size.x / mtrx->vertices.x);
-// 	mtrx->end.y = mtrx->start.y + (mtrx->px_size.y / mtrx->vertices.y);
+// 	map->start.x = (IMG_CENTER_X - (map->px_size.x / 2));
+// 	map->start.y = (IMG_CENTER_Y - (map->px_size.y / 2));
+// 	map->end.x = map->start.x + (map->px_size.x / map->vertices.x);
+// 	map->end.y = map->start.y + (map->px_size.y / map->vertices.y);
 // }
 
