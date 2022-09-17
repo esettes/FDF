@@ -36,14 +36,6 @@ void	obtain_split_fd(int fd, t_map *m);
  */
 int		ft_count(char const *s, char c);
 /**
- * Returns the conversion of *str to an integer array
- */
-//int	*str_to_int(t_map *m, char *str, int pos);
-/**
- * Returns the conversion of *str to an color array
- */
-//char    *str_to_color(char *str);
-/**
  * Call str_to_int() to get array with z values and str_to_color() to get
  * array with colors.
  */

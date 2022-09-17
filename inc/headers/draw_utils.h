@@ -15,7 +15,6 @@
 
 # include "structs.h"
 
-void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction);
 void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth);
 float	f_max(float a, float b);
 float	f_abs(float a);

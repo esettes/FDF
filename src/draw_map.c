@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction);
+void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end);
 
 void	print_map(t_fdf *fdf)
 {
@@ -30,13 +30,13 @@ void	print_map(t_fdf *fdf)
 			{
 				v_end.y = coord.y;
 				v_end.x = coord.x + 1;
-				f_bresen(fdf, coord, v_end, 0);
+				f_bresen(fdf, coord, v_end);
 			}
 			if (coord.y < fdf->map.vertices.y - 1)
 			{
 				h_end.x = coord.x;
 				h_end.y = coord.y + 1;
-				f_bresen(fdf, coord, h_end, 1);
+				f_bresen(fdf, coord, h_end);
 			}
 			coord.x++;
 		}
@@ -44,7 +44,7 @@ void	print_map(t_fdf *fdf)
 	}
 }
 
-void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, int direction)
+void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end)
 {
 	t_vec2	step;
 	t_iter	max;
