@@ -66,6 +66,7 @@ typedef struct s_rgba
 typedef	struct s_controls
 {
 	float	height;
+	float	rot_angle;
 	float	zoom;
 	size_t	perspective;
 	int		horiz;
@@ -92,6 +93,7 @@ typedef struct s_map
 	t_vec2		px_size;
 	t_vec2		start;
 	t_vec2		end;
+	t_vec2		offset;
 }				t_map;
 /**
  * Main struct of the program, used to store structs initializations

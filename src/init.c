@@ -27,6 +27,7 @@ void	init_mlx(t_fdf *fdf)
 	// fdf->map.line.end.x = 0;
 	// fdf->map.line.end.y = 0;
 	fdf->control.zoom = 2;
+	fdf->control.rot_angle = 0;
 	fdf->control.height = 1;
 	fdf->control.vert = 1;
 	fdf->control.horiz = 1;

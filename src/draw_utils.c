@@ -14,10 +14,10 @@
 
 void	set_control_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
 {
-	start->x *= fdf->control.zoom;
-	start->y *= fdf->control.zoom;
-	end->x *= fdf->control.zoom;
-	end->y *= fdf->control.zoom;
+	start->x *= fdf->control.zoom;// * cos(fdf->control.rot_angle  * 3.141592653589 / 180);
+	start->y *= fdf->control.zoom;// * cos(fdf->control.rot_angle);
+	end->x *= fdf->control.zoom;// * cos(fdf->control.rot_angle  * 3.141592653589 / 180);
+	end->y *= fdf->control.zoom;// * cos(fdf->control.rot_angle);
 }
 
 void	set_control_movement(t_fdf *fdf, t_vec2 *start, t_vec2 *end)

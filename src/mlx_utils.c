@@ -35,7 +35,7 @@ void	create_image(t_fdf *fdf)
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH * IMG_AUMENT, HEIGHT * IMG_AUMENT);    // Creates a new image.
 	offset.x  = ((WIDTH * IMG_AUMENT) / 2) - (WIDTH /2);
 	offset.y  = ((HEIGHT * IMG_AUMENT) / 2) - (HEIGHT /2);
-	//ft_memset(fdf->img->pixels, 20, fdf->img->width * fdf->img->height * 4);
+	//ft_memset(fdf->img->pixels, -16581375, fdf->img->width * fdf->img->height * 4);
 	mlx_image_to_window(fdf->mlx, fdf->img, -offset.x, -offset.y);   // Adds an image to the render queue.
 }
 
