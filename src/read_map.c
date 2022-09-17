@@ -82,6 +82,7 @@ void	set_z_points(t_fdf *fdf, char *raw_map)
 	close(fd);
 }
 
+
 void    set_line_z_points(t_fdf *fdf, char *str, int pos)
 {
     char	**ch_aux;
