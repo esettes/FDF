@@ -111,6 +111,7 @@ typedef struct s_fdf
 	mlx_image_t	*img;		// Has position
 	int			fd;
 	char	**readed_fd;
+	char	*raw_fd;
 }				t_fdf;
 
 #endif

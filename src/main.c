@@ -12,10 +12,6 @@
 
 #include "fdf.h"
 
-// void	lk(void)
-// {
-// 	system("leaks fdf");
-// }
 void	ft_leaks()
 {
 	system("leaks fdf");
@@ -30,21 +26,17 @@ int	main(int argc, char	*argv[])
 	// atexit(lk);
 	if (argc < 3)
 	{
-		printf("\norigin offset X: %d\n", X_ORIGIN_OFF);
-		printf("origin offset Y: %d\n", Y_ORIGIN_OFF);
-		printf("width: %d\n", WIDTH);
-		printf("HEIGHT: %d\n\n", HEIGHT);
-		
 		fdf = (t_fdf *)malloc(sizeof(t_fdf));
+		//fdf->raw_fd = argv[1];
 //		fdf->fd = open("src/maps/test_maps/japan.fdf", O_RDONLY);
-		fdf->fd = open(argv[1], O_RDONLY);
+		//fdf->fd = open(argv[1], O_RDONLY);
 		
-		if (fdf->fd <= 0)
-		{
-			exit(EXIT_FAILURE);
-			return (EXIT_FAILURE);
-		}
-		init_mlx(fdf);
+		// if (fdf->fd <= 0)
+		// {
+		// 	exit(EXIT_FAILURE);
+		// 	return (EXIT_FAILURE);
+		// }
+		init_mlx(fdf, argv[1]);
 		if (!fdf->mlx || !fdf->map.map)
 			exit(EXIT_FAILURE);
 		close(fdf->fd);

@@ -30,6 +30,8 @@ void	print_map(t_fdf *fdf)
 			{
 				v_end.y = coord.y;
 				v_end.x = coord.x + 1;
+				//printf("coord.x: %d, ", coord.x);
+				//printf("y: %d\n", coord.x);
 				f_bresen(fdf, coord, v_end);
 			}
 			if (coord.y < fdf->map.vertices.y - 1)

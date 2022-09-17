@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	init_mlx(t_fdf *fdf)
+void	init_mlx(t_fdf *fdf, char *raw_map)
 {
 	t_vec2	aux;
 
@@ -20,20 +20,14 @@ void	init_mlx(t_fdf *fdf)
 	int j = 0;
 	aux.x  = (WIDTH * IMG_AUMENT) / 2 - (WIDTH * 0.25);
 	aux.y = (HEIGHT * IMG_AUMENT) / 2 - (HEIGHT * 0.25);
-	// fdf->map.line.start.x = 0;
-	// fdf->map.line.start.y = 0;
-	// fdf->map.line.step.x = 0;
-	// fdf->map.line.step.y = 0;
-	// fdf->map.line.end.x = 0;
-	// fdf->map.line.end.y = 0;
 	fdf->control.zoom = 2;
 	fdf->control.rot_angle = 0;
 	fdf->control.height = 1;
 	fdf->control.vert = 1;
 	fdf->control.horiz = 1;
 	fdf->control.perspective = ISOMETRIC;// TOP_VIEW;
-	obtain_split_fd(fdf->fd, &fdf->map);
-	//get_map_info(fdf);
+	set_map_info(fdf, raw_map);
+	//obtain_split_fd(fdf->fd, &fdf->map);
 	
 	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
 	create_image(fdf);

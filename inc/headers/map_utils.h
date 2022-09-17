@@ -39,5 +39,7 @@ void	free_props(t_fdf *fdf);
 void	set_limits(t_map *map);
 void	set_new_limits(t_fdf *fdf);
 void	set_start_to_print_iso(t_fdf *fdf, t_vec2 *start, t_vec2 *end);
+void    set_map_size(t_fdf *fdf, char *raw_map);
+void	set_map_info(t_fdf *fdf, char *raw_map);
 
 #endif

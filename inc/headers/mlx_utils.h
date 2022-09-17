@@ -16,7 +16,7 @@
 # include "structs.h"
 
 /* Initializes the main parameters of the application */
-void	init_mlx(t_fdf *fdf);
+void	init_mlx(t_fdf *fdf, char *raw_map);
 /* Calls all functions that need mlx_loop to run */
 void	loop_fdf(t_fdf *fdf);
 void	create_image(t_fdf *fdf);
