@@ -16,6 +16,7 @@ void	open_fd(t_fdf *fdf, char *raw_map);
 
 void	init_mlx(t_fdf *fdf, char *raw_map)
 {
+	fdf->control.palette = 0;
 	fdf->control.zoom = 2;
 	fdf->control.rot_angle = 0;
 	fdf->control.height = 1;

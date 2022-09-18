@@ -63,14 +63,29 @@ void	move_img(mlx_key_data_t keydata, void* param)
 		fdf->control.height += 0.02;
 		modify_mesh(fdf);
 	}
-	if (keydata.key == MLX_KEY_1)
+	if (keydata.key == MLX_KEY_Z)
 	{
 		fdf->control.rot_angle += 0.04;
 		modify_mesh(fdf);
 	}
-	if (keydata.key == MLX_KEY_2)
+	if (keydata.key == MLX_KEY_X)
 	{
 		fdf->control.rot_angle -= 0.04;
+		modify_mesh(fdf);
+	}
+	if (keydata.key == MLX_KEY_0)
+	{
+		fdf->control.palette = 0;
+		modify_mesh(fdf);
+	}
+	if (keydata.key == MLX_KEY_1)
+	{
+		fdf->control.palette = 1;
+		modify_mesh(fdf);
+	}
+	if (keydata.key == MLX_KEY_2)
+	{
+		fdf->control.palette = 2;
 		modify_mesh(fdf);
 	}
 }

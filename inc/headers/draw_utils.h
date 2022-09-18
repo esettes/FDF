@@ -18,6 +18,7 @@
 void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth);
 float	f_max(float a, float b);
 float	f_abs(float a);
+int 	print_map(t_fdf *fdf);
 
 void	set_perspective(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth);
 void	set_bresen_step_increment(t_vec2 *step, t_iter max);

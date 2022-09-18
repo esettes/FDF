@@ -23,7 +23,7 @@ void	loop_fdf(t_fdf *fdf)
 	mlx_terminate(fdf->mlx);
 }
 
-void	create_image(t_fdf *fdf)
+int	create_image(t_fdf *fdf)
 {
 	t_vec2	offset;
 
@@ -36,16 +36,21 @@ void	create_image(t_fdf *fdf)
 	offset.y  = ((HEIGHT * IMG_AUMENT) / 2) - (HEIGHT /2);
 	//ft_memset(fdf->img->pixels, -16581375, fdf->img->width * fdf->img->height * 4);
 	mlx_image_to_window(fdf->mlx, fdf->img, -offset.x, -offset.y);
+	return (TRUE);
 }
 
-void	draw_image(t_fdf *fdf)
+int		draw_image(t_fdf *fdf)
 {
 	set_new_zoom(fdf);
-	print_map(fdf);
+	if (!print_map(fdf))
+		return (FALSE);
+	return (TRUE);
 }
 
-void	modify_mesh(t_fdf *fdf)
+int		modify_mesh(t_fdf *fdf)
 {
-	create_image(fdf);
-	draw_image(fdf);
+//	create_image(fdf);
+	if (!create_image(fdf) || !draw_image(fdf))
+		return (FALSE);
+	return (TRUE);
 }

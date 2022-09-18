@@ -15,7 +15,7 @@
 int	check_fd_end(char *s);
 void    set_z_points(t_fdf *fdf, char *raw_map);
 
-void	set_map_info(t_fdf *fdf, char *raw_map)
+/*void	set_map_info(t_fdf *fdf, char *raw_map)
 {
 	set_map_size(fdf, raw_map);
 	set_z_points(fdf, raw_map);
@@ -68,7 +68,6 @@ void	set_z_points(t_fdf *fdf, char *raw_map)
 	aux = 0;
 	iter.i = 0;
 	iter.j = 0;
-	//lines = malloc(sizeof(char *) * BUFFER_SIZE * 2);
 	fd = open(raw_map, O_RDONLY);
 	while (true)
 	{
@@ -81,7 +80,6 @@ void	set_z_points(t_fdf *fdf, char *raw_map)
 	}
 	close(fd);
 }
-
 
 void    set_line_z_points(t_fdf *fdf, char *str, int pos)
 {
@@ -163,32 +161,34 @@ void	set_line_color_points(t_fdf *fdf, char *str, int pos)
         }
         else
         {
-            if (iter.i >= 720)
-                *(int_color + iter.j) = str_to_color("deddcc");
-            if (iter.i < 720 && iter.i >= 400)
-                *(int_color + iter.j) = str_to_color("c56930");
-            if (iter.i < 400 && iter.i >= 200)
-                *(int_color + iter.j) = str_to_color("c66a31");
-            if (iter.i < 200 && iter.i >= 90)
-                *(int_color + iter.j) = str_to_color("d77b34");
-            if (iter.i < 90 && iter.i >= 50)
-                *(int_color + iter.j) = str_to_color("e79b34");
-            if (iter.i < 50 && iter.i >= 35)
-                *(int_color + iter.j) = str_to_color("e9cab3");
-            if (iter.i < 35 && iter.i >= 15)
-                *(int_color + iter.j) = str_to_color("b5baa6");
-            if (iter.i < 15 && iter.i >= 0)
-                *(int_color + iter.j) = str_to_color("b2b8a5");
-            if (iter.i < 0 && iter.i >= -5)
-                *(int_color + iter.j) = str_to_color("3babbf"); //31a9ac
-            if (iter.i < -5 && iter.i >= -20)
-                *(int_color + iter.j) = str_to_color("3aaaaf");
-            if (iter.i < -20 && iter.i >= -70)
-                *(int_color + iter.j) = str_to_color("3ca9af");//3bb143
-            if (iter.i < -70 && iter.i >= -200)
-                *(int_color + iter.j) = str_to_color("3a98ae");
-            if (iter.i < -200)// && iter.i >= -30)
-                *(int_color + iter.j) = str_to_color("3797ad");
+			// assign 0 value and call set_color palette when finish prepare map
+			set_color_palette(int_color, get_color_palette(1), iter.j, iter.i);
+            // if (iter.i >= 720)
+            //     *(int_color + iter.j) = str_to_color("deddcc");
+            // if (iter.i < 720 && iter.i >= 400)
+            //     *(int_color + iter.j) = str_to_color("c56930");
+            // if (iter.i < 400 && iter.i >= 200)
+            //     *(int_color + iter.j) = str_to_color("c66a31");
+            // if (iter.i < 200 && iter.i >= 90)
+            //     *(int_color + iter.j) = str_to_color("d77b34");
+            // if (iter.i < 90 && iter.i >= 50)
+            //     *(int_color + iter.j) = str_to_color("e79b34");
+            // if (iter.i < 50 && iter.i >= 35)
+            //     *(int_color + iter.j) = str_to_color("e9cab3");
+            // if (iter.i < 35 && iter.i >= 15)
+            //     *(int_color + iter.j) = str_to_color("b5baa6");
+            // if (iter.i < 15 && iter.i >= 0)
+            //     *(int_color + iter.j) = str_to_color("b2b8a5");
+            // if (iter.i < 0 && iter.i >= -5)
+            //     *(int_color + iter.j) = str_to_color("3babbf"); //31a9ac
+            // if (iter.i < -5 && iter.i >= -20)
+            //     *(int_color + iter.j) = str_to_color("3aaaaf");
+            // if (iter.i < -20 && iter.i >= -70)
+            //     *(int_color + iter.j) = str_to_color("3ca9af");//3bb143
+            // if (iter.i < -70 && iter.i >= -200)
+            //     *(int_color + iter.j) = str_to_color("3a98ae");
+            // if (iter.i < -200)// && iter.i >= -30)
+            //     *(int_color + iter.j) = str_to_color("3797ad");
 
         }
 		
@@ -198,7 +198,7 @@ void	set_line_color_points(t_fdf *fdf, char *str, int pos)
     if (ch_aux)
         free (ch_aux);
 }
-
+*/
 
 
 void	obtain_split_fd(int fd, t_map *m)
@@ -231,17 +231,15 @@ void	obtain_split_fd(int fd, t_map *m)
 	m->vertices = set_mtrx_size(aux, iter.i);
 	m->map = malloc(sizeof(int *) * iter.j);
 	m->colors = malloc(sizeof(int *) * iter.j);
-	//printf("\nm->size->y: %f \n", m->vertices.y);
-	printf("m->size->x: %f \n\n", m->vertices.x);
+	printf("Map x size: %f \n", m->vertices.x);
+	printf("Map y size: %f \n\n", m->vertices.y);
 	iter.i = 0;
 	printf("\e[1;35mReading map...\e[0m\n");
 	while (split_fd[iter.i])
 	{
 		if (iter.i % 50 == 0)
 			printf("\e[2;35m%i lines processed...\e[0m\n", iter.i);
-		obtain_z_and_color(m, split_fd[iter.i], iter.i);
-		//get_z_points(m, split_fd[iter.i], iter.i);
-		//get_color_points(m, split_fd[iter.i], iter.i);
+		obtain_z_and_color(m, split_fd[iter.i], iter.i);//, get_line_size(split_fd[iter.i]));
 		iter.i++;
 	}
 }

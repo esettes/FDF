@@ -23,6 +23,7 @@
 # include "libft.h"
 
 # include "colors.h"
+# include "palettes.h"
 # include "controls.h"
 # include "macros.h"
 # include "structs.h"

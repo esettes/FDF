@@ -39,8 +39,10 @@ int		ft_count(char const *s, char c);
  * Call str_to_int() to get array with z values and str_to_color() to get
  * array with colors.
  */
-void	obtain_z_and_color(t_map *m, char *str, int pos);
+void	obtain_z_and_color(t_map *m, char *str, int pos);//, int size);
 void	get_color_points(t_map *m, char *str, int pos);
 void    get_z_points(t_map *m, char *str, int pos);
+
+int    get_line_size(char *str);
 
 #endif

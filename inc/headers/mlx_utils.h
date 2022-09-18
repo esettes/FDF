@@ -19,11 +19,11 @@
 void	init_mlx(t_fdf *fdf, char *raw_map);
 /* Calls all functions that need mlx_loop to run */
 void	loop_fdf(t_fdf *fdf);
-void	create_image(t_fdf *fdf);
-void	draw_image(t_fdf *fdf);
+int 	create_image(t_fdf *fdf);
+int 	draw_image(t_fdf *fdf);
 /**
  * Calls create_image() and draw_image().
  */
-void	modify_mesh(t_fdf *fdf);
+int 	modify_mesh(t_fdf *fdf);
 
 #endif

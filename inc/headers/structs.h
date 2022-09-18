@@ -67,6 +67,7 @@ typedef	struct s_controls
 {
 	float	height;
 	float	rot_angle;
+	int		palette;
 	float	zoom;
 	size_t	perspective;
 	int		horiz;
@@ -87,7 +88,7 @@ typedef struct s_map
 {
 	int			**map;
 	int			**colors;
-	int			z;
+	//int			z;
 	float		zoom;
 	t_vec2		vertices;
 	t_vec2		px_size;
@@ -110,8 +111,6 @@ typedef struct s_fdf
 	t_controls	control;
 	mlx_image_t	*img;		// Has position
 	int			fd;
-	char	**readed_fd;
-	char	*raw_fd;
 }				t_fdf;
 
 #endif
