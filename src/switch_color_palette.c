@@ -9,9 +9,11 @@ void	*get_color_palette(int palette)
 	if (palette == 1)
 		ptr = &palette_terrain;
 	if (palette == 2)
-		ptr = &palette_test;
-    if (palette == 2)
+		ptr = &palette_gamma_red;
+    if (palette == 3)
 		ptr = &palette_gamma;
+    if (palette == 4)
+		ptr = &palette_gamma_red;
 	return ptr;
 }
 

@@ -70,6 +70,7 @@ typedef	struct s_controls
 	int		palette;
 	float	zoom;
 	size_t	perspective;
+	float	points_resolution;
 	int		horiz;
 	int		vert;
 }				t_controls;

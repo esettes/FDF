@@ -1,9 +1,9 @@
 #include "fdf.h"
 
-void	set_bresen_step_increment(t_vec2 *step, t_iter max)
+void	set_bresen_step_increment(int addit_steps, t_vec2 *step, t_iter max)
 {
-	step->x /= max.i + ADDIT_STEPS;
-	step->y /= max.i + ADDIT_STEPS;
+	step->x /= max.i + addit_steps;
+	step->y /= max.i + addit_steps;
 }
 
 void	set_perspective(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth)

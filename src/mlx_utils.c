@@ -16,7 +16,7 @@ static t_vec2	set_img_offset(void);
 
 void	loop_fdf(t_fdf *fdf)
 {
-	mlx_scroll_hook(fdf->mlx, &set_zoom, fdf);
+	mlx_scroll_hook(fdf->mlx, &set_control_zoom, fdf);
 	//mlx_loop_hook(fdf->mlx, &move_img, fdf->mlx);
 	mlx_key_hook(fdf->mlx, &move_img, fdf);
 	//draw_menu(fdf);

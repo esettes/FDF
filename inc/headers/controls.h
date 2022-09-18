@@ -19,7 +19,7 @@
 
 double	get_iso_pos_x(t_map map);
 double	get_iso_pos_y(t_map map);
-void	set_zoom(double x_delta, double y_delta, void *fdf_void);
+void	set_control_zoom(double x_delta, double y_delta, void *fdf_void);
 void	set_new_zoom(t_fdf *fdf);
 void	move_img(mlx_key_data_t keydata, void* param);
 void	rotate_point(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth *depth);

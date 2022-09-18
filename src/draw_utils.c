@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	set_control_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
+void	set_draw_control_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
 {
 	start->x *= fdf->control.zoom;// * cos(fdf->control.rot_angle  * 3.141592653589 / 180);
 	start->y *= fdf->control.zoom;// * cos(fdf->control.rot_angle);
@@ -20,7 +20,7 @@ void	set_control_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
 	end->y *= fdf->control.zoom;// * cos(fdf->control.rot_angle);
 }
 
-void	set_control_movement(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
+void	set_draw_control_movement(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
 {
 	start->x += fdf->control.horiz;
 	start->y += fdf->control.vert;

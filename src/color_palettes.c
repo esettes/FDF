@@ -72,3 +72,17 @@ void	palette_test(int *arr, int pos, int z_value)
 	else
 		arr[pos] = str_to_color("b8ac94");
 }
+
+void	palette_gamma_red(int *arr, int pos, int z_value)
+{
+	if (z_value > 13)
+		arr[pos] = str_to_color("aca951");
+	if (z_value <= 13 && z_value >= 10)
+		arr[pos] = str_to_color("ab9553");
+	if (z_value < 10 && z_value >= 7)
+		arr[pos] = str_to_color("aa7543");
+	if (z_value < 7 && z_value >= 4)
+		arr[pos] = str_to_color("825536");
+	if (z_value < 4)
+		arr[pos] = str_to_color("856040");
+}

@@ -19,6 +19,7 @@ void	init_mlx(t_fdf *fdf, char *raw_map)
 	fdf->control.palette = 0;
 	fdf->control.zoom = 2;
 	fdf->control.rot_angle = 0;
+	fdf->control.points_resolution = ADDIT_STEPS;
 	fdf->control.height = 1;
 	fdf->control.vert = 1;
 	fdf->control.horiz = 1;

@@ -12,141 +12,38 @@
 
 #include "fdf.h"
 
-mlx_image_t	*g_img;
+void	set_control_point_resolution(mlx_key_data_t keydata, t_fdf *fdf);
+void	set_control_palette(mlx_key_data_t keydata, t_fdf *fdf);
+void	set_control_movement(mlx_key_data_t keydata, t_fdf *fdf);
+void	set_control_view(mlx_key_data_t keydata, t_fdf *fdf);
+void    set_control_rotation(mlx_key_data_t keydata, t_fdf *fdf);
+void    set_control_height(mlx_key_data_t keydata, t_fdf *fdf);
 
 void	move_img(mlx_key_data_t keydata, void* param)
 {
 	t_fdf	*fdf;
+	keys_t	key;
 
 	fdf = param;
-	if (keydata.key == MLX_KEY_A && keydata.action == MLX_RELEASE && keydata.modifier == MLX_CONTROL)
+	key = keydata.key;
+	if (key == MLX_KEY_A && keydata.action == MLX_RELEASE && keydata.modifier == MLX_CONTROL)
 		puts("Gotta grab it all!");
-	if (keydata.key == MLX_KEY_ESCAPE)
+	if (key == MLX_KEY_ESCAPE)
 		mlx_close_window(fdf->mlx);
-	if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
-	{
-		fdf->control.vert -= 5;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
-	{
-		fdf->control.vert += 5;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
-	{
-		fdf->control.horiz -= 5;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
-	{
-		fdf->control.horiz += 5;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_T)
-	{
-		fdf->control.perspective = TOP_VIEW;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_I)
-	{
-		fdf->control.perspective = ISOMETRIC;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_KP_SUBTRACT || keydata.key == MLX_KEY_MINUS || keydata.key == MLX_KEY_PAGE_DOWN)
-	{
-		fdf->control.height -= 0.02;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_KP_ADD || keydata.key == MLX_KEY_PAGE_UP)
-	{
-		fdf->control.height += 0.02;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_Z)
-	{
-		fdf->control.rot_angle += 0.04;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_X)
-	{
-		fdf->control.rot_angle -= 0.04;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_0)
-	{
-		fdf->control.palette = 0;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_1)
-	{
-		fdf->control.palette = 1;
-		modify_mesh(fdf);
-	}
-	if (keydata.key == MLX_KEY_2)
-	{
-		fdf->control.palette = 2;
-		modify_mesh(fdf);
-	}
+	if (key >= 262 && key <= 265 || key >= 87 && key <= 65)
+		set_control_movement(keydata, fdf);
+	else if (key == MLX_KEY_T || key == MLX_KEY_I)
+		set_control_view(keydata, fdf);
+	else if (key == 333 || key == 45 || key == 267 || key == 334 || key == 266)
+		set_control_height(keydata, fdf);
+	else if (key == MLX_KEY_Z || key == MLX_KEY_X)
+		set_control_rotation(keydata, fdf);
+	else if (key >= MLX_KEY_0 && key <= MLX_KEY_3)
+		set_control_palette(keydata, fdf);
+	else if (key >= MLX_KEY_F1 && key <= MLX_KEY_F2)
+		set_control_point_resolution(keydata, fdf);
 }
 
-void	key_hook(void *param)
-{
-	//mlx_t	*mlx;
-	t_fdf	*fdf;
-
-	fdf = param;
-	//mlx = param;
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(fdf->mlx);
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_UP))
-		fdf->img->instances[0].y -= 5;
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_DOWN))
-		fdf->img->instances[0].y += 5;
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_LEFT))
-		fdf->img->instances[0].x -= 5;
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_RIGHT))
-		fdf->img->instances[0].x += 5;
-}
-
-void	set_zoom(double x_delta, double y_delta, void *fdf_void)
-{
-	t_fdf	*fdf;
-	
-	fdf = (t_fdf *)fdf_void;
-	if (y_delta > 0)
-	{
-		if (fdf->control.zoom <= 100)
-		{
-			fdf->control.zoom += 1;
-			modify_mesh(fdf);
-		}
-	}
-	else if (y_delta < 0)
-	{
-		if (fdf->control.zoom >= 0)
-		{
-			fdf->control.zoom -= 1;
-			modify_mesh(fdf);
-		}
-	}
-	if (x_delta < 0)
-	{
-		if (fdf->control.zoom <= 100)
-		{
-			fdf->control.zoom += 1;
-			modify_mesh(fdf);
-		}
-	}
-	else if (x_delta > 0)
-	{
-		if (fdf->control.zoom >= 0)
-		{
-			fdf->control.zoom -= 1;
-			modify_mesh(fdf);
-		}
-	}
-}
 
 // void	free_props(t_fdf *fdf)
 // {
