@@ -10,5 +10,5 @@
 
 Mount temporary container which compiles program and exits.
 ````bash
-docker run --rm  --mount type=bind,source=/home/,target=/home/ fdf:1.0 bash -c "cd /home/settes/Desktop/workspace/cursus/fdf/ && make re"
+docker run --rm  --mount type=bind,source=/home/,target=/home/ fdf:1.0 bash -c "cd $(pwd) && make re"
 ````
