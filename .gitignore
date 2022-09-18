@@ -1,4 +1,5 @@
 .vscode/
+.docker/
 *.o
 *.DS_Store
 *MLX42
