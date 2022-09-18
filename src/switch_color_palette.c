@@ -4,9 +4,11 @@ void	*get_color_palette(int palette)
 {
 	void (*ptr)(int *, int, int);
 
-	if (palette == 0)
+    if (palette == 0)
 		ptr = &palette_default;
 	if (palette == 1)
+		ptr = &palette_terrain;
+	if (palette == 2)
 		ptr = &palette_test;
     if (palette == 2)
 		ptr = &palette_gamma;
@@ -23,6 +25,7 @@ void    set_color_array(t_fdf *fdf)
     int i;
     int j;
     int *arr;
+    int val;
 
     i = 0;
     while (i < fdf->map.vertices.y)
@@ -30,8 +33,12 @@ void    set_color_array(t_fdf *fdf)
         j = 0;
         while (j < fdf->map.vertices.x)
         {
+            if (fdf->control.palette == 0)
+                val = fdf->map.default_colors[i][j];
+            else
+                val = fdf->map.map[i][j];
             set_color_palette(fdf->map.colors[i], 
-                get_color_palette(fdf->control.palette), j, fdf->map.map[i][j]);
+                get_color_palette(fdf->control.palette), j, val);
             j++;
         }
         i++;

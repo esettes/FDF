@@ -33,7 +33,7 @@ int		str_to_color(char *color)
 	int_color = 0;
 	while (i >= 0)
 	{
-		if (aux[iter.i] == '\0')
+		if (aux[iter.i] == 'x' || aux[iter.i] == '\0')
 			break ;
 		iter.j = hex_char_to_int(aux[iter.i]);
 		set_rgb_sections(&rgba, &iter, &save, i);
@@ -66,23 +66,23 @@ static int	hex_char_to_int(char c)
 	hex2 = "0123456789ABCDEF";
 	if (!c)
 	 	return (iter.i);
-	while (hex[iter.i++])
+	while (hex[iter.i])
 	{
 		if (c == hex[iter.i])
 		{
 			trigger = TRUE;
 			return (iter.i);
 		}
-		//iter.i++;
+		iter.i++;
 	}
 	iter.i = 0;
 	if (trigger == FALSE)
 	{
-		while (hex2[iter.i++])
+		while (hex2[iter.i])
 		{
 			if (c == hex2[iter.i])
 				return (iter.i);
-			//iter.i++;
+			iter.i++;
 		}
 	}
 	return (iter.i);

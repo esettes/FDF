@@ -1,5 +1,7 @@
 #include "fdf.h"
 
+static void	get_line_default(t_map *m, int *arr, int pos);
+
 void    get_z_points(t_map *m, char *str, int pos)
 {
     char	**ch_aux;
@@ -108,6 +110,7 @@ void	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
         }
         else if (!extract)
         {
+            //int_color[iter.j] = 0;
             set_color_palette(int_color, get_color_palette(1), iter.j, iter.i);
         }
 		iter.j++;
@@ -118,4 +121,64 @@ void	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
     if (ch_aux)
         free (ch_aux);
     free (str);
+}
+// void	save_default_color(t_map *m)
+// {
+//     int     i_color;
+//     t_iter  it;
+//     int    **def_color;
+//     int     size;
+
+//     it.i = 0;
+//     size = 0;
+//     m->default_colors = malloc(sizeof(int *) * m->vertices.y);
+// 	while (m->colors[it.i])
+//     {
+//         it.j = 0;
+//         size = 0;
+//         while (m->colors[it.i][size])
+// 		    size++;
+//         def_color[it.i] = malloc(sizeof(int) * size);
+//         while (m->colors[it.i][it.j])
+//         {
+//             i_color = m->colors[it.i][it.j];
+//             def_color[it.i][it.j] = i_color;
+//             it.j++;
+//         }
+//         m->default_colors[it.i] = def_color[it.i];
+// 		it.i++;
+//     }
+   
+// }
+void    set_default_color(t_map *m)
+{
+    int i;
+
+    i = 0;
+    m->default_colors = malloc(sizeof(int *) * m->vertices.x);
+    while (m->colors[i])
+    {
+        get_line_default(m, m->colors[i], i);
+        i++;
+    }
+}
+
+static void	get_line_default(t_map *m, int *arr, int pos)
+{
+    int     i_color;
+    int     i;
+    int     *def_color;
+
+    i = 0;
+    while (arr[i])
+		i++;
+    def_color = malloc(sizeof(int) * i);
+    i = 0;
+	while (arr[i])
+    {
+        i_color = arr[i];
+        def_color[i] = i_color;
+		i++;
+    }
+    m->default_colors[pos] = def_color;
 }

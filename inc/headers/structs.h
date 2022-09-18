@@ -88,6 +88,7 @@ typedef struct s_map
 {
 	int			**map;
 	int			**colors;
+	int			**default_colors;
 	//int			z;
 	float		zoom;
 	t_vec2		vertices;

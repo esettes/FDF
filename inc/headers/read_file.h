@@ -44,5 +44,6 @@ void	get_color_points(t_map *m, char *str, int pos);
 void    get_z_points(t_map *m, char *str, int pos);
 
 int    get_line_size(char *str);
+void    set_default_color(t_map *m);
 
 #endif

@@ -2,6 +2,11 @@ int		str_to_color(char *color);
 
 void	palette_default(int *arr, int pos, int z_value)
 {
+	arr[pos] = z_value;
+}
+
+void	palette_terrain(int *arr, int pos, int z_value)
+{
 	if (z_value >= 720)
 		arr[pos] = str_to_color("deddcc");
 	if (z_value < 720 && z_value >= 400)
@@ -33,7 +38,7 @@ void	palette_default(int *arr, int pos, int z_value)
 void	palette_gamma(int *arr, int pos, int z_value)
 {
 	if (z_value >= 720)
-		arr[pos] = str_to_color("800915");
+		arr[pos] = str_to_color("2551111");
 	if (z_value < 720 && z_value >= 400)
 		arr[pos] = str_to_color("cf8585");
 	if (z_value < 400 && z_value >= 200)
@@ -47,7 +52,7 @@ void	palette_gamma(int *arr, int pos, int z_value)
 	if (z_value < 35 && z_value >= 15)
 		arr[pos] = str_to_color("158960");
 	if (z_value < 15 && z_value >= 0)
-		arr[pos] = str_to_color("104075");
+		arr[pos] = str_to_color("ff");
 	if (z_value < 0 && z_value >= -5)
 		arr[pos] = str_to_color("265095");
 	if (z_value < -5 && z_value >= -20)

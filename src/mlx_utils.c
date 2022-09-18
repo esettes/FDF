@@ -35,27 +35,27 @@ int	create_image(t_fdf *fdf)
 	offset = set_img_offset();
 	ft_memset(fdf->img->pixels, 0, fdf->img->width * fdf->img->height * 4);
 	mlx_image_to_window(fdf->mlx, fdf->img, -offset.x, -offset.y);
-	return (TRUE);
+	return (EXIT_SUCCESS);
 }
 
 int		draw_image(t_fdf *fdf)
 {
 	set_new_zoom(fdf);
-	if (!print_map(fdf))
-		return (FALSE);
-	return (TRUE);
+	if (print_map(fdf))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 int		modify_mesh(t_fdf *fdf)
 {
-	if (!create_image(fdf))
+	if (create_image(fdf))
 	{
 		ft_putendl_fd(RED_, "Error: Image creation failed.", 1);
-		return (FALSE);
+		return (EXIT_FAILURE);
 	}
-	if(!draw_image(fdf))
-		return (FALSE);
-	return (TRUE);
+	if(draw_image(fdf))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 static t_vec2	set_img_offset(void)
