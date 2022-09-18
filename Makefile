@@ -31,8 +31,6 @@ LIBFT	= ./inc/libft/libft.a
 LIBX42	= ./inc/MLX42/libmlx42.a
 COMPS	= $(GNL) $(LIBFT) $(LIBX42)
 
-
-
 ifeq ($(OS), Darwin)
 	LIBX42_FLAGS	=	-I include -lglfw -L /Users/${USER}/.brew/opt/glfw/lib/
 else
@@ -52,7 +50,6 @@ obj:
 	mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
-#	@echo "${LWHITE}Compiling $(notdir $<) ${LGREEN}✓$(RESET)"
 	@$(CC) $(CFLAGS) $(HEADERS) -o $@ -c $<
 
 #Change libx42_flags position at the end of the coommand
