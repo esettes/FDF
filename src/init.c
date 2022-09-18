@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	open_fd(t_fdf *fdf, char *raw_map);
+static void	open_fd(t_fdf *fdf, char *raw_map);
 
 void	init_mlx(t_fdf *fdf, char *raw_map)
 {
@@ -26,20 +26,33 @@ void	init_mlx(t_fdf *fdf, char *raw_map)
 	//set_map_info(fdf, raw_map);
 	open_fd(fdf, raw_map);
 	obtain_split_fd(fdf->fd, &fdf->map);
-	
+	close(fdf->fd);
+	if (!fdf->map.map)
+	{
+		ft_putendl_fd(RED_, "Error: Can't obtain map info.", 1);
+		exit(EXIT_FAILURE);
+		return ;
+	}
 	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
+	if (!fdf->mlx)
+	{
+		ft_putendl_fd(RED_, "Error: Can't initialize mlx.", 1);
+		exit(EXIT_FAILURE);
+		return ;
+	}
 	create_image(fdf);
 	draw_menu(fdf);
 	draw_image(fdf);
 	loop_fdf(fdf);
 }
 
-void	open_fd(t_fdf *fdf, char *raw_map)
+static void	open_fd(t_fdf *fdf, char *raw_map)
 {
 	fdf->fd = open(raw_map, O_RDONLY);
-	if (fdf->fd < 0)
+	if (fdf->fd <= 0)
 	{
-		printf("Error: File not found.\n");
-		exit(0);
+		ft_putendl_fd(RED_, "Error: File not found.", 1);
+		exit(EXIT_FAILURE);
+		return ;
 	}
 }

@@ -43,10 +43,8 @@ void	get_color_points(t_map *m, char *str, int pos)
     iter.j = 0;
 	while (ch_aux[iter.j])
     {
-        //extract = ft_strnstr_after(ch_aux[iter.j], "x", 5);
         extract = ft_strchr(ch_aux[iter.j], 'x');
-        // si la extraccion es distinta de lo que ya hay en la cadena entonces calcular, sino continuar
-        if (extract)// && extract != "")
+        if (extract)
         {
             extract++;
             i_color = str_to_color(extract);
@@ -89,7 +87,6 @@ void	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
 
     iter.i = 0;
     iter.j = 0;
-    //printf("size: %d\n\n", size);
     //count_line_elements(str, &aux.j);
     ch_aux = ft_split(str, ' ');
     while (ch_aux[iter.j])
@@ -101,14 +98,12 @@ void	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
     {
         extract = ft_strchr(ch_aux[iter.j], 'x');
         iter.i = ft_atoi(ch_aux[iter.j]);
-		//*(int_mtrx + iter.j) = iter.i;
         int_mtrx[iter.j] = iter.i;
-        if (extract)// && extract != "")
+        if (extract)
         {
             extract++;
             i_color = str_to_color(extract);
             int_color[iter.j] = i_color;
-            //*(int_color + iter.j) = i_color;
             extract = ""; 
         }
         else if (!extract)
@@ -124,6 +119,3 @@ void	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
         free (ch_aux);
     free (str);
 }
-
-// funcion que detecta altura de la z y devuelve un color acorde
-//unsigned int    color_for_z(int z)

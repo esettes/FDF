@@ -15,8 +15,6 @@ void	*get_color_palette(int palette)
 
 void	set_color_palette(int *arr, void (*f)(int *, int, int), int pos, int z_value) //t_fdf *fdf, 
 {
-	// if the color-array value is null or empty, assign a color from the palette
-	//if(!fdf->map.colors)
 	f(arr, pos, z_value);
 }
 

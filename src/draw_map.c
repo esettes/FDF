@@ -98,21 +98,3 @@ static	int	draw_left_segment(t_fdf *fdf, t_vec2 *st, t_vec2 *en, t_vec2 off)
 	// TODO check if can return FALSE
 	return (TRUE);
 }
-
-
-// void	free_current_color_array(t_fdf *fdf)
-// {
-// 	t_iter	iter;
-
-// 	iter.i = 0;
-// 	iter.j = 0;
-// 	while (iter.i < fdf->map.vertices.y)
-// 	{
-// 		while (iter.j < fdf->map.vertices.y)
-// 		{
-// 			free(fdf->map.colors[i]);
-// 			i++;
-// 		}
-// 	}
-// 	free(fdf->map.colors);
-// }

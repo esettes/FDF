@@ -32,7 +32,7 @@ static int	get_a(int trgb)
 	return (trgb & 0xFF);
 }
 
-int	separate_sections(unsigned int r, unsigned int g, unsigned int b,  unsigned int a)
+int	split_sections(unsigned int r, unsigned int g, unsigned int b, unsigned int a)
 {
 	int	colors[4];
 

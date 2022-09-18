@@ -15,6 +15,14 @@
 
 # include "structs.h"
 
+#define RED_    "\x1b[31m"
+#define GREEN_  "\x1b[32m"
+#define YELLOW_ "\x1b[33m"
+#define BLUE_   "\x1b[34m"
+#define VIOLET_ "\x1b[35m"
+#define CYAN_   "\x1b[36m"
+#define RESET_  "\x1b[0m"
+
 int 	menu_rgb(int value);
 /**
  * Returns an hex color from red (value < 0.1) , through green,
@@ -27,12 +35,9 @@ int		get_trgb(int str);
  * reverse order of traversal
  */
 int		str_to_color(char *color);
-double	ft_percent(int start, int end, int current);
-int		ft_gradient(int start, int end, double percent);
-int		separate_sections(unsigned int r, unsigned int g, unsigned int b,  unsigned int a);
-
 void	set_color_palette(int *arr, void (*f)(int *, int, int), int pos, int z_value);
 void	*get_color_palette(int palette);
-void     set_color_array(t_fdf *fdf);
+void    set_color_array(t_fdf *fdf);
+int     split_sections(unsigned int r, unsigned int g, unsigned int b, unsigned int a);
 
 #endif

@@ -12,9 +12,9 @@
 
 #include "fdf.h"
 
-void	set_each_rgb_section(t_rgba *rgba, t_iter *iter, t_iter *save, size_t i);
-void	init_rgba(t_rgba *rgba);
-int		char_to_int(char c);
+static void	set_rgb_sections(t_rgba *rgba, t_iter *iter, t_iter *save, size_t i);
+static void	init_rgba(t_rgba *rgba);
+static int	hex_char_to_int(char c);
 
 int		str_to_color(char *color)
 {
@@ -35,17 +35,17 @@ int		str_to_color(char *color)
 	{
 		if (aux[iter.i] == '\0')
 			break ;
-		iter.j = char_to_int(aux[iter.i]);
-		set_each_rgb_section(&rgba, &iter, &save, i);
+		iter.j = hex_char_to_int(aux[iter.i]);
+		set_rgb_sections(&rgba, &iter, &save, i);
 		save.i = iter.j;
 		i--;
 		iter.i++;
 	}
-	int_color = separate_sections(rgba.r, rgba.g, rgba.b, rgba.a);
+	int_color = split_sections(rgba.r, rgba.g, rgba.b, rgba.a);
 	return (int_color);
 }
 
-void	init_rgba(t_rgba *rgba)
+static void	init_rgba(t_rgba *rgba)
 {
 	rgba->r = 0;
 	rgba->g = 0;
@@ -53,7 +53,7 @@ void	init_rgba(t_rgba *rgba)
 	rgba->a = 255;
 }
 
-int		char_to_int(char c)
+static int	hex_char_to_int(char c)
 {
 	size_t	trigger;
 	char	*hex;
@@ -88,7 +88,7 @@ int		char_to_int(char c)
 	return (iter.i);
 }
 
-void	set_each_rgb_section(t_rgba *rgba, t_iter *iter, t_iter *save, size_t i)
+static void	set_rgb_sections(t_rgba *rgba, t_iter *iter, t_iter *save, size_t i)
 {
 	if (i % 2 == 0)
 	{
