@@ -47,6 +47,8 @@ void	palette_gamma(int *arr, int pos, int z_value)
 		arr[pos] = str_to_color("decd51");
 	if (z_value < 90 && z_value >= 0)
 		arr[pos] = str_to_color("aced99");
+	if(z_value == 0)
+		arr[pos] = str_to_color("ac74f9");
 	if (z_value < 0 && z_value >= -80)
 		arr[pos] = str_to_color("40cdbf");
 	if (z_value < -80 && z_value >= -170)
