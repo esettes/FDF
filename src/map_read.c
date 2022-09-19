@@ -229,8 +229,8 @@ void	obtain_split_fd(int fd, t_map *m)
 		iter.i++;
 	}
 	m->vertices = set_mtrx_size(aux, iter.i);
-	m->map = malloc(sizeof(int *) * iter.j);
-	m->colors = malloc(sizeof(int *) * iter.j);
+	m->map = malloc(sizeof(int *) * (m->vertices.x * m->vertices.y));//* iter.j);
+	m->colors = malloc(sizeof(int *) * (m->vertices.x * m->vertices.y));//* iter.j);
 	
 	printf("Map x size: %f \n", m->vertices.x);
 	printf("Map y size: %f \n\n", m->vertices.y);
@@ -243,6 +243,7 @@ void	obtain_split_fd(int fd, t_map *m)
 		obtain_z_and_color(m, split_fd[iter.i], iter.i);//, get_line_size(split_fd[iter.i]));
 		iter.i++;
 	}
+	free(split_fd);
 	set_default_color(m);
 }
 

@@ -41,7 +41,7 @@ void	init_mlx(t_fdf *fdf, char *raw_map)
 		exit(EXIT_FAILURE);
 		return ;
 	}
-	create_image(fdf);
+	create_image(fdf, 0);
 	draw_menu(fdf);
 	draw_image(fdf);
 	loop_fdf(fdf);

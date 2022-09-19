@@ -22,14 +22,14 @@ void	loop_fdf(t_fdf *fdf)
 	//draw_menu(fdf);
 	mlx_loop(fdf->mlx);
 	//mlx_delete_image(fdf->mlx, fdf->img); // Once app request exit, cleanup.
-	mlx_terminate(fdf->mlx);
+	
 }
 
-int	create_image(t_fdf *fdf)
+int	create_image(t_fdf *fdf, int start)
 {
 	t_vec2	offset;
 
-	if (fdf->img)
+	if (start != 0)
 		mlx_delete_image(fdf->mlx, fdf->img);
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH * IMG_AUMENT, HEIGHT * IMG_AUMENT);
 	offset = set_img_offset();
@@ -48,7 +48,7 @@ int		draw_image(t_fdf *fdf)
 
 int		modify_mesh(t_fdf *fdf)
 {
-	if (create_image(fdf))
+	if (create_image(fdf, 1))
 	{
 		ft_putendl_fd(RED_, "Error: Image creation failed.", 1);
 		return (EXIT_FAILURE);

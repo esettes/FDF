@@ -91,10 +91,8 @@ void	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
     iter.j = 0;
     //count_line_elements(str, &aux.j);
     ch_aux = ft_split(str, ' ');
-    while (ch_aux[iter.j])
-	  	iter.j++;
-    int_mtrx = malloc(sizeof(int) * iter.j);
-    int_color = malloc(sizeof(int) * iter.j);
+    int_mtrx = malloc(sizeof(int) * m->vertices.x);
+    int_color = malloc(sizeof(int) * m->vertices.x);
     iter.j = 0;
 	while (ch_aux[iter.j])
     {
@@ -108,7 +106,7 @@ void	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
             int_color[iter.j] = i_color;
             extract = ""; 
         }
-        else if (!extract)
+        else// if (!extract)
         {
             //int_color[iter.j] = 0;
             set_color_palette(int_color, get_color_palette(1), iter.j, iter.i);
@@ -124,7 +122,8 @@ void	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
         free(ch_aux[iter.i]);
         iter.i++;
     }
-    free (str);
+    free(ch_aux);
+    free(str);
 }
 // void	save_default_color(t_map *m)
 // {
@@ -160,7 +159,7 @@ void    set_default_color(t_map *m)
 
     i = 0;
     m->default_colors = malloc(sizeof(int *) * m->vertices.x);
-    while (m->colors[i])
+    while (i < m->vertices.y)
     {
         get_line_default(m, m->colors[i], i);
         i++;
@@ -174,11 +173,11 @@ static void	get_line_default(t_map *m, int *arr, int pos)
     int     *def_color;
 
     i = 0;
-    while (arr[i])
-		i++;
-    def_color = malloc(sizeof(int) * i);
+    // while (arr[i])
+	// 	i++;
+    def_color = malloc(sizeof(int) * m->vertices.x); //i;
     i = 0;
-	while (arr[i])
+	while (i < m->vertices.x)//(arr[i])
     {
         i_color = arr[i];
         def_color[i] = i_color;
