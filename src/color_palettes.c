@@ -38,31 +38,29 @@ void	palette_terrain(int *arr, int pos, int z_value)
 void	palette_gamma(int *arr, int pos, int z_value)
 {
 	if (z_value >= 720)
-		arr[pos] = str_to_color("2551111");
+		arr[pos] = str_to_color("ac7456");
 	if (z_value < 720 && z_value >= 400)
-		arr[pos] = str_to_color("cf8585");
+		arr[pos] = str_to_color("bfabcc");
 	if (z_value < 400 && z_value >= 200)
-		arr[pos] = str_to_color("de9050");
+		arr[pos] = str_to_color("ddab41");
 	if (z_value < 200 && z_value >= 90)
-		arr[pos] = str_to_color("ccbb35");
-	if (z_value < 90 && z_value >= 50)
-		arr[pos] = str_to_color("70ee90");
-	if (z_value < 50 && z_value >= 35)
-		arr[pos] = str_to_color("40dcce");
-	if (z_value < 35 && z_value >= 15)
-		arr[pos] = str_to_color("158960");
-	if (z_value < 15 && z_value >= 0)
-		arr[pos] = str_to_color("ff");
-	if (z_value < 0 && z_value >= -5)
-		arr[pos] = str_to_color("265095");
-	if (z_value < -5 && z_value >= -20)
-		arr[pos] = str_to_color("505595");
-	if (z_value < -20 && z_value >= -70)
-		arr[pos] = str_to_color("3ca9af");
-	if (z_value < -70 && z_value >= -200)
-		arr[pos] = str_to_color("3a98ae");
-	if (z_value < -200)
-		arr[pos] = str_to_color("3797ad");
+		arr[pos] = str_to_color("decd51");
+	if (z_value < 90 && z_value >= 0)
+		arr[pos] = str_to_color("aced99");
+	if (z_value < 0 && z_value >= -80)
+		arr[pos] = str_to_color("40cdbf");
+	if (z_value < -80 && z_value >= -170)
+		arr[pos] = str_to_color("189995");
+	if (z_value < -170 && z_value >= -250)
+		arr[pos] = str_to_color("555999");
+	if (z_value < -250 && z_value >= -320)
+		arr[pos] = str_to_color("60699b");
+	if (z_value < -320 && z_value >= -400)
+		arr[pos] = str_to_color("8879be");
+	if (z_value < -400 && z_value >= -460)
+		arr[pos] = str_to_color("ac74f9");
+	if (z_value < -460)
+		arr[pos] = str_to_color("997498");
 }
 
 void	palette_test(int *arr, int pos, int z_value)

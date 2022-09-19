@@ -13,7 +13,7 @@ void	*get_color_palette(int palette)
     if (palette == 3)
 		ptr = &palette_gamma;
     if (palette == 4)
-		ptr = &palette_gamma_red;
+		ptr = &palette_test;
 	return ptr;
 }
 

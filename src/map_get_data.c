@@ -115,11 +115,15 @@ void	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
         }
 		iter.j++;
     }
+    iter.i = 0;
     m->colors[pos] = int_color;
     m->map[pos] = int_mtrx;
     //free (int_mtrx);
-    if (ch_aux)
-        free (ch_aux);
+    while (ch_aux[iter.i])
+    {
+        free(ch_aux[iter.i]);
+        iter.i++;
+    }
     free (str);
 }
 // void	save_default_color(t_map *m)

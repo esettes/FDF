@@ -13,8 +13,8 @@
 #include "fdf.h"
 
 void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, t_vec2 offset);
-static	int	draw_right_segment(t_fdf *fdf, t_vec2 *st, t_vec2 *en, t_vec2 off);
-static	int	draw_left_segment(t_fdf *fdf, t_vec2 *st, t_vec2 *en, t_vec2 off);
+static	void	draw_right_segment(t_fdf *fdf, t_vec2 *st, t_vec2 *en, t_vec2 off);
+static	void	draw_left_segment(t_fdf *fdf, t_vec2 *st, t_vec2 *en, t_vec2 off);
 
 int	print_map(t_fdf *fdf)
 {
@@ -35,13 +35,11 @@ int	print_map(t_fdf *fdf)
 		{
 			if (start.x < fdf->map.vertices.x - 1)
 			{
-				if (draw_right_segment(fdf, &start, &v_end, offset))
-					return (EXIT_FAILURE);
+				draw_right_segment(fdf, &start, &v_end, offset);
 			}
 			if (start.y < fdf->map.vertices.y - 1)
 			{
-				if (draw_left_segment(fdf, &start, &h_end, offset))
-					return (EXIT_FAILURE);
+				draw_left_segment(fdf, &start, &h_end, offset);
 			}
 			start.x++;
 		}
@@ -78,7 +76,7 @@ void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, t_vec2 offset)
 	}
 }
 
-static	int	draw_right_segment(t_fdf *fdf, t_vec2 *st, t_vec2 *en, t_vec2 off)
+static	void	draw_right_segment(t_fdf *fdf, t_vec2 *st, t_vec2 *en, t_vec2 off)
 {
 	t_vec2	end;
 
@@ -86,10 +84,10 @@ static	int	draw_right_segment(t_fdf *fdf, t_vec2 *st, t_vec2 *en, t_vec2 off)
 	en->y = st->y;
 	f_bresen(fdf, *st, *en, off);
 	// TODO check if can return FALSE
-	return (EXIT_SUCCESS);
+	//return (EXIT_SUCCESS);
 }
 
-static	int	draw_left_segment(t_fdf *fdf, t_vec2 *st, t_vec2 *en, t_vec2 off)
+static	void	draw_left_segment(t_fdf *fdf, t_vec2 *st, t_vec2 *en, t_vec2 off)
 {
 	t_vec2	end;
 
@@ -97,5 +95,5 @@ static	int	draw_left_segment(t_fdf *fdf, t_vec2 *st, t_vec2 *en, t_vec2 off)
 	en->y = st->y + 1;
 	f_bresen(fdf, *st, *en, off);
 	// TODO check if can return FALSE
-	return (EXIT_SUCCESS);
+	//return (EXIT_SUCCESS);
 }

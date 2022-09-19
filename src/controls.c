@@ -38,7 +38,7 @@ void	move_img(mlx_key_data_t keydata, void* param)
 		set_control_height(keydata, fdf);
 	else if (key == MLX_KEY_Z || key == MLX_KEY_X)
 		set_control_rotation(keydata, fdf);
-	else if (key >= MLX_KEY_0 && key <= MLX_KEY_3)
+	else if (key >= MLX_KEY_0 && key <= MLX_KEY_4)
 		set_control_palette(keydata, fdf);
 	else if (key >= MLX_KEY_F1 && key <= MLX_KEY_F2)
 		set_control_point_resolution(keydata, fdf);
