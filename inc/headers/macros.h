@@ -20,6 +20,8 @@
 # define Y_ORIGIN_OFF	( HEIGHT / 2 )
 # define IMG_CENTER_X	((WIDTH * IMG_AUMENT) / 2)
 # define IMG_CENTER_Y	((HEIGHT * IMG_AUMENT) / 2)
+# define MAX_HEIGHT     (HEIGHT * IMG_AUMENT - 100)
+# define MAX_WIDTH      (WIDTH * IMG_AUMENT - 100)
 # define ISOMETRIC		0
 # define TOP_VIEW		1
 # define ADDIT_STEPS    3

@@ -56,6 +56,17 @@ typedef struct s_rgba
 	unsigned int	b;
 	unsigned int	a;
 }				t_rgba;
+
+typedef	struct s_bresen
+{
+	t_vec2		start;
+	t_vec2		h_end;
+	t_vec2		v_end;
+	t_depth		depth;
+	t_vec2		offset;
+	t_vec2		step;
+	t_iter		curr;
+}				t_bresen;
 /*
  * @param[in] height float
  * @param[in] zoom float

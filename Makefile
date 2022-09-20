@@ -40,7 +40,7 @@ endif
 HEADERS	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/headers/ -I ./inc/MLX42/include/MLX42/
 
 CC	= gcc
-CFLAGS	= -O0 -g #-fsanitize=address #-fno-omit-frame-pointer # -Wall -Wextra -Werror # -Lmlx -lmlx -framework OpenGL -framework AppKit -glldb
+CFLAGS	= -O0 -g  #-Ofast -fsanitize=leak -fno-omit-frame-pointer # -Wall -Wextra -Werror # -Lmlx -lmlx -framework OpenGL -framework AppKit -glldb
 WINFLAGS	= -lglfw3 -lopengl32 -lgdi32
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit #-lmlx  -Lmlx
 

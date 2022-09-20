@@ -6,27 +6,44 @@ void	set_bresen_step_increment(int addit_steps, t_vec2 *step, t_iter max)
 	step->y /= max.i + addit_steps;
 }
 
-void	set_perspective(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth)
+void	set_perspective(t_fdf *fdf, t_bresen *point, t_vec2 *end)
 {
 	if (fdf->control.perspective == ISOMETRIC)
-		isometric(fdf, start, end, depth);
+		isometric(fdf, &point->start, end, point->depth);
 }
 
-void	set_bresen_depth(t_fdf *fdf, t_depth *depth, t_vec2 start, t_vec2 end)
+void	set_bresen_depth(t_fdf *fdf, t_bresen *point, t_vec2 end)
 {
-	depth->z = fdf->map.map[(int)start.y][(int)start.x] * fdf->control.height;
-	depth->z1 = fdf->map.map[(int)end.y][(int)end.x] * fdf->control.height;
+    t_vec2  start;
+
+    start.x = point->start.x;
+    start.y = point->start.y;
+	point->depth.z = fdf->map.map[(int)start.y][(int)start.x] * fdf->control.height;
+	point->depth.z1 = fdf->map.map[(int)end.y][(int)end.x] * fdf->control.height;
 }
 
-void	set_bresen_step(t_vec2 *step, t_vec2 start, t_vec2 end)
+// void	set_bresen_depth(t_fdf *fdf, t_depth *depth, t_vec2 start, t_vec2 end)
+// {
+// 	depth->z = fdf->map.map[(int)start.y][(int)start.x] * fdf->control.height;
+// 	depth->z1 = fdf->map.map[(int)end.y][(int)end.x] * fdf->control.height;
+// }
+
+void	set_bresen_step(t_bresen *point, t_vec2 end)
 {
-	step->x = (end.x - start.x);
-	step->y = (end.y - start.y);
+	point->step.x = (end.x - point->start.x);
+	point->step.y = (end.y - point->start.y);
 }
 
-void	set_bresen_offset(t_fdf *fdf, t_vec2 *off)
+// void	set_bresen_step(t_vec2 *step, t_vec2 start, t_vec2 end)
+// {
+// 	step->x = (end.x - start.x);
+// 	step->y = (end.y - start.y);
+// }
+
+t_vec2	set_bresen_offset(t_fdf *fdf)
 {
     t_vec2  iso_offset;
+    t_vec2  off;
     int     top_offset;
 
     iso_offset.y = 3.5;
@@ -34,16 +51,17 @@ void	set_bresen_offset(t_fdf *fdf, t_vec2 *off)
     top_offset = 2;
     if (fdf->control.perspective == ISOMETRIC)
 	{
-        off->x = IMG_CENTER_X - (fdf->map.px_size.x / (iso_offset.x * 6));
-        off->y = IMG_CENTER_Y - (fdf->map.px_size.y / (iso_offset.y * 6));
+        off.x = IMG_CENTER_X - (fdf->map.px_size.x / (iso_offset.x * 6));
+        off.y = IMG_CENTER_Y - (fdf->map.px_size.y / (iso_offset.y * 6));
         fdf->map.offset.x = iso_offset.x;
         fdf->map.offset.y = iso_offset.y;
     }
     else if (fdf->control.perspective == TOP_VIEW)
     {
-        off->x = IMG_CENTER_X - (fdf->map.px_size.x / (top_offset * 4));
-        off->y = IMG_CENTER_Y - (fdf->map.px_size.y / (top_offset * 6));
+        off.x = IMG_CENTER_X - (fdf->map.px_size.x / (top_offset * 4));
+        off.y = IMG_CENTER_Y - (fdf->map.px_size.y / (top_offset * 6));
         fdf->map.offset.x = top_offset;
         fdf->map.offset.y = top_offset;
     }
+    return (off);
 }

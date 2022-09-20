@@ -95,8 +95,7 @@ void    set_line_z_points(t_fdf *fdf, char *str, int pos)
 		iter.j++;
     z_point = malloc(sizeof(int) * iter.j + 1);
     iter.j = 0;
-	while (ch_aux[iter.j])
-    {
+	while (ch_aux[iter.j]){
         iter.i = ft_atoi(ch_aux[iter.j]);
 		if (iter.i == "" && iter.i == NULL)
 			break;
@@ -121,8 +120,7 @@ void	set_color_points(t_fdf *fdf, char *raw_map)
 	iter.j = 0;
 	//lines = malloc(sizeof(char *) * BUFFER_SIZE * 2);
 	fd = open(raw_map, O_RDONLY);
-	while (true)
-	{
+	while (true){
 		lines = get_next_line(fd);
 		if (check_fd_end(lines))
 			break ;
@@ -152,46 +150,16 @@ void	set_line_color_points(t_fdf *fdf, char *str, int pos)
     {
         extract = ft_strchr(ch_aux[iter.j], 'x');
 		iter.i = fdf->map.map[pos][iter.j];
-		if (extract)
-        {
+		if (extract){
             extract++;
             i_color = str_to_color(extract);
             *(int_color + iter.j) = i_color;
             extract = ""; 
         }
-        else
-        {
+        else{
 			// assign 0 value and call set_color palette when finish prepare map
 			set_color_palette(int_color, get_color_palette(1), iter.j, iter.i);
-            // if (iter.i >= 720)
-            //     *(int_color + iter.j) = str_to_color("deddcc");
-            // if (iter.i < 720 && iter.i >= 400)
-            //     *(int_color + iter.j) = str_to_color("c56930");
-            // if (iter.i < 400 && iter.i >= 200)
-            //     *(int_color + iter.j) = str_to_color("c66a31");
-            // if (iter.i < 200 && iter.i >= 90)
-            //     *(int_color + iter.j) = str_to_color("d77b34");
-            // if (iter.i < 90 && iter.i >= 50)
-            //     *(int_color + iter.j) = str_to_color("e79b34");
-            // if (iter.i < 50 && iter.i >= 35)
-            //     *(int_color + iter.j) = str_to_color("e9cab3");
-            // if (iter.i < 35 && iter.i >= 15)
-            //     *(int_color + iter.j) = str_to_color("b5baa6");
-            // if (iter.i < 15 && iter.i >= 0)
-            //     *(int_color + iter.j) = str_to_color("b2b8a5");
-            // if (iter.i < 0 && iter.i >= -5)
-            //     *(int_color + iter.j) = str_to_color("3babbf"); //31a9ac
-            // if (iter.i < -5 && iter.i >= -20)
-            //     *(int_color + iter.j) = str_to_color("3aaaaf");
-            // if (iter.i < -20 && iter.i >= -70)
-            //     *(int_color + iter.j) = str_to_color("3ca9af");//3bb143
-            // if (iter.i < -70 && iter.i >= -200)
-            //     *(int_color + iter.j) = str_to_color("3a98ae");
-            // if (iter.i < -200)// && iter.i >= -30)
-            //     *(int_color + iter.j) = str_to_color("3797ad");
-
         }
-		
 		iter.j++;
     }
     fdf->map.colors[pos] = int_color;
@@ -201,7 +169,7 @@ void	set_line_color_points(t_fdf *fdf, char *str, int pos)
 */
 
 
-void	obtain_split_fd(int fd, t_map *m)
+int	obtain_split_fd(int fd, t_map *m)
 {
 	char	**split_fd;
 	t_iter	iter;
@@ -229,6 +197,9 @@ void	obtain_split_fd(int fd, t_map *m)
 		iter.i++;
 	}
 	m->vertices = set_mtrx_size(aux, iter.i);
+	// Check map validity
+	// if (check_valid_map(split_fd, m->vertices) == EXIT_FAILURE)
+	// 	return (EXIT_FAILURE);
 	m->map = malloc(sizeof(int *) * (m->vertices.x * m->vertices.y));//* iter.j);
 	m->colors = malloc(sizeof(int *) * (m->vertices.x * m->vertices.y));//* iter.j);
 	
@@ -240,11 +211,13 @@ void	obtain_split_fd(int fd, t_map *m)
 	{
 		if (iter.i % 50 == 0)
 			printf("\e[2;35m%i lines processed...\e[0m\n", iter.i);
-		obtain_z_and_color(m, split_fd[iter.i], iter.i);//, get_line_size(split_fd[iter.i]));
+		if(obtain_z_and_color(m, split_fd[iter.i], iter.i) == EXIT_FAILURE)//, get_line_size(split_fd[iter.i]));
+			return (EXIT_FAILURE);
 		iter.i++;
 	}
 	free(split_fd);
 	set_default_color(m);
+	return (EXIT_SUCCESS);
 }
 
 int	ft_count(char const *s, char c)
@@ -304,4 +277,31 @@ int	check_fd_end(char *s)
 		return (TRUE);
 	else
 		return (FALSE);
+}
+
+int	check_valid_map(char **map, t_vec2 size)
+{
+	int		i;
+	int		j;
+	char	*aux;
+
+	i = 0;
+	while (i < size.y)
+	{
+		j = 0;
+		while (j < size.x)
+		{
+			aux = (char *)map[i][j];
+			if (!(ft_strncmp(aux, " ", 1) == 0 || ft_strncmp(aux, "\n", 1) == 0 || ft_strncmp(aux, "\n", 1) == 0 || 
+				!ft_isalnum((char)aux) || ft_strncmp(aux, "-", 1) == 0 || ft_strncmp(aux, " +", 1) == 0 || 
+				ft_strncmp(aux, ",", 1) == 0))// || ft_strncmp(aux, " ", 1) (char)0)
+			{
+				ft_putendl_fd(RED_, "Error: Invalid map", 1);
+				return (EXIT_FAILURE);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (EXIT_SUCCESS);
 }

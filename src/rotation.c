@@ -99,23 +99,23 @@ void	rotate_top_on_y(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth *depth)
 
 
 /* NOTE valid */
-void	rotate_point(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth *depth)
+void	rotate_point(t_fdf *fdf, t_bresen *point, t_vec2 *end)
 {
 	t_vec2	rot_start;
 	t_vec2	rot_end;
 	t_depth	rot_depth;
 
-	set_rotate_point_to_origin(fdf, start, end);
-	rot_start.x = start->x;
-	rot_start.y = start->y;
+	set_rotate_point_to_origin(fdf, &point->start, end);
+	rot_start.x = point->start.x;
+	rot_start.y = point->start.y;
 	rot_end.x = end->x;
 	rot_end.y = end->y;
-	rot_depth.z = depth->z;
-	rot_depth.z1 = depth->z1;
-	start->x = rot_start.x * cosf(fdf->control.rot_angle) + rot_start.y * sinf(fdf->control.rot_angle);
-	start->y = rot_start.y * cosf(fdf->control.rot_angle) - rot_start.x * sinf(fdf->control.rot_angle);
+	rot_depth.z = point->depth.z;
+	rot_depth.z1 = point->depth.z1;
+	point->start.x = rot_start.x * cosf(fdf->control.rot_angle) + rot_start.y * sinf(fdf->control.rot_angle);
+	point->start.y = rot_start.y * cosf(fdf->control.rot_angle) - rot_start.x * sinf(fdf->control.rot_angle);
 	end->x = rot_end.x * cosf(fdf->control.rot_angle) + rot_end.y * sinf(fdf->control.rot_angle);
 	end->y = rot_end.y * cosf(fdf->control.rot_angle) - rot_end.x * sinf(fdf->control.rot_angle);
-	depth->z = rot_depth.z;
-	depth->z1 = rot_depth.z1;
+	point->depth.z = rot_depth.z;
+	point->depth.z1 = rot_depth.z1;
 }

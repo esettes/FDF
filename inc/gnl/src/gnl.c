@@ -91,15 +91,15 @@ char	*read_fd(int fd, char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str_st[OPEN_MAX];
+	static char	*str_st;
 	char		*line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0 || fd >= OPEN_MAX)
 		return (NULL);
-	str_st[fd] = read_fd(fd, str_st[fd]);
-	if (!str_st[fd])
+	str_st = read_fd(fd, str_st);
+	if (!str_st)
 		return (NULL);
-	line = get_line(str_st[fd]);
-	str_st[fd] = get_next_next(str_st[fd]);
+	line = get_line(str_st);
+	str_st = get_next_next(str_st);
 	return (line);
 }

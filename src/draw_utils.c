@@ -44,19 +44,21 @@ float	f_abs(float a)
 		return (a);
 }
 
-int	check_image_limits(t_vec2 start, t_vec2 end, t_vec2 off)
+int	check_image_limits(t_bresen *point, t_vec2 end)
 {
-	float	max_w;
-	float	max_h;
 	int		min;
+	t_vec2	offset;
+	t_vec2	start;
 
-	max_w = WIDTH * IMG_AUMENT - 100;
-	max_h = HEIGHT * IMG_AUMENT - 100;
 	min = 100;
-	if ((end.x + off.x < max_w) && (end.y + off.y < max_h) 
-		&& (end.x + off.x > min) && (end.y + off.y > min) 
-		&& (start.x + off.x < max_w) && (start.y + off.y < max_h) 
-		&& (start.x + off.x > min) && (start.y + off.y > min))
+	offset.x = point->offset.x;
+	offset.y = point->offset.y;
+	start.x = point->start.x;
+	start.y = point->start.y;
+	if ((end.x + offset.x < MAX_WIDTH) && (end.y + offset.y < MAX_HEIGHT) 
+		&& (end.x + offset.x > min) && (end.y + offset.y > min) 
+		&& (start.x + offset.x < MAX_WIDTH) && (start.y + offset.y < MAX_HEIGHT) 
+		&& (start.x + offset.x > min) && (start.y + offset.y > min))
 	{
 		return TRUE;
 	}

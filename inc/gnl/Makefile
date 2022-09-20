@@ -19,7 +19,7 @@ OBJDIR	= ./obj/
 OBJS	= $(addprefix $(OBJDIR), $(SRCNAMES:.c=.o))
 
 LIBINC	= ./inc/#get_next_line_bonus.h
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -g -O0 -Wall -Wextra -Werror
 CC	= gcc
 
 $(OBJDIR)%.o:$(SRCDIR)%.c

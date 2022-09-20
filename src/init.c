@@ -26,7 +26,11 @@ void	init_mlx(t_fdf *fdf, char *raw_map)
 	fdf->control.perspective = ISOMETRIC;// TOP_VIEW;
 	//set_map_info(fdf, raw_map);
 	open_fd(fdf, raw_map);
-	obtain_split_fd(fdf->fd, &fdf->map);
+	if (obtain_split_fd(fdf->fd, &fdf->map) == EXIT_FAILURE)
+	{
+		close(fdf->fd);
+		return ;
+	}
 	close(fdf->fd);
 	if (!fdf->map.map)
 	{
@@ -56,4 +60,20 @@ static void	open_fd(t_fdf *fdf, char *raw_map)
 		exit(EXIT_FAILURE);
 		return ;
 	}
+}
+
+void	free_broken_prog(t_map *map)
+{
+	int i;
+
+	i = 0;
+	if (map->map)
+	{
+		while (map->map[i])
+		{
+			free(map->map[i]);
+			i++;
+		}
+	}
+	free(map);
 }

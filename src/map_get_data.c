@@ -76,7 +76,7 @@ int    get_line_size(char *str)
     return (i);
 }
 
-void	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
+int	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
 {
     char	**ch_aux;
     char    *extract;
@@ -124,6 +124,7 @@ void	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
     }
     free(ch_aux);
     free(str);
+    return (EXIT_SUCCESS);
 }
 // void	save_default_color(t_map *m)
 // {

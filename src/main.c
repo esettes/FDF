@@ -56,3 +56,4 @@ void	free_mem(t_fdf *fdf)
 	free(fdf->map.default_colors);
 	free(fdf);
 }
+
