@@ -1,12 +1,4 @@
-# Normal
 GREEN	=\033[0;32m
-CYAN	= \033[0;36m
-# Bold
-BCYAN	=\033[1;36m
-# Low intensity
-LCYAN	=\033[2;36m
-LRED	=\033[2;31m
-LYELLOW	=\033[2;33m
 LWHITE	= \033[2;37m
 LGREEN	=\033[2;32m
 
