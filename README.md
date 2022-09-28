@@ -86,10 +86,13 @@ The [Bresenham's algorithm](https://en.wikipedia.org/wiki/Bresenham%27s_line_alg
 
 After several Bresenham's discarded algorithms, in the end this was that allowed me the scalability of the program.
 
-     __ __ __
-    |__|__|__|
-    |__|__|__|
-    |__|__|__|  
+<p  align="center">
+  <img align="left" height="200px" src="https://user-images.githubusercontent.com/65050547/192756047-ebac39a0-8f8c-4aad-97f5-ee7753bbbc0d.png" />
+  <img align="center" height="200px" src="https://user-images.githubusercontent.com/65050547/192756437-04bcf327-9317-4466-a56e-c57fca3ed649.png" />
+  <img align="right" height="200px" src="https://user-images.githubusercontent.com/65050547/192780285-e7a93b17-d327-4c8e-bcb7-b0afc1dda722.png" />
+</p>
+
+
 ...
 
 ### 2. Print isometric mesh.
