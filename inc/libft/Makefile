@@ -27,7 +27,10 @@ $(NAME): $(OBJS)
 	@ranlib $(NAME)
 	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(RESET)\033[2;33m"
 
-all: $(NAME) ${OBJDIR}
+all: obj	$(NAME) ${OBJDIR}
+
+obj:
+	mkdir -p $(OBJDIR)
 
 clean:
 	@rm -rf $(OBJDIR)*.o

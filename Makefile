@@ -6,7 +6,7 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/09/08 18:51:42 by iostancu         ###   ########.fr        #
+#    Updated: 2022/09/20 20:30:11 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ LIBFT	= ./inc/libft/libft.a
 LIBX42	= ./inc/MLX42/libmlx42.a
 COMPS	= $(GNL) $(LIBFT) $(LIBX42)
 
+
+
 ifeq ($(OS), Darwin)
 	LIBX42_FLAGS	=	-I include -lglfw -L /Users/${USER}/.brew/opt/glfw/lib/
 else
@@ -40,7 +42,7 @@ endif
 HEADERS	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/headers/ -I ./inc/MLX42/include/MLX42/
 
 CC	= gcc
-CFLAGS	= -O0 -g  #-Ofast -fsanitize=leak -fno-omit-frame-pointer # -Wall -Wextra -Werror # -Lmlx -lmlx -framework OpenGL -framework AppKit -glldb
+CFLAGS	= -g3 #-fsanitize=address #-fno-omit-frame-pointer # -Wall -Wextra -Werror # -Lmlx -lmlx -framework OpenGL -framework AppKit -glldb
 WINFLAGS	= -lglfw3 -lopengl32 -lgdi32
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit #-lmlx  -Lmlx
 
@@ -50,6 +52,7 @@ obj:
 	mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
+#	@echo "${LWHITE}Compiling $(notdir $<) ${LGREEN}✓$(RESET)"
 	@$(CC) $(CFLAGS) $(HEADERS) -o $@ -c $<
 
 #Change libx42_flags position at the end of the coommand
