@@ -1,10 +1,6 @@
-GREEN	=\033[0;32m
-BBLUE	=\033[1;34m
-LBLUE	=\033[2;34m
-LRED	=\033[2;31m
-LYELLOW	=\033[2;33m
 LWHITE	= \033[2;37m
 LGREEN	=\033[2;32m
+RESET	= \033[2;33m
 
 NAME	= libft.a
 
@@ -15,8 +11,8 @@ OBJDIR	= ./obj/
 OBJS	= $(addprefix $(OBJDIR), $(SRCNAMES:.c=.o))
 
 LIBINC	= ./inc/#libft.h
-FLAGS	= -Wall -Wextra -Werror #-glldb
-CC	= gcc
+FLAGS	= -g3 -Wall -Wextra -Werror #-glldb
+CC	= clang
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	@$(CC) $(FLAGS) -I$(LIBINC) -o $@ -c $<
@@ -25,7 +21,7 @@ $(OBJDIR)%.o:$(SRCDIR)%.c
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(RESET)\033[2;33m"
+	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(RESET)"
 
 all: obj	$(NAME) ${OBJDIR}
 

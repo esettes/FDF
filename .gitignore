@@ -1,4 +1,6 @@
 .vscode/
+.idea/
+cachegrind.out.*
 *.o
+*.a
 *.DS_Store
-

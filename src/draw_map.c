@@ -112,6 +112,9 @@ void	f_bresen(t_fdf *fdf, t_bresen point, t_vec2 end)
 	}
 }
 
+//obtain window size
+
+
 // void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, t_vec2 offset)
 // {
 // 	t_vec2	step;
