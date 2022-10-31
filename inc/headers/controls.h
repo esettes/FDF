@@ -24,4 +24,7 @@ void	set_new_zoom(t_fdf *fdf);
 void	move_img(mlx_key_data_t keydata, void* param);
 void	rotate_point(t_fdf *fdf, t_bresen *point, t_vec2 *end);
 
+void	rotate_top_on_y(t_fdf *fdf, t_bresen *point, t_vec2 *end);
+void	rotate_top_on_y_3d(t_fdf *fdf, t_bresen *point, t_vec2 *end);
+
 #endif

@@ -94,8 +94,8 @@ void	f_bresen(t_fdf *fdf, t_bresen point, t_vec2 end)
 	set_draw_control_zoom(fdf, &point.start, &end);
 	set_perspective(fdf, &point, &end);
 	rotate_point(fdf, &point, &end);
-	//rotate_top_on_y(fdf, &start, &end, &depth);
-	//rotate_top_on_y_3d(fdf, &start, &end, &depth);
+	//rotate_top_on_y(fdf, &point, &end);
+	//rotate_top_on_y_3d(fdf, &point, &end);
 	set_draw_control_movement(fdf, &point.start, &end);
 	set_bresen_step(&point, end);
 	max.i = f_max(f_abs(point.step.x), f_abs(point.step.y));
@@ -111,6 +111,9 @@ void	f_bresen(t_fdf *fdf, t_bresen point, t_vec2 end)
 		step_increment(&coord, point.step);
 	}
 }
+
+//obtain window size
+
 
 // void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, t_vec2 offset)
 // {

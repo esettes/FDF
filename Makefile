@@ -15,6 +15,10 @@ WHITE	= \033[0;37m
 BWHITE	= \033[1;37m
 LGREEN	=\033[2;32m
 LWHITE	= \033[2;37m
+RESET	= \033[2;33m
+
+G_CHECK = ${LGREEN}✓$(RESET)
+G_OK = ${GREEN}[OK]$(RESET)
 
 NAME	= fdf
 
@@ -41,25 +45,25 @@ endif
 
 HEADERS	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/headers/ -I ./inc/MLX42/include/MLX42/
 
-CC	= gcc
-CFLAGS	= -g3 #-fsanitize=address #-fno-omit-frame-pointer # -Wall -Wextra -Werror # -Lmlx -lmlx -framework OpenGL -framework AppKit -glldb
+CC	= clang
+CFLAGS	=  -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls # -Wall -Wextra -Werror -glldb
 WINFLAGS	= -lglfw3 -lopengl32 -lgdi32
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit #-lmlx  -Lmlx
 
-all: obj $(LIBFT) $(GNL) $(LIBX42) $(NAME) #$(OBJDIR)
+all: obj $(COMPS) $(NAME) #$(OBJDIR)
 
 obj:
 	mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
-#	@echo "${LWHITE}Compiling $(notdir $<) ${LGREEN}✓$(RESET)"
+	@echo "${LWHITE}Compiling $(notdir $<) $(G_CHECK)"
 	@$(CC) $(CFLAGS) $(HEADERS) -o $@ -c $<
 
 #Change libx42_flags position at the end of the coommand
 $(NAME):	$(OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(LIBX42) $(LIBX42_FLAGS) 
-	@echo "${LWHITE}$(NAME) ${LGREEN}✓$(RESET)\033[2;33m"
-	@echo "${BWHITE}Compilation ${GREEN}[OK]$(RESET)\033[2;33m" 
+	@$(CC) $(CFLAGS) $(HEADERS) -o $(NAME) $(OBJS) $(COMPS) $(LIBX42_FLAGS) 
+	@echo "${LWHITE}$(NAME) $(G_CHECK)"
+	@echo "${BWHITE}Compilation $(G_OK)" 
 
 $(LIBFT):
 	@$(MAKE) -C $(dir $(LIBFT))
@@ -75,31 +79,31 @@ LD_DEBUG=all
 dbgfiles:
 	@rm -rf *.dSYM
 	@rm -rf *.DS_Store
-	@echo "${LWHITE}Clean debug files... ${LGREEN}✓$(RESET)\033[2;33m"
+	@echo "${LWHITE}Clean debug files... $(G_CHECK)"
 
 clean:	dbgfiles
-	@echo "${LWHITE}Clean fdf... ${LGREEN}✓$(RESET)\033[2;33m"
+	@echo "${LWHITE}Clean fdf... $(G_CHECK)"
 	@rm -rf ${OBJDIR}*.o
-	@echo "${LWHITE}Clean Libft... ${LGREEN}✓$(RESET)\033[2;33m"
+	@echo "${LWHITE}Clean Libft... $(G_CHECK)"
 	@$(MAKE) -C $(dir $(LIBFT)) clean
-	@echo "${LWHITE}Clean GNL... ${LGREEN}✓$(RESET)\033[2;33m"
+	@echo "${LWHITE}Clean GNL... $(G_CHECK)"
 	@$(MAKE) -C $(dir $(GNL)) clean
-	@echo "${LWHITE}Clean MLX2... ${LGREEN}✓$(RESET)\033[2;33m"
+	@echo "${LWHITE}Clean MLX2... $(G_CHECK)"
 	@$(MAKE) -C $(dir $(LIBX42)) clean
-	@echo "${BWHITE}Clean objs ${GREEN}[OK]$(RESET)\033[2;33m"
+	@echo "${BWHITE}Clean objs $(G_OK)"
 
 fclean: dbgfiles
 	@rm -rf $(NAME)
 	@rm -rf $(LIBX42)
-	@echo "${LWHITE}Clean fdf... ${LGREEN}✓$(RESET)\033[2;33m"
+	@echo "${LWHITE}Clean fdf... $(G_CHECK)"
 	@rm -rf ${OBJDIR}*.o
-	@echo "${LWHITE}Clean Libft... ${LGREEN}✓$(RESET)\033[2;33m"
+	@echo "${LWHITE}Clean Libft... $(G_CHECK)"
 	@$(MAKE) -C $(dir $(LIBFT)) fclean
-	@echo "${LWHITE}Clean GNL... ${LGREEN}✓$(RESET)\033[2;33m"
+	@echo "${LWHITE}Clean GNL... $(G_CHECK)"
 	@$(MAKE) -C $(dir $(GNL)) fclean
-#	@echo "${LWHITE}Clean MLX42... ${LGREEN}✓$(RESET)"
+#	@echo "${LWHITE}Clean MLX42... $(G_CHECK)"
 	@$(MAKE) -C $(dir $(LIBX42)) clean
-	@echo "${BWHITE}Clean all ${GREEN}[OK]\033[2;33m"
+	@echo "${BWHITE}Clean all $(G_OK)"
 	@echo "\n"
 
 re: fclean all

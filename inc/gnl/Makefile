@@ -1,12 +1,4 @@
-# Normal
 GREEN	=\033[0;32m
-CYAN	= \033[0;36m
-# Bold
-BCYAN	=\033[1;36m
-# Low intensity
-LCYAN	=\033[2;36m
-LRED	=\033[2;31m
-LYELLOW	=\033[2;33m
 LWHITE	= \033[2;37m
 LGREEN	=\033[2;32m
 
@@ -19,8 +11,8 @@ OBJDIR	= ./obj/
 OBJS	= $(addprefix $(OBJDIR), $(SRCNAMES:.c=.o))
 
 LIBINC	= ./inc/#get_next_line_bonus.h
-FLAGS	= -g -O0 -Wall -Wextra -Werror
-CC	= gcc
+FLAGS	= -g3 -Wall -Wextra -Werror
+CC	= clang
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	@$(CC) $(FLAGS) -I$(LIBINC) -o $@ -c $< 
