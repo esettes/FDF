@@ -6,9 +6,11 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/09/20 20:30:11 by iostancu         ###   ########.fr        #
+#    Updated: 2022/10/31 21:58:48 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+.POSIX:
 
 GREEN	=\033[0;32m
 WHITE	= \033[0;37m
@@ -40,13 +42,20 @@ COMPS	= $(GNL) $(LIBFT) $(LIBX42)
 ifeq ($(OS), Darwin)
 	LIBX42_FLAGS	=	-I include -lglfw -L /Users/${USER}/.brew/opt/glfw/lib/
 else
-	LIBX42_FLAGS	=	-I include -ldl -lglfw -lm 	
+	LDLIBS			=	-lm
+	LIBX42_FLAGS	=	-I include -ldl -lglfw $(LDLIBS)
 endif
 
 HEADERS	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/headers/ -I ./inc/MLX42/include/MLX42/
 
 CC	= clang
+<<<<<<< HEAD
 CFLAGS	=  -Ofast #-g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls # -Wall -Wextra -Werror -glldb
+=======
+ASAN_FLAGS	= -g3 -fsanitize=address #-fno-omit-frame-pointer -fno-optimize-sibling-calls
+WARNING_FLAGS	= -Wall -Wextra -Werror  #  -glldb
+CFLAGS	= $(ASAN_FLAGS)
+>>>>>>> 3016de620ef420213b99ef46eda279926c13f02f
 WINFLAGS	= -lglfw3 -lopengl32 -lgdi32
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit #-lmlx  -Lmlx
 
@@ -61,7 +70,7 @@ $(OBJDIR)%.o:$(SRCDIR)%.c
 
 #Change libx42_flags position at the end of the coommand
 $(NAME):	$(OBJS)
-	@$(CC) $(CFLAGS) $(HEADERS) -o $(NAME) $(OBJS) $(COMPS) $(LIBX42_FLAGS) 
+	@$(CC) $(CFLAGS) $(LDFLAGS) $(HEADERS) -o $(NAME) $(OBJS) $(COMPS) $(LIBX42_FLAGS) 
 	@echo "${LWHITE}$(NAME) $(G_CHECK)"
 	@echo "${BWHITE}Compilation $(G_OK)" 
 
