@@ -34,13 +34,13 @@ void	move_img(mlx_key_data_t keydata, void* param)
 		set_control_movement(keydata, fdf);
 	else if (key == MLX_KEY_T || key == MLX_KEY_I)
 		set_control_view(keydata, fdf);
-	else if (key == 333 || key == 45 || key == 267 || key == 334 || key == 266)
+	else if (key == MLX_KEY_N || key == MLX_KEY_M || key == 267 || key == 334 || key == 266)
 		set_control_height(keydata, fdf);
 	else if (key == MLX_KEY_Z || key == MLX_KEY_X)
 		set_control_rotation(keydata, fdf);
 	else if (key >= MLX_KEY_0 && key <= MLX_KEY_4)
 		set_control_palette(keydata, fdf);
-	else if (key >= MLX_KEY_F1 && key <= MLX_KEY_F2)
+	else if (key >= MLX_KEY_B && key <= MLX_KEY_V)
 		set_control_point_resolution(keydata, fdf);
 }
 

@@ -99,7 +99,7 @@ void	set_control_zoom(double x_delta, double y_delta, void *fdf_void)
 */
 void	set_control_point_resolution(mlx_key_data_t keydata, t_fdf *fdf)
 {
-	if (keydata.key == MLX_KEY_F1)
+	if (keydata.key == MLX_KEY_V)
 	{
 		if (fdf->control.points_resolution >= 1)
 		{
@@ -107,7 +107,7 @@ void	set_control_point_resolution(mlx_key_data_t keydata, t_fdf *fdf)
 			modify_mesh(fdf);
 		}
 	}
-	if (keydata.key == MLX_KEY_F2)
+	if (keydata.key == MLX_KEY_B)
 	{
 		if (fdf->control.points_resolution <= 12)
 		{

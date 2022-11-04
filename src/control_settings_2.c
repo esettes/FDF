@@ -23,12 +23,12 @@ void    set_control_rotation(mlx_key_data_t keydata, t_fdf *fdf)
 
 void    set_control_height(mlx_key_data_t keydata, t_fdf *fdf)
 {
-    if (keydata.key == MLX_KEY_KP_SUBTRACT || keydata.key == MLX_KEY_MINUS || keydata.key == MLX_KEY_PAGE_DOWN)
+    if (keydata.key == MLX_KEY_KP_SUBTRACT || keydata.key == MLX_KEY_MINUS || keydata.key == MLX_KEY_N || keydata.key == MLX_KEY_PAGE_DOWN)
 	{
 		fdf->control.height -= 0.02;
 		modify_mesh(fdf);
 	}
-	if (keydata.key == MLX_KEY_KP_ADD || keydata.key == MLX_KEY_PAGE_UP)
+	if (keydata.key == MLX_KEY_KP_ADD || keydata.key == MLX_KEY_PAGE_UP || keydata.key == MLX_KEY_M)
 	{
 		fdf->control.height += 0.02;
 		modify_mesh(fdf);

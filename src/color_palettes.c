@@ -17,6 +17,8 @@ void	palette_default(int *arr, int pos, int z_value)
 	arr[pos] = z_value;
 }
 
+// multiply a default height color int with the height point
+
 void	palette_terrain(int *arr, int pos, int z_value)
 {
 	if (z_value >= 720)
