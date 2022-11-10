@@ -54,7 +54,7 @@ void	init_mlx(t_fdf *fdf, char *raw_map)
 static void	open_fd(t_fdf *fdf, char *raw_map)
 {
 	fdf->fd = open(raw_map, O_RDONLY);
-	if (fdf->fd <= 0)
+	if (fdf->fd < 0)
 	{
 		ft_putendl_fd(RED_, "Error: File not found.", 1);
 		exit(EXIT_FAILURE);

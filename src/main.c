@@ -22,7 +22,7 @@ void	ft_leaks()
 int	main(int argc, char	*argv[])
 {
 	t_fdf	*fdf;
-	atexit(&ft_leaks);
+	//atexit(&ft_leaks);
 	if (argc < 3)
 	{
 		fdf = (t_fdf *)malloc(sizeof(t_fdf));

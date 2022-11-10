@@ -1,105 +1,140 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   gnl.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 20:12:56 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/08 18:38:18 by iostancu         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "gnl.h"
+#include <sys/types.h>
 
-char	*get_next_next(char *str)
+char	*concatenate_buff(char *str_st, char *buff, size_t nbytes)
 {
-	size_t	eol;
-	size_t	str_len;
-	size_t	i;
-	char	*line;
+	char	*tmp;
+	size_t	size;
 
-	eol = ft_strlen_eol(str, TRUE);
-	if (!str[eol])
+	if (str_st == NULL)
 	{
-		free(str);
-		return (NULL);
+		str_st = ft_calloc_gnl(1, nbytes + 1);
+		if (str_st == NULL)
+			return (NULL);
+		ft_memmove_gnl(str_st, buff, nbytes);
 	}
-	str_len = ft_strlen_eol(str, FALSE);
-	line = (char *)malloc(sizeof(char) * (str_len - eol + 1));
-	if (!line)
-		return (NULL);
-	i = 0;
-	while (eol + i < str_len)
+	else
 	{
-		line[i] = str[eol + i];
-		i++;
+		size = ft_strlen_eol(str_st, 0);
+		tmp = ft_calloc_gnl(1, size + nbytes + 1);
+		if (tmp == NULL)
+			return (NULL);
+		ft_memmove_gnl(tmp, str_st, size);
+		ft_memmove_gnl(tmp + size, buff, nbytes + 1);
+		free(str_st);
+		str_st = tmp;
 	}
-	line[i] = '\0';
-	free (str);
-	return (line);
+	return (str_st);
 }
 
-char	*get_line(char *str)
+char	*get_line_break(char *str_st)
 {
 	size_t	eol;
 	char	*line;
+	size_t	str_st_len;
+	size_t	line_len;
 
 	eol = 0;
-	line = (char *)malloc(sizeof(char) * (ft_strlen_eol(str, FALSE) + 1));
-	if (str[0] == '\n')
+	line = malloc(sizeof(char) * (ft_strlen_eol(str_st, TRUE) + 1));
+	while (str_st[eol])
 	{
-		line[0] = '\n';
+		line[eol] = str_st[eol];
+		if (str_st[eol] == '\n' || str_st[eol + 1] == '\0')
+		{
+			line[eol + 1] = '\0';
+			line_len = ft_strlen_eol(line, 0);
+			str_st_len = ft_strlen_eol(str_st, 0);
+			ft_memmove_gnl(str_st, str_st + eol + 1, str_st_len - line_len);
+			*(str_st + str_st_len - line_len) = '\0';
+			return (line);
+		}
 		eol++;
 	}
-	while (str[eol - 1] != '\n' && str[eol])
-	{
-		line[eol] = str[eol];
-		eol++;
-	}
-	line[eol] = '\0';
 	return (line);
 }
 
-char	*read_fd(int fd, char *str)
-{
-	char	*buff;
-	int		nbytes;
+/* loop str_st by index searching \n instead with ft_strchr */
 
-	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+char	*read_buffersize(int fd, char *str_st, char *buff, ssize_t nbytes)
+{
+	//buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	nbytes = BUFFER_SIZE;
-	while (!ft_strchr_gnl(str, '\n') && nbytes == BUFFER_SIZE)
+	while (!ft_strchr_gnl(str_st, '\n') && nbytes == BUFFER_SIZE)
 	{
 		nbytes = read(fd, buff, BUFFER_SIZE);
 		if (nbytes == -1)
 		{
 			free (buff);
+			if (str_st)
+				free (str_st);
 			return (NULL);
 		}
 		if (nbytes != 0)
 		{
 			buff[nbytes] = '\0';
-			if (!str)
-				str = ft_strdup_gnl(buff);
+			str_st = concatenate_buff(str_st, buff, nbytes);
+		}
+		if (nbytes == 0)
+		{
+			if (str_st[0] != '\0')
+			{
+				free (buff);
+				return (str_st);
+			}
 			else
-				str = ft_strjoin_gnl(str, buff);
+				free (str_st);
+			return (NULL);
 		}
 	}
 	free (buff);
-	return (str);
+	return (str_st);
+}
+
+
+void	init_data(t_data *data)
+{
+	if (data->str_st == NULL)
+		data->str_st = ft_calloc_gnl(1, BUFFER_SIZE + 1);
+	data->nbytes = BUFFER_SIZE;
+	data->buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*str_st;
+	static t_data	data;
+	// static char	*str_st;
 	char		*line;
 
-	if (BUFFER_SIZE <= 0 || fd < 0 || fd >= OPEN_MAX)
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd >= 1000)
 		return (NULL);
-	str_st = read_fd(fd, str_st);
-	if (!str_st)
+	init_data(&data);
+	data.str_st = read_buffersize(fd, data.str_st, data.buff, data.nbytes);
+	if (!data.str_st)
+	{
+		if (data.buff)
+			free (data.buff);
 		return (NULL);
-	line = get_line(str_st);
-	str_st = get_next_next(str_st);
+	}
+	line = get_line_break(data.str_st);
+	if (!line)
+		free (data.str_st);
 	return (line);
 }
+
+// int main(void)
+// {
+//     char    *line;
+//     int     fd;
+// 	int i = 0;
+//     fd = open ("quijote.txt", O_RDONLY);
+//     while (1)
+//     {
+// 		line = get_next_line(fd);
+// 		if (line == NULL)
+// 			break;
+//         printf ("%s", line);
+//         free (line);
+//     }
+// 	close(fd);
+//     return (0);
+// }
