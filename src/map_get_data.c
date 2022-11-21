@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:42 by iostancu          #+#    #+#             */
-/*   Updated: 2022/09/22 23:53:43 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/11/22 00:33:34 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
             int_color[iter.j] = i_color;
             extract = ""; 
         }
-        else// if (!extract)
+        else
         {
             //int_color[iter.j] = 0;
             set_color_palette(int_color, get_color_palette(1), iter.j, iter.i);
@@ -138,34 +138,7 @@ int	obtain_z_and_color(t_map *m, char *str, int pos)//, int size)
     free(str);
     return (EXIT_SUCCESS);
 }
-// void	save_default_color(t_map *m)
-// {
-//     int     i_color;
-//     t_iter  it;
-//     int    **def_color;
-//     int     size;
 
-//     it.i = 0;
-//     size = 0;
-//     m->default_colors = malloc(sizeof(int *) * m->vertices.y);
-// 	while (m->colors[it.i])
-//     {
-//         it.j = 0;
-//         size = 0;
-//         while (m->colors[it.i][size])
-// 		    size++;
-//         def_color[it.i] = malloc(sizeof(int) * size);
-//         while (m->colors[it.i][it.j])
-//         {
-//             i_color = m->colors[it.i][it.j];
-//             def_color[it.i][it.j] = i_color;
-//             it.j++;
-//         }
-//         m->default_colors[it.i] = def_color[it.i];
-// 		it.i++;
-//     }
-   
-// }
 void    set_default_color(t_map *m)
 {
     int i;
@@ -184,6 +157,7 @@ static void	get_line_default(t_map *m, int *arr, int pos)
     int     i_color;
     int     i;
     int     *def_color;
+    char    *str;
 
     i = 0;
     // while (arr[i])
@@ -197,4 +171,7 @@ static void	get_line_default(t_map *m, int *arr, int pos)
 		i++;
     }
     m->default_colors[pos] = def_color;
+    str = ft_itoa(*(m->default_colors[pos]));
+    ft_putendl_fd(BLUE_, str, 1);
+    free(str);
 }

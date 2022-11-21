@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/09/08 18:48:04 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/11/22 00:25:18 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,10 +186,14 @@ int	obtain_split_fd(int fd, t_map *m)
 	while (true)
 	{
 		split_fd[iter.i] = get_next_line(fd);	// i = y
+		//ft_putendl_fd(BLUE_, split_fd[iter.i], 1);
+		// if (split_fd[iter.i] == NULL)
+		// 	break;
 		iter.j += ft_count(split_fd[iter.i], ' ');
 		if (trigger == TRUE)
 		{
 			aux = iter.j;
+			ft_putendl_fd(YELLOW_, split_fd[iter.i], 1);
 			trigger = FALSE;
 		}
 		if (check_fd_end(split_fd[iter.i]))
@@ -231,18 +235,18 @@ int	ft_count(char const *s, char c)
 	if (!s)
 		return (0);
 	a = (char *)s;
-	if (!a)
+	if (!s)
 		return (0);
-	while (*a)
+	while (*s)
 	{
-		if (*a != c && bo == 0)
+		if (*s != c && bo == 0)
 		{
 			cnt++;
 			bo = 1;
 		}
-		if (*a == c)
+		if (*s == c)
 			bo = 0;
-		a++;
+		s++;
 	}
 	return (cnt);
 }

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/28 19:51:47 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:33:08 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include <memory.h>
 
-# include "gnl.h"
+# include "get_next_line.h"
 # include "libft.h"
 
 # include "colors.h"
