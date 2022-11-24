@@ -6,25 +6,18 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/09/12 19:03:16 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/11/24 01:30:38 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+t_controls	set_init_controls(t_controls *control);
 static void	open_fd(t_fdf *fdf, char *raw_map);
 
 void	init_mlx(t_fdf *fdf, char *raw_map)
 {
-	fdf->control.palette = 0;
-	fdf->control.zoom = 2;
-	fdf->control.rot_angle = 0;
-	fdf->control.points_resolution = ADDIT_STEPS;
-	fdf->control.height = 1;
-	fdf->control.vert = 1;
-	fdf->control.horiz = 1;
-	fdf->control.perspective = ISOMETRIC;// TOP_VIEW;
-	//set_map_info(fdf, raw_map);
+	fdf->control = set_init_controls(&fdf->control);
 	open_fd(fdf, raw_map);
 	if (obtain_split_fd(fdf->fd, &fdf->map) == EXIT_FAILURE)
 	{
@@ -51,6 +44,19 @@ void	init_mlx(t_fdf *fdf, char *raw_map)
 	loop_fdf(fdf);
 }
 
+t_controls	set_init_controls(t_controls *control)
+{
+	control->palette = 0;
+	control->zoom = 2;
+	control->rot_angle = 0;
+	control->points_resolution = ADDIT_STEPS;
+	control->height = 1;
+	control->vert = 1;
+	control->horiz = 1;
+	control->perspective = ISOMETRIC;
+	return (*control);
+}
+
 static void	open_fd(t_fdf *fdf, char *raw_map)
 {
 	fdf->fd = open(raw_map, O_RDONLY);
@@ -64,7 +70,7 @@ static void	open_fd(t_fdf *fdf, char *raw_map)
 
 void	free_broken_prog(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (map->map)

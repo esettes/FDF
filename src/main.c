@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/09/20 20:30:18 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/11/24 01:33:24 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_mem(t_fdf *fdf);
 
-void	ft_leaks()
+void	ft_leaks(void)
 {
 	system("leaks fdf");
 }
@@ -22,11 +22,11 @@ void	ft_leaks()
 int	main(int argc, char	*argv[])
 {
 	t_fdf	*fdf;
-	//atexit(&ft_leaks);
+
+	atexit(&ft_leaks);
 	if (argc < 3)
 	{
 		fdf = (t_fdf *)malloc(sizeof(t_fdf));
-		//fdf->fd = open(argv[1], O_RDONLY);
 		init_mlx(fdf, argv[1]);
 		if (!fdf->mlx || !fdf->map.map)
 			exit(EXIT_FAILURE);
@@ -40,20 +40,21 @@ int	main(int argc, char	*argv[])
 
 void	free_mem(t_fdf *fdf)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (fdf->map.map && fdf->map.colors && fdf->map.default_colors)
-	while (i < fdf->map.vertices.y)
 	{
-		free(fdf->map.map[i]);
-		free(fdf->map.colors[i]);
-		free(fdf->map.default_colors[i]);
-		i++;
+		while (i < fdf->map.vertices.y)
+		{
+			free(fdf->map.map[i]);
+			free(fdf->map.colors[i]);
+			free(fdf->map.default_colors[i]);
+			i++;
+		}
+		free(fdf->map.map);
+		free(fdf->map.colors);
+		free(fdf->map.default_colors);
 	}
-	free(fdf->map.map);
-	free(fdf->map.colors);
-	free(fdf->map.default_colors);
 	free(fdf);
 }
-

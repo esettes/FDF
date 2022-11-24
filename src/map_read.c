@@ -6,14 +6,15 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/22 00:25:18 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/11/24 01:56:59 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 int	check_fd_end(char *s);
-void    set_z_points(t_fdf *fdf, char *raw_map);
+void	set_z_points(t_fdf *fdf, char *raw_map);
+void	print_info(t_vec2 vertices);
 
 /*void	set_map_info(t_fdf *fdf, char *raw_map)
 {
@@ -168,49 +169,37 @@ void	set_line_color_points(t_fdf *fdf, char *str, int pos)
 }
 */
 
-
 int	obtain_split_fd(int fd, t_map *m)
 {
 	char	**split_fd;
 	t_iter	iter;
 	int		aux;
 	int		trigger = TRUE;
-	t_iter	size_map;
 
-	// size_map = get_map_size(fd);
-	// printf("map size x: %i\n", size_map.j);
-	// printf("map size y: %i\n", size_map.i);
 	split_fd = malloc(sizeof(char *) * BUFFER_SIZE * 2);
 	iter.i = 0;
 	iter.j = 0;
 	while (true)
 	{
 		split_fd[iter.i] = get_next_line(fd);	// i = y
-		//ft_putendl_fd(BLUE_, split_fd[iter.i], 1);
-		// if (split_fd[iter.i] == NULL)
-		// 	break;
+		if (split_fd[iter.i] == NULL)
+			break ;
 		iter.j += ft_count(split_fd[iter.i], ' ');
 		if (trigger == TRUE)
 		{
 			aux = iter.j;
-			ft_putendl_fd(YELLOW_, split_fd[iter.i], 1);
 			trigger = FALSE;
 		}
-		if (check_fd_end(split_fd[iter.i]))
-			break ;
 		iter.i++;
 	}
 	m->vertices = set_mtrx_size(aux, iter.i);
 	// Check map validity
 	// if (check_valid_map(split_fd, m->vertices) == EXIT_FAILURE)
 	// 	return (EXIT_FAILURE);
-	m->map = malloc(sizeof(int *) * (m->vertices.x * m->vertices.y));//* iter.j);
-	m->colors = malloc(sizeof(int *) * (m->vertices.x * m->vertices.y));//* iter.j);
-	
-	printf("Map x size: %f \n", m->vertices.x);
-	printf("Map y size: %f \n\n", m->vertices.y);
+	m->map = malloc(sizeof(int *) * (m->vertices.x * m->vertices.y));
+	m->colors = malloc(sizeof(int *) * (m->vertices.x * m->vertices.y));
+	print_info(m->vertices);
 	iter.i = 0;
-	printf("\e[1;35mReading map...\e[0m\n");
 	while (split_fd[iter.i])
 	{
 		if (iter.i % 50 == 0)
@@ -222,6 +211,13 @@ int	obtain_split_fd(int fd, t_map *m)
 	free(split_fd);
 	set_default_color(m);
 	return (EXIT_SUCCESS);
+}
+
+void	print_info(t_vec2 vertices)
+{
+	printf("Map x size: %f \n", vertices.x);
+	printf("Map y size: %f \n\n", vertices.y);
+	printf("\e[1;35mReading map...\e[0m\n");
 }
 
 int	ft_count(char const *s, char c)
@@ -274,15 +270,6 @@ int	*str_to_int(char *str)
 	return (int_mtrx);
 }
 
-int	check_fd_end(char *s)
-{
-	if (s == NULL || ft_strncmp(s, "\n", 1) == 0)// || 
-		//ft_strncmp(s, " ", 1) == 0)
-		return (TRUE);
-	else
-		return (FALSE);
-}
-
 int	check_valid_map(char **map, t_vec2 size)
 {
 	int		i;
@@ -295,7 +282,7 @@ int	check_valid_map(char **map, t_vec2 size)
 		j = 0;
 		while (j < size.x)
 		{
-			aux = (char *)map[i][j];
+			aux = &(map[i][j]);
 			if (!(ft_strncmp(aux, " ", 1) == 0 || ft_strncmp(aux, "\n", 1) == 0 || ft_strncmp(aux, "\n", 1) == 0 || 
 				!ft_isalnum((char)aux) || ft_strncmp(aux, "-", 1) == 0 || ft_strncmp(aux, " +", 1) == 0 || 
 				ft_strncmp(aux, ",", 1) == 0))// || ft_strncmp(aux, " ", 1) (char)0)

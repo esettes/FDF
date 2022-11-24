@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/09/12 19:59:18 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/11/24 02:01:04 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	loop_fdf(t_fdf *fdf)
 	mlx_key_hook(fdf->mlx, &move_img, fdf);
 	//draw_menu(fdf);
 	mlx_loop(fdf->mlx);
-	//mlx_delete_image(fdf->mlx, fdf->img); // Once app request exit, cleanup.
-	
 }
 
 int	create_image(t_fdf *fdf, int start)
@@ -38,7 +36,7 @@ int	create_image(t_fdf *fdf, int start)
 	return (EXIT_SUCCESS);
 }
 
-int		draw_image(t_fdf *fdf)
+int	draw_image(t_fdf *fdf)
 {
 	set_new_zoom(fdf);
 	if (print_map(fdf))
@@ -46,7 +44,7 @@ int		draw_image(t_fdf *fdf)
 	return (EXIT_SUCCESS);
 }
 
-int		modify_mesh(t_fdf *fdf)
+int	modify_mesh(t_fdf *fdf)
 {
 	if (create_image(fdf, 1))
 	{
@@ -62,7 +60,7 @@ static t_vec2	set_img_offset(void)
 {
 	t_vec2	offset;
 
-	offset.x  = ((WIDTH * IMG_AUMENT) / 2) - (WIDTH / 2);
-	offset.y  = ((HEIGHT * IMG_AUMENT) / 2) - (HEIGHT / 2);
+	offset.x = ((WIDTH * IMG_AUMENT) / 2) - (WIDTH / 2);
+	offset.y = ((HEIGHT * IMG_AUMENT) / 2) - (HEIGHT / 2);
 	return (offset);
 }

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:06 by iostancu          #+#    #+#             */
-/*   Updated: 2022/09/22 23:53:08 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/11/24 00:40:24 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	palette_gamma(int *arr, int pos, int z_value)
 		arr[pos] = str_to_color("decd51");
 	if (z_value < 90 && z_value >= 0)
 		arr[pos] = str_to_color("aced99");
-	if(z_value == 0)
+	if (z_value == 0)
 		arr[pos] = str_to_color("ac74f9");
 	if (z_value < 0 && z_value >= -80)
 		arr[pos] = str_to_color("40cdbf");

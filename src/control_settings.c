@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:25 by iostancu          #+#    #+#             */
-/*   Updated: 2022/09/22 23:53:27 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/11/24 00:45:12 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	set_control_palette(mlx_key_data_t keydata, t_fdf *fdf)
 		fdf->control.palette = 2;
 	if (keydata.key == MLX_KEY_3)
 		fdf->control.palette = 3;
-    if (keydata.key == MLX_KEY_4)
+	if (keydata.key == MLX_KEY_4)
 		fdf->control.palette = 4;
 	modify_mesh(fdf);
 }
@@ -35,7 +35,7 @@ void	set_control_palette(mlx_key_data_t keydata, t_fdf *fdf)
 */
 void	set_control_movement(mlx_key_data_t keydata, t_fdf *fdf)
 {
-    if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
+	if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 	{
 		fdf->control.vert -= 5;
 		modify_mesh(fdf);
@@ -59,17 +59,17 @@ void	set_control_movement(mlx_key_data_t keydata, t_fdf *fdf)
 
 void	set_control_view(mlx_key_data_t keydata, t_fdf *fdf)
 {
-    if (keydata.key == MLX_KEY_T)
+	if (keydata.key == MLX_KEY_T)
 		fdf->control.perspective = TOP_VIEW;
 	if (keydata.key == MLX_KEY_I)
 		fdf->control.perspective = ISOMETRIC;
-    modify_mesh(fdf);
+	modify_mesh(fdf);
 }
 
 void	set_control_zoom(double x_delta, double y_delta, void *fdf_void)
 {
 	t_fdf	*fdf;
-	
+
 	fdf = (t_fdf *)fdf_void;
 	if (y_delta > 0)
 	{

@@ -1,5 +1,5 @@
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GNL_H
+# define GNL_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -7,7 +7,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5000
+#  define BUFFER_SIZE 500
 # endif
 # define TRUE 1
 # define FALSE 0

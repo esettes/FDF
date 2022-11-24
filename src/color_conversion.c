@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_color.c                                        :+:      :+:    :+:   */
+/*   color_conversion.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 20:51:50 by iostancu          #+#    #+#             */
-/*   Updated: 2022/09/12 16:57:01 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/11/24 00:43:32 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	set_rgb_sections(t_rgba *rgba, t_iter *iter, t_iter *save, size_t i);
+static void	set_rgb_parts(t_rgba *rgba, t_iter *iter, t_iter *save, size_t i);
 static void	init_rgba(t_rgba *rgba);
 static int	hex_char_to_int(char c);
 
-int		str_to_color(char *color)
+int	str_to_color(char *color)
 {
 	unsigned long	int_color;
 	char			*aux;
 	t_rgba			rgba;
 	t_iter			iter;
 	t_iter			save;
-	size_t			i;
+	int				i;
 
 	aux = color;
 	init_rgba(&rgba);
@@ -36,13 +36,24 @@ int		str_to_color(char *color)
 		if (aux[iter.i] == 'x' || aux[iter.i] == '\0')
 			break ;
 		iter.j = hex_char_to_int(aux[iter.i]);
-		set_rgb_sections(&rgba, &iter, &save, i);
+		set_rgb_parts(&rgba, &iter, &save, i);
 		save.i = iter.j;
 		i--;
 		iter.i++;
 	}
-	int_color = split_sections(rgba.r, rgba.g, rgba.b, rgba.a);
+	int_color = split_rgb(rgba.r, rgba.g, rgba.b, rgba.a);
 	return (int_color);
+}
+
+int	get_upper_hex(char *hex, t_iter *iter, char c)
+{
+	while (hex[iter->i])
+	{
+		if (c == hex[iter->i])
+			return (iter->i);
+		iter->i++;
+	}
+	return (iter->i);
 }
 
 static void	init_rgba(t_rgba *rgba)
@@ -59,13 +70,13 @@ static int	hex_char_to_int(char c)
 	char	*hex;
 	char	*hex2;
 	t_iter	iter;
-	
+
 	iter.i = 0;
 	trigger = FALSE;
 	hex = "0123456789abcdef";
 	hex2 = "0123456789ABCDEF";
 	if (!c)
-	 	return (iter.i);
+		return (iter.i);
 	while (hex[iter.i])
 	{
 		if (c == hex[iter.i])
@@ -77,28 +88,21 @@ static int	hex_char_to_int(char c)
 	}
 	iter.i = 0;
 	if (trigger == FALSE)
-	{
-		while (hex2[iter.i])
-		{
-			if (c == hex2[iter.i])
-				return (iter.i);
-			iter.i++;
-		}
-	}
+		iter.i = get_upper_hex(hex2, &iter, c);
 	return (iter.i);
 }
 
-static void	set_rgb_sections(t_rgba *rgba, t_iter *iter, t_iter *save, size_t i)
+static void	set_rgb_parts(t_rgba *rgba, t_iter *iter, t_iter *save, size_t i)
 {
 	if (i % 2 == 0)
 	{
-		save->j = iter->j; // solo para prueba, eliminar luego
+		save->j = iter->j;
 		iter->j = save->i * iter->j;
-		if (i == 4) // hay r,g y b y hay que guardar el red
+		if (i == 4)
 			rgba->r = iter->j;
-		if (i == 2) // hay g y b y hay que guardar el green
+		if (i == 2)
 			rgba->g = iter->j;
-		if (i == 0) // hay b y hay que guardar el blue
+		if (i == 0)
 			rgba->b = iter->j;
 	}
 }

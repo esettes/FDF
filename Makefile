@@ -6,7 +6,7 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/11/21 23:08:07 by iostancu         ###   ########.fr        #
+#    Updated: 2022/11/23 23:30:09 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,7 @@ endif
 HEADERS	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/headers/ -I ./inc/MLX42/include/MLX42/
 
 CC	= clang
-<<<<<<< HEAD
-CFLAGS	=  -g3   -fno-omit-frame-pointer -fno-optimize-sibling-calls -fsanitize=address # -Wall -Wextra -Werror -glldb
-=======
-CFLAGS	= -g3 -fno-omit-frame-pointer -fno-optimize-sibling-calls #-fsanitize=address  -Wall -Wextra -Werror -glldb
->>>>>>> 204f0aef5f6a4074922dd60526c6b3ece1bd779c
+CFLAGS	= -Wall -Wextra -Werror #-Ofast #-g3   -fno-omit-frame-pointer -fno-optimize-sibling-calls -fsanitize=address -glldb
 WINFLAGS	= -lglfw3 -lopengl32 -lgdi32
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit #-lmlx  -Lmlx
 
@@ -101,7 +97,7 @@ clean:	dbgfiles
 
 fclean: dbgfiles
 	@rm -rf $(NAME)
-	@rm -rf $(LIBX42)
+#	@rm -rf $(LIBX42)
 	@echo "${LWHITE}Clean fdf... $(G_CHECK)"
 	@rm -rf ${OBJDIR}*.o
 	@echo "${LWHITE}Clean Libft... $(G_CHECK)"
@@ -109,7 +105,7 @@ fclean: dbgfiles
 	@echo "${LWHITE}Clean GNL... $(G_CHECK)"
 	@$(MAKE) -C $(dir $(GNL)) fclean
 #	@echo "${LWHITE}Clean MLX42... $(G_CHECK)"
-	@$(MAKE) -C $(dir $(LIBX42)) clean
+#	@$(MAKE) -C $(dir $(LIBX42)) clean
 	@echo "${BWHITE}Clean all $(G_OK)"
 	@echo "\n"
 
