@@ -6,6 +6,15 @@ This project is about creating a simplified graphic wireframe (fils de fer) repr
   <img height="280px" src="https://github.com/esettes/fdf-42/blob/main/src/maps/fdf_himalaya_3d.png" />
 </p>
 
+<p align="center">
+  <img height="380px" src="https://github.com/esettes/FDF/blob/main/src/maps/julia1.png" />
+  <img height="380px" src="https://github.com/esettes/FDF/blob/main/src/maps/elem-fract-top1.png" />
+</p>
+
+<p align="center">
+  <img height="310px" src="https://github.com/esettes/FDF/blob/main/src/maps/elem-fract-detail.png" />
+</p>
+
 <br>
 
 ## Contents
