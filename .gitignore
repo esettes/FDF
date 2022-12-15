@@ -1,6 +1,8 @@
 .vscode/
 .idea/
 cachegrind.out.*
+massif.out*
+dhat.out*
 *.o
 *.a
 *.DS_Store

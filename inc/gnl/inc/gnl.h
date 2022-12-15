@@ -7,7 +7,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 500
+#  define BUFFER_SIZE 1000
 # endif
 # define TRUE 1
 # define FALSE 0
