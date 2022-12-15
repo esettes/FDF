@@ -6,11 +6,11 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 20:45:23 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 00:44:46 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/15 22:50:22 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+# include "colors.h"
 
 static int	get_r(int trgb);
 static int	get_g(int trgb);

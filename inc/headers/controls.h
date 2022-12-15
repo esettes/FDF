@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:33:23 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/07 21:32:58 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/11/24 21:40:03 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,12 @@ void	rotate_point(t_fdf *fdf, t_bresen *point, t_vec2 *end);
 
 void	rotate_top_on_y(t_fdf *fdf, t_bresen *point, t_vec2 *end);
 void	rotate_top_on_y_3d(t_fdf *fdf, t_bresen *point, t_vec2 *end);
+
+void	set_control_point_resolution(mlx_key_data_t keydata, t_fdf *fdf);
+void	set_control_palette(mlx_key_data_t keydata, t_fdf *fdf);
+void	set_control_movement(mlx_key_data_t keydata, t_fdf *fdf);
+void	set_control_view(mlx_key_data_t keydata, t_fdf *fdf);
+void	set_control_rotation(mlx_key_data_t keydata, t_fdf *fdf);
+void	set_control_height(mlx_key_data_t keydata, t_fdf *fdf);
 
 #endif

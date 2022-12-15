@@ -6,11 +6,20 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 01:30:38 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/15 23:22:30 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+//#include "fdf.h"
+# include "libft.h"
+# include "structs.h"
+# include "macros.h"
+# include "colors.h"
+# include "mlx_utils.h"
+# include "read_file.h"
+# include <fcntl.h>
+# include "map_utils.h"
+# include "draw.h"
 
 t_controls	set_init_controls(t_controls *control);
 static void	open_fd(t_fdf *fdf, char *raw_map);

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/09/09 23:09:40 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/15 22:44:29 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "MLX42.h"
 # include <math.h>
+# include <stddef.h>
 
 /*
  * @param[in] x float

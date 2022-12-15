@@ -6,11 +6,16 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:27:12 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 01:21:55 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/15 22:48:21 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+//#include "fdf.h"
+# include "structs.h"
+# include "colors.h"
+# include "draw_utils.h"
+# include "controls.h"
+# include <stdlib.h>
 
 void		f_bresen(t_fdf *fdf, t_bresen point, t_vec2 end);
 static void	draw_right_segment(t_fdf *fdf, t_bresen point, t_vec2 *end);
@@ -39,7 +44,7 @@ int	print_map(t_fdf *fdf)
 		point->start.y++;
 	}
 	free(point);
-	return (EXIT_SUCCESS);
+	return (0);
 }
 
 void	f_bresen(t_fdf *fdf, t_bresen point, t_vec2 end)

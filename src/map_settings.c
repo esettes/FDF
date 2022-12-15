@@ -6,11 +6,11 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:21:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/23 23:41:07 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/15 22:43:28 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+# include "structs.h"
 
 t_vec2	set_mtrx_size(int x, int y)
 {

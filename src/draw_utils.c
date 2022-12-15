@@ -6,11 +6,12 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 01:23:56 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/15 22:45:40 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+# include "structs.h"
+# include "macros.h"
 
 void	set_draw_control_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
 {
@@ -60,7 +61,7 @@ int	check_image_limits(t_bresen *point, t_vec2 end)
 		&& (start.x + offset.x < MAX_WIDTH) && (start.y + offset.y < MAX_HEIGHT)
 		&& (start.x + offset.x > min) && (start.y + offset.y > min))
 	{
-		return (TRUE);
+		return (1);
 	}
-	return (FALSE);
+	return (0);
 }

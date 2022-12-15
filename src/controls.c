@@ -6,18 +6,13 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:51:18 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 00:46:58 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/11/24 21:40:00 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	set_control_point_resolution(mlx_key_data_t keydata, t_fdf *fdf);
-void	set_control_palette(mlx_key_data_t keydata, t_fdf *fdf);
-void	set_control_movement(mlx_key_data_t keydata, t_fdf *fdf);
-void	set_control_view(mlx_key_data_t keydata, t_fdf *fdf);
-void	set_control_rotation(mlx_key_data_t keydata, t_fdf *fdf);
-void	set_control_height(mlx_key_data_t keydata, t_fdf *fdf);
+
 
 void	move_img(mlx_key_data_t keydata, void *param)
 {

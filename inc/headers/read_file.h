@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:07:08 by iostancu          #+#    #+#             */
-/*   Updated: 2022/09/06 22:04:36 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/15 22:32:18 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_count(char const *s, char c);
  * Call str_to_int() to get array with z values and str_to_color() to get
  * array with colors.
  */
-int 	obtain_z_and_color(t_map *m, char *str, int pos);//, int size);
+int 	obtain_z_and_color(t_map *m, char **str, int pos);//, int size);
 void	get_color_points(t_map *m, char *str, int pos);
 void    get_z_points(t_map *m, char *str, int pos);
 
