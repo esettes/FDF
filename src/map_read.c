@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 00:51:22 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/15 22:41:12 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/15 23:42:04 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,6 @@ int	obtain_split_fd(int fd, t_map *m)
 	m->colors = malloc(sizeof(int *) * (m->vertices.x * m->vertices.y));
 	print_info(m->vertices);
 	iter.i = 0;
-	// while (split_fd[iter.i])
-	// {
-	// 	if (iter.i % 50 == 0)
-	// 		printf("\e[2;35m%i lines processed...\e[0m\n", iter.i);
-	// 	if(obtain_z_and_color(m, split_fd[iter.i], iter.i) == EXIT_FAILURE)//, get_line_size(split_fd[iter.i]));
-	// 		return (EXIT_FAILURE);
-	// 	iter.i++;
-	// }
 	if (obtain_z_and_color(m, split_fd, iter.i) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	free(split_fd);
