@@ -6,16 +6,15 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:27:12 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/15 22:48:21 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 20:58:39 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "fdf.h"
-# include "structs.h"
-# include "colors.h"
-# include "draw_utils.h"
-# include "controls.h"
-# include <stdlib.h>
+#include "structs.h"
+#include "colors.h"
+#include "draw_utils.h"
+#include "controls.h"
+#include <stdlib.h>
 
 void		f_bresen(t_fdf *fdf, t_bresen point, t_vec2 end);
 static void	draw_right_segment(t_fdf *fdf, t_bresen point, t_vec2 *end);
@@ -56,12 +55,11 @@ void	f_bresen(t_fdf *fdf, t_bresen point, t_vec2 end)
 	set_draw_control_zoom(fdf, &point.start, &end);
 	set_perspective(fdf, &point, &end);
 	rotate_point(fdf, &point, &end);
-	//rotate_top_on_y(fdf, &point, &end);
-	//rotate_top_on_y_3d(fdf, &point, &end);
 	set_draw_control_movement(fdf, &point.start, &end);
 	set_bresen_step(&point, end);
 	max.i = f_max(f_abs(point.step.x), f_abs(point.step.y));
-	set_bresen_step_increment(fdf->control.points_resolution, &point.step, max);
+	set_bresen_step_increment(fdf->control.points_resolution,
+		&point.step, max);
 	max.j = 0;
 	coord.x = point.start.x + point.offset.x;
 	coord.y = point.start.y + point.offset.y;
@@ -73,35 +71,6 @@ void	f_bresen(t_fdf *fdf, t_bresen point, t_vec2 end)
 		step_increment(&coord, point.step);
 	}
 }
-
-//obtain window size
-// void	f_bresen(t_fdf *fdf, t_vec2 start, t_vec2 end, t_vec2 offset)
-// {
-// 	t_vec2	step;
-// 	t_iter	max;
-// 	t_depth	depth;
-// 	t_iter	curr;
-
-// 	get_current_position(start, &curr);
-// 	set_bresen_depth(fdf, &depth, start, end);
-// 	set_draw_control_zoom(fdf, &start, &end);
-// 	set_perspective(fdf, &start, &end, depth);
-// 	rotate_point(fdf, &start, &end, &depth);
-// 	//rotate_top_on_y(fdf, &start, &end, &depth);
-// 	//rotate_top_on_y_3d(fdf, &start, &end, &depth);
-// 	set_draw_control_movement(fdf, &start, &end);
-// 	set_bresen_step(&step, start, end);
-// 	max.i = f_max(f_abs(step.x), f_abs(step.y));
-// 	set_bresen_step_increment(fdf->control.points_resolution, &step, max);
-// 	max.j = 0;
-// 	while (max.j++ <= max.i + fdf->control.points_resolution)
-// 	{
-// 		if (check_image_limits(start, end, offset))
-// 			mlx_put_pixel(fdf->img, start.x + offset.x , start.y + offset.y, 
-// 			fdf->map.colors[curr.j][curr.i]);
-// 		step_increment(&start, step);
-// 	}
-// }
 
 static	void	draw_right_segment(t_fdf *fdf, t_bresen point, t_vec2 *end)
 {

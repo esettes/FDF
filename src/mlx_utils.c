@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 02:01:04 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 21:01:28 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ static t_vec2	set_img_offset(void);
 void	loop_fdf(t_fdf *fdf)
 {
 	mlx_scroll_hook(fdf->mlx, &set_control_zoom, fdf);
-	//mlx_loop_hook(fdf->mlx, &move_img, fdf->mlx);
 	mlx_key_hook(fdf->mlx, &move_img, fdf);
-	//draw_menu(fdf);
 	mlx_loop(fdf->mlx);
 }
 
@@ -51,7 +49,7 @@ int	modify_mesh(t_fdf *fdf)
 		ft_putendl_fd(RED_, "Error: Image creation failed.", 1);
 		return (EXIT_FAILURE);
 	}
-	if(draw_image(fdf))
+	if (draw_image(fdf))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

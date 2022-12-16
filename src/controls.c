@@ -6,13 +6,11 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:51:18 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 21:40:00 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 20:58:19 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-
 
 void	move_img(mlx_key_data_t keydata, void *param)
 {

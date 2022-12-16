@@ -6,16 +6,14 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/12/15 22:37:37 by iostancu         ###   ########.fr        #
+#    Updated: 2022/12/16 17:52:27 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.POSIX:
-
-GREEN	=\033[0;32m
+GREEN	= \033[0;32m
 WHITE	= \033[0;37m
 BWHITE	= \033[1;37m
-LGREEN	=\033[2;32m
+LGREEN	= \033[2;32m
 LWHITE	= \033[2;37m
 RESET	= \033[2;33m
 
@@ -23,7 +21,6 @@ G_CHECK = ${LGREEN}✓$(RESET)
 G_OK = ${GREEN}[OK]$(RESET)
 
 NAME	= fdf
-
 
 OS		=	$(shell uname -s)
 
@@ -38,8 +35,6 @@ LIBFT	= ./inc/libft/libft.a
 LIBX42	= ./inc/MLX42/libmlx42.a
 COMPS	= $(GNL) $(LIBFT) $(LIBX42)
 
-
-
 ifeq ($(OS), Darwin)
 	LIBX42_FLAGS	=	-I include -lglfw -L /Users/${USER}/.brew/opt/glfw/lib/
 else
@@ -50,11 +45,10 @@ endif
 HEADERS	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/headers/ -I ./inc/MLX42/include/MLX42/
 
 CC	= clang
-CFLAGS	= -Wall -Wextra -Werror -Ofast #-g3   -fno-omit-frame-pointer -fno-optimize-sibling-calls -fsanitize=address -glldb
-WINFLAGS	= -lglfw3 -lopengl32 -lgdi32
-MFLAGS	= -lpthread -framework OpenGL -framework AppKit #-lmlx  -Lmlx
+CFLAGS	= -Wall -Wextra -Werror -g3 -fsanitize=address #-fno-omit-frame-pointer -fno-optimize-sibling-calls
+MFLAGS	= -lpthread -framework OpenGL -framework AppKit
 
-all: obj $(COMPS) $(NAME) #$(OBJDIR)
+all: obj $(COMPS) $(NAME)
 
 obj:
 	mkdir -p $(OBJDIR)
@@ -63,11 +57,10 @@ $(OBJDIR)%.o:$(SRCDIR)%.c
 	@echo "${LWHITE}Compiling $(notdir $<) $(G_CHECK)"
 	@$(CC) $(CFLAGS) $(HEADERS) -o $@ -c $<
 
-#Change libx42_flags position at the end of the coommand
 $(NAME):	$(OBJS)
-	@$(CC) $(CFLAGS) $(LDFLAGS) $(HEADERS) -o $(NAME) $(OBJS) $(COMPS) $(LIBX42_FLAGS) 
+	@$(CC) $(CFLAGS) $(LDFLAGS) $(HEADERS) -o $(NAME) $(OBJS) $(COMPS) $(LIBX42_FLAGS)
 	@echo "${LWHITE}$(NAME) $(G_CHECK)"
-	@echo "${BWHITE}Compilation $(G_OK)" 
+	@echo "${BWHITE}Compilation $(G_OK)"
 
 $(LIBFT):
 	@$(MAKE) -C $(dir $(LIBFT))
@@ -98,15 +91,12 @@ clean:	dbgfiles
 
 fclean: dbgfiles
 	@rm -rf $(NAME)
-#	@rm -rf $(LIBX42)
 	@echo "${LWHITE}Clean fdf... $(G_CHECK)"
 	@rm -rf ${OBJDIR}*.o
 	@echo "${LWHITE}Clean Libft... $(G_CHECK)"
 	@$(MAKE) -C $(dir $(LIBFT)) fclean
 	@echo "${LWHITE}Clean GNL... $(G_CHECK)"
 	@$(MAKE) -C $(dir $(GNL)) fclean
-#	@echo "${LWHITE}Clean MLX42... $(G_CHECK)"
-#	@$(MAKE) -C $(dir $(LIBX42)) clean
 	@echo "${BWHITE}Clean all $(G_OK)"
 	@echo "\n"
 

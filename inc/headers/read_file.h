@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:07:08 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/15 22:32:18 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:51:57 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define READ_FILE_H
 
 # include "structs.h"
-
 /*
  * Obtains each info necessary to run map visualization. Z points, heigh and
  * width and colors. This function unify obatin_split_fd(), get_z_points() and ...
@@ -41,9 +40,15 @@ int		ft_count(char const *s, char c);
  */
 int 	obtain_z_and_color(t_map *m, char **str, int pos);//, int size);
 void	get_color_points(t_map *m, char *str, int pos);
-void    get_z_points(t_map *m, char *str, int pos);
+void	get_z_points(t_map *m, char *str, int pos);
 
-int    get_line_size(char *str);
-void    set_default_color(t_map *m);
+void	set_default_color(t_map *m);
+void	set_color_to_arr(char *extract, int i, int *arr);
+void	set_color_for_item(char *extract, int *arr_color, t_iter iter);
+void	get_color_and_integer(char **extr, char **ch, t_iter *iter, int *mtrx);
+void	process_item(char **extr, char **ch, t_iter *i, int *mtrx, int *color);
+void	free_strings(char **ch_aux, char *str);
+int		*str_to_int(char *str);
+int		ft_count(char const *s, char c);
 
 #endif

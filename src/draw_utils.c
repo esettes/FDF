@@ -6,19 +6,19 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/15 22:45:40 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 20:58:47 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "structs.h"
-# include "macros.h"
+#include "structs.h"
+#include "macros.h"
 
 void	set_draw_control_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
 {
-	start->x *= fdf->control.zoom;// * cos(fdf->control.rot_angle * 3.14 / 180);
-	start->y *= fdf->control.zoom;// * cos(fdf->control.rot_angle);
-	end->x *= fdf->control.zoom;// * cos(fdf->control.rot_angle  * 3.14 / 180);
-	end->y *= fdf->control.zoom;// * cos(fdf->control.rot_angle);
+	start->x *= fdf->control.zoom;
+	start->y *= fdf->control.zoom;
+	end->x *= fdf->control.zoom;
+	end->y *= fdf->control.zoom;
 }
 
 void	set_draw_control_movement(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
@@ -58,7 +58,8 @@ int	check_image_limits(t_bresen *point, t_vec2 end)
 	start.y = point->start.y;
 	if ((end.x + offset.x < MAX_WIDTH) && (end.y + offset.y < MAX_HEIGHT)
 		&& (end.x + offset.x > min) && (end.y + offset.y > min)
-		&& (start.x + offset.x < MAX_WIDTH) && (start.y + offset.y < MAX_HEIGHT)
+		&& (start.x + offset.x < MAX_WIDTH)
+		&& (start.y + offset.y < MAX_HEIGHT)
 		&& (start.x + offset.x > min) && (start.y + offset.y > min))
 	{
 		return (1);

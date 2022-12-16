@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 20:51:50 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 00:43:32 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:56:53 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ static void	set_rgb_parts(t_rgba *rgba, t_iter *iter, t_iter *save, size_t i)
 			rgba->b = iter->j;
 	}
 }
-
 /*
 "0123456789abcdef"
 

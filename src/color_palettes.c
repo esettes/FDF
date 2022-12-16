@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:06 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 00:40:24 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:47:32 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	palette_default(int *arr, int pos, int z_value)
 {
 	arr[pos] = z_value;
 }
-
-// multiply a default height color int with the height point
 
 void	palette_terrain(int *arr, int pos, int z_value)
 {

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:50:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 01:29:16 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 21:15:12 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 # include "structs.h"
 
-#define	RED_	"\x1b[31m"
-#define	GREEN_	"\x1b[32m"
-#define	YELLOW_	"\x1b[33m"
-#define	BLUE_	"\x1b[34m"
-#define	VIOLET_	"\x1b[35m"
-#define	CYAN_	"\x1b[36m"
-#define	RESET_	"\x1b[0m"
+# define RED_	"\x1b[31m"
+# define GREEN_	"\x1b[32m"
+# define YELLOW_	"\x1b[33m"
+# define BLUE_	"\x1b[34m"
+# define VIOLET_	"\x1b[35m"
+# define CYAN_	"\x1b[36m"
+# define RESET_	"\x1b[0m"
 
 int		menu_rgb(int value);
 /**
@@ -38,6 +38,6 @@ int		str_to_color(char *color);
 void	set_color_palette(int *a, void (*f)(int *, int, int), int p, int z_val);
 void	*get_color_palette(int palette);
 void	set_color_array(t_fdf *fdf);
-int	split_rgb(unsigned int r, unsigned int g, unsigned int b, unsigned int a);
+int		split_rgb(unsigned int r, unsigned int g, unsigned int b, unsigned int a);
 
 #endif

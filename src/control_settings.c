@@ -6,12 +6,11 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:25 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 00:45:12 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 20:58:06 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 /*
  * Change palette index
 */
