@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 01:33:24 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 23:53:56 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,16 @@ int	main(int argc, char	*argv[])
 {
 	t_fdf	*fdf;
 
-	atexit(&ft_leaks);
+	//atexit(&ft_leaks);
 	if (argc < 3)
 	{
 		fdf = (t_fdf *)malloc(sizeof(t_fdf));
+		fdf->mlx = NULL;
 		init_mlx(fdf, argv[1]);
 		if (!fdf->mlx || !fdf->map.map)
 			exit(EXIT_FAILURE);
-		mlx_terminate(fdf->mlx);
+		if (fdf->mlx)
+			mlx_terminate(fdf->mlx);
 		free_mem(fdf);
 		return (EXIT_SUCCESS);
 	}

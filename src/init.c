@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 20:59:16 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 23:47:35 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_mlx(t_fdf *fdf, char *raw_map)
 {
 	fdf->control = set_init_controls(&fdf->control);
 	open_fd(fdf, raw_map);
+	
 	if (obtain_split_fd(fdf->fd, &fdf->map) == EXIT_FAILURE)
 	{
 		close(fdf->fd);
@@ -75,6 +76,7 @@ static void	open_fd(t_fdf *fdf, char *raw_map)
 		return ;
 	}
 }
+
 
 void	free_broken_prog(t_map *map)
 {

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:50:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 21:15:12 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 23:06:15 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ int		menu_rgb(int value);
 int		rgba(int value);
 int		get_trgb(int str);
 /**
- * Traverses the color chain backwards and multiplies each of its positions in 
+ * Traverses the color chain backwards and multiplies each of its positions in
  * reverse order of traversal
  */
-int		str_to_color(char *color);
-void	set_color_palette(int *a, void (*f)(int *, int, int), int p, int z_val);
-void	*get_color_palette(int palette);
-void	set_color_array(t_fdf *fdf);
-int		split_rgb(unsigned int r, unsigned int g, unsigned int b, unsigned int a);
+int			hex_to_color(char *color);
+int			str_to_color(char *aux, int len, unsigned long int_color);
+void		set_color_palet(int *a, void (*f)(int *, int, int), int p, int z_val);
+void		*get_color_palette(int palette);
+void		set_color_array(t_fdf *fdf);
+int			sp_rgb(unsigned int r, unsigned int g, unsigned int b, unsigned int a);
 
 #endif

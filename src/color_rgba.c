@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 20:45:23 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 20:56:29 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 22:47:17 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	get_g(int trgb);
 static int	get_b(int trgb);
 static int	get_a(int trgb);
 
-int	split_rgb(unsigned int r, unsigned int g, unsigned int b, unsigned int a)
+int	sp_rgb(unsigned int r, unsigned int g, unsigned int b, unsigned int a)
 {
 	int	colors[4];
 

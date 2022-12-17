@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:38:19 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 18:22:29 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/16 23:01:09 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	set_color_to_arr(char *extract, int i, int *arr)
 	int	color;
 
 	extract++;
-	color = str_to_color(extract);
+	color = hex_to_color(extract);
 	*(arr + i) = color;
 	extract = "";
 }
@@ -37,7 +37,7 @@ void	set_color_for_item(char *extract, int *arr_color, t_iter iter)
 	if (extract)
 		set_color_to_arr(extract, iter.j, arr_color);
 	else
-		set_color_palette(arr_color, get_color_palette(1), iter.j, iter.i);
+		set_color_palet(arr_color, get_color_palette(1), iter.j, iter.i);
 }
 
 void	process_item(char **extr, char **ch, t_iter *i, int *mtrx, int *color)

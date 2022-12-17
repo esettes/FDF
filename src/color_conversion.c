@@ -6,106 +6,26 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 20:51:50 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 18:56:53 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/17 00:15:38 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
+#include "colors.h"
 
-static void	set_rgb_parts(t_rgba *rgba, t_iter *iter, t_iter *save, size_t i);
-static void	init_rgba(t_rgba *rgba);
-static int	hex_char_to_int(char c);
-
-int	str_to_color(char *color)
+int	hex_to_color(char *color)
 {
 	unsigned long	int_color;
 	char			*aux;
-	t_rgba			rgba;
-	t_iter			iter;
-	t_iter			save;
-	int				i;
+	int				len;
 
 	aux = color;
-	init_rgba(&rgba);
-	iter.i = 0;
-	iter.j = 1;
-	i = ft_strlen(color) - 1;
 	int_color = 0;
-	while (i >= 0)
-	{
-		if (aux[iter.i] == 'x' || aux[iter.i] == '\0')
-			break ;
-		iter.j = hex_char_to_int(aux[iter.i]);
-		set_rgb_parts(&rgba, &iter, &save, i);
-		save.i = iter.j;
-		i--;
-		iter.i++;
-	}
-	int_color = split_rgb(rgba.r, rgba.g, rgba.b, rgba.a);
+	len = ft_strlen(color) - 1;
+	int_color = str_to_color(aux, len, int_color);
 	return (int_color);
 }
 
-int	get_upper_hex(char *hex, t_iter *iter, char c)
-{
-	while (hex[iter->i])
-	{
-		if (c == hex[iter->i])
-			return (iter->i);
-		iter->i++;
-	}
-	return (iter->i);
-}
-
-static void	init_rgba(t_rgba *rgba)
-{
-	rgba->r = 0;
-	rgba->g = 0;
-	rgba->b = 0;
-	rgba->a = 255;
-}
-
-static int	hex_char_to_int(char c)
-{
-	size_t	trigger;
-	char	*hex;
-	char	*hex2;
-	t_iter	iter;
-
-	iter.i = 0;
-	trigger = FALSE;
-	hex = "0123456789abcdef";
-	hex2 = "0123456789ABCDEF";
-	if (!c)
-		return (iter.i);
-	while (hex[iter.i])
-	{
-		if (c == hex[iter.i])
-		{
-			trigger = TRUE;
-			return (iter.i);
-		}
-		iter.i++;
-	}
-	iter.i = 0;
-	if (trigger == FALSE)
-		iter.i = get_upper_hex(hex2, &iter, c);
-	return (iter.i);
-}
-
-static void	set_rgb_parts(t_rgba *rgba, t_iter *iter, t_iter *save, size_t i)
-{
-	if (i % 2 == 0)
-	{
-		save->j = iter->j;
-		iter->j = save->i * iter->j;
-		if (i == 4)
-			rgba->r = iter->j;
-		if (i == 2)
-			rgba->g = iter->j;
-		if (i == 0)
-			rgba->b = iter->j;
-	}
-}
 /*
 "0123456789abcdef"
 
