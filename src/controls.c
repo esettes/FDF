@@ -24,7 +24,7 @@ void	move_img(mlx_key_data_t keydata, void *param)
 		puts("Gotta grab it all!");
 	if (key == MLX_KEY_ESCAPE)
 		mlx_close_window(fdf->mlx);
-	if ((key >= 262 && key <= 265) || (key >= 87 && key <= 65))
+	if ((key >= 262 && key <= 265))
 		set_control_movement(keydata, fdf);
 	else if (key == MLX_KEY_T || key == MLX_KEY_I)
 		set_control_view(keydata, fdf);

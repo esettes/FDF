@@ -13,18 +13,18 @@
 #include "libft.h"
 #include "colors.h"
 
-int	hex_to_color(char *color)
-{
-	unsigned long	int_color;
-	char			*aux;
-	int				len;
+// int	hex_to_color(char *color)
+// {
+// 	unsigned long	int_color;
+// 	char			*aux;
+// 	int				len;
 
-	aux = color;
-	int_color = 0;
-	len = ft_strlen(color) - 1;
-	int_color = str_to_color(aux, len, int_color);
-	return (int_color);
-}
+// 	aux = color;
+// 	int_color = 0;
+// 	len = ft_strlen(color) - 1;
+// 	int_color = str_to_color(aux, len, int_color);
+// 	return (int_color);
+// }
 
 /*
 "0123456789abcdef"

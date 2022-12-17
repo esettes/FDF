@@ -24,6 +24,8 @@ void	print_info(t_vec2 vertices)
 	ft_putendl_fd(BLUE_, "Map y size:", 1);
 	ft_putendl_fd(BLUE_, y, 1);
 	ft_putendl_fd(VIOLET_, "\nReading map...", 1);
+	free(x);
+	free(y);
 }
 
 /**

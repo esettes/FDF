@@ -45,8 +45,14 @@ endif
 HEADERS	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/headers/ -I ./inc/MLX42/include/MLX42/
 
 CC	= clang
-CFLAGS	= -Wall -Wextra -Werror -g3 -fsanitize=address #-fno-omit-frame-pointer -fno-optimize-sibling-calls
+CFLAGS	= -Wall -Wextra -Werror #-fno-omit-frame-pointer -fno-optimize-sibling-calls
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit
+
+ifdef DEBUG
+	CFLAGS += -g3
+else
+	CFLAGS	+= -Ofast -D NDEBUG
+endif
 
 all: obj $(COMPS) $(NAME)
 

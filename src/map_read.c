@@ -86,7 +86,10 @@ static size_t	count_spaces(const char *s)
 	while (s[i])
 	{
 		if (s[i] == ' ')
-			len++;
+		{
+			if (s[i + 1] != ' ')
+				len++;
+		}
 		i++;
 	}
 	return (len);
@@ -128,7 +131,7 @@ int	check_valid_map(char **map, t_vec2 size)
 			aux = &(map[i][j]);
 			if (!(ft_strncmp(aux, " ", 1) == 0 || ft_strncmp(aux, "\n", 1) == 0
 					|| ft_strncmp(aux, "\n", 1) == 0
-					|| !ft_isalnum((char)aux)
+					//|| !ft_isalnum((char)aux)
 					|| ft_strncmp(aux, "-", 1) == 0
 					|| ft_strncmp(aux, "+", 1) == 0
 					|| ft_strncmp(aux, ",", 1) == 0))

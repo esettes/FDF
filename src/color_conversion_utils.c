@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "structs.h"
+#include "libft.h"
 #include "colors.h"
 
 static void	init_rgba(t_rgba *rgba)
@@ -84,6 +85,36 @@ int	str_to_color(char *aux, int len, unsigned long int_color)
 	init_rgba(&rgba);
 	iter.i = 0;
 	iter.j = 1;
+	while (len >= 0)
+	{
+		if (aux[iter.i] == 'x' || aux[iter.i] == '\0')
+			break ;
+		iter.j = hex_char_to_int(aux[iter.i]);
+		set_rgb_parts(&rgba, &iter, &save, len);
+		save.i = iter.j;
+		len--;
+		iter.i++;
+	}
+	int_color = sp_rgb(rgba.r, rgba.g, rgba.b, rgba.a);
+	return (int_color);
+}
+
+int	hex_to_color(char *color)
+{
+	t_rgba	rgba;
+	t_iter	iter;
+	t_iter	save;
+	unsigned long	int_color;
+	char			*aux;
+	int				len;
+
+	aux = color;
+
+	init_rgba(&rgba);
+	iter.i = 0;
+	iter.j = 1;
+	int_color = 0;
+	len = ft_strlen(color) - 1;
 	while (len >= 0)
 	{
 		if (aux[iter.i] == 'x' || aux[iter.i] == '\0')
