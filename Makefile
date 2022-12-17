@@ -6,7 +6,7 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/12/16 17:52:27 by iostancu         ###   ########.fr        #
+#    Updated: 2022/12/17 23:16:10 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC	= $(addprefix $(SRCDIR), $(SRCNAMES))
 OBJDIR	= ./obj/
 OBJS	= $(addprefix $(OBJDIR), $(SRCNAMES:.c=.o))
 
-GNL	= ./inc/gnl/gnl.a
+GNL	= ./inc/gnl/gnl
 LIBFT	= ./inc/libft/libft.a
 LIBX42	= ./inc/MLX42/libmlx42.a
 COMPS	= $(GNL) $(LIBFT) $(LIBX42)
