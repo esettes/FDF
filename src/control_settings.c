@@ -60,17 +60,21 @@ void	set_color_height(mlx_key_data_t keydata, t_fdf *fdf)
 {
 	if (keydata.key == MLX_KEY_J)
 	{
-		if (fdf->control.color_height <= 50)
+		if (fdf->control.color_height <= 100)
 		{
-			fdf->control.color_height *= 0.9;
+			fdf->control.color_height *= 0.1;
+			change_height(fdf);
+			set_color_array(fdf);
 			modify_mesh(fdf);
 		}
 	}
 	if (keydata.key == MLX_KEY_K)
 	{
-		if (fdf->control.color_height >= 0)
+		if (fdf->control.color_height >= -100)
 		{
-			fdf->control.color_height *= 1.1;
+			fdf->control.color_height *= -0.1;
+			change_height(fdf);
+			set_color_array(fdf);
 			modify_mesh(fdf);
 		}
 	}

@@ -59,7 +59,7 @@ int	obtain_split_fd(int fd, t_map *m)
 	// if (check_valid_map(split_fd, m->vertices) == EXIT_FAILURE)
 	// 	return (EXIT_FAILURE);
 	allocate_map_arrays(m);
-	iter.i = 0;
+	iter.i = -1;
 	if (obtain_z_and_color(m, split_fd, iter.i) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	free(split_fd);

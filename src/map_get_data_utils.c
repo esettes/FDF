@@ -19,7 +19,7 @@ void	get_color_and_integer(char **extr, char **ch, t_iter *iter, int *mtrx)
 {
 	*extr = ft_strchr(ch[iter->j], 'x');
 	iter->i = ft_atoi(ch[iter->j]);
-	iter->i *= 0.4;
+	iter->i *= 0.8;
 	mtrx[iter->j] = iter->i;
 }
 

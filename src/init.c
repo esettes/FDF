@@ -61,7 +61,7 @@ t_controls	set_init_controls(t_controls *control)
 	control->rot_angle = 0;
 	control->points_resolution = ADDIT_STEPS;
 	control->height = 1;
-	control->color_height = 0.5;
+	control->color_height = 1;
 	control->vert = 1;
 	control->horiz = 1;
 	control->perspective = ISOMETRIC;

@@ -31,5 +31,6 @@ void	set_bresen_step(t_bresen *point, t_vec2 end);
 int		check_image_limits(t_bresen *point, t_vec2 end);
 void	step_increment(t_vec2 *start, t_vec2 step);
 void	get_current_position(t_vec2 start, t_iter *current);
+void	change_height(t_fdf *fdf);;
 
 #endif

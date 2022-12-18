@@ -50,6 +50,7 @@ void	set_color_array(t_fdf *fdf)
 				val = fdf->map.default_colors[i][j];
 			else
 				val = fdf->map.map[i][j];
+			//val += fdf->control.color_height;
 			set_color_palet(fdf->map.colors[i],
 				get_color_palette(fdf->control.palette), j, val);
 			j++;

@@ -26,7 +26,7 @@ int	obtain_z_and_color(t_map *m, char **str, int pos)
 	t_iter	iter;
 	int		*int_color;
 
-	while (str[pos])
+	while (str[++pos])
 	{
 		ch_aux = ft_split(str[pos], ' ');
 		int_mtrx = malloc(sizeof(int) * m->vertices.x);
@@ -41,7 +41,6 @@ int	obtain_z_and_color(t_map *m, char **str, int pos)
 		m->colors[pos] = int_color;
 		m->map[pos] = int_mtrx;
 		free_strings(ch_aux, str[pos]);
-		pos++;
 	}
 	set_default_color(m);
 	return (EXIT_SUCCESS);
