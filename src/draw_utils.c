@@ -6,73 +6,12 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/17 23:41:18 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 20:02:36 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "macros.h"
-
-// void	change_height_color(t_fdf *fdf)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	val;
-
-// 	i = 0;
-// 	while (i < fdf->map.vertices.y)
-// 	{
-// 		j = 0;
-// 		while (j < fdf->map.vertices.x)
-// 		{
-// 			if (fdf->control.palette == 0)
-// 				val = fdf->map.default_colors[i][j];
-// 			else
-// 				val = fdf->map.map[i][j];
-// 			set_color_palet(fdf->map.colors[i],
-// 				get_color_palette(fdf->control.palette), j, val);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
-// 	while (i < fdf->map.vertices.y)
-// 	{
-// 		j = 0;
-// 		while (j < fdf->map.vertices.x)
-// 		{
-// 			if (fdf->map.map[i][j] > 0)
-// 				fdf->map.map[i][j] += 1;
-// 			else if (fdf->map.map[i][j] < 0)
-// 				fdf->map.map[i][j] -= 1;
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	{
-// 		fdf->map.colors[i] = 0x00FF00;
-// 		i++;
-// 	}
-// }
-
-/* Asign new values for the fdf->map.map array of integers*/
-void	change_height(t_fdf *fdf)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < fdf->map.vertices.y)
-	{
-		j = 0;
-		while (j < fdf->map.vertices.x)
-		{
-			fdf->map.map[i][j] *= 0.5;
-			j++;
-		}
-		i++;
-	}
-}
 
 void	set_draw_control_zoom(t_fdf *fdf, t_vec2 *start, t_vec2 *end)
 {

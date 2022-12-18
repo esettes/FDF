@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gnl.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/19 00:23:35 by iostancu          #+#    #+#             */
+/*   Updated: 2022/12/19 00:41:13 by iostancu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "gnl.h"
 #include <sys/types.h>
 
@@ -53,26 +65,17 @@ char	*get_line_break(char *str_st)
 	return (line);
 }
 
-/* loop str_st by index searching \n instead with ft_strchr */
-
 char	*read_buffersize(int fd, char *str_st, char *buff, ssize_t nbytes)
 {
-	//buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	nbytes = BUFFER_SIZE;
 	while (!ft_strchr_gnl(str_st, '\n') && nbytes == BUFFER_SIZE)
 	{
 		nbytes = read(fd, buff, BUFFER_SIZE);
-		if (nbytes == -1)
+		if (nbytes <= -1)
 		{
 			free (buff);
-			if (str_st)
-				free (str_st);
+			free (str_st);
 			return (NULL);
-		}
-		if (nbytes != 0)
-		{
-			buff[nbytes] = '\0';
-			str_st = concatenate_buff(str_st, buff, nbytes);
 		}
 		if (nbytes == 0)
 		{
@@ -81,15 +84,15 @@ char	*read_buffersize(int fd, char *str_st, char *buff, ssize_t nbytes)
 				free (buff);
 				return (str_st);
 			}
-			else
-				free (str_st);
+			free (str_st);
 			return (NULL);
 		}
+		buff[nbytes] = '\0';
+		str_st = concatenate_buff(str_st, buff, nbytes);
 	}
 	free (buff);
 	return (str_st);
 }
-
 
 void	init_data(t_data *data)
 {
@@ -102,8 +105,7 @@ void	init_data(t_data *data)
 char	*get_next_line(int fd)
 {
 	static t_data	data;
-	// static char	*str_st;
-	char		*line;
+	char			*line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0 || fd >= 1000)
 		return (NULL);
@@ -120,21 +122,3 @@ char	*get_next_line(int fd)
 		free (data.str_st);
 	return (line);
 }
-
-// int main(void)
-// {
-//     char    *line;
-//     int     fd;
-// 	int i = 0;
-//     fd = open ("quijote.txt", O_RDONLY);
-//     while (1)
-//     {
-// 		line = get_next_line(fd);
-// 		if (line == NULL)
-// 			break;
-//         printf ("%s", line);
-//         free (line);
-//     }
-// 	close(fd);
-//     return (0);
-// }

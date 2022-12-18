@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:06:34 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/15 22:19:54 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 20:53:49 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 # define FDF_H
 
 # include <stdio.h>
-//# include <unistd.h>
-//# include <stdlib.h>
 # include <fcntl.h>
 # include <memory.h>
 
 # include "gnl.h"
 # include "libft.h"
-
 # include "colors.h"
 # include "palettes.h"
 # include "controls.h"

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 23:53:56 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/19 00:02:34 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int argc, char	*argv[])
 {
 	t_fdf	*fdf;
 
-	//atexit(&ft_leaks);
 	if (argc < 3)
 	{
 		fdf = (t_fdf *)malloc(sizeof(t_fdf));

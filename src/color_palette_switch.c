@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:52:54 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 22:46:45 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 20:02:20 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	set_color_array(t_fdf *fdf)
 				val = fdf->map.default_colors[i][j];
 			else
 				val = fdf->map.map[i][j];
-			//val += fdf->control.color_height;
 			set_color_palet(fdf->map.colors[i],
 				get_color_palette(fdf->control.palette), j, val);
 			j++;

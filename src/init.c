@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 00:55:10 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 23:17:51 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 
 t_controls	set_init_controls(t_controls *control);
 static void	open_fd(t_fdf *fdf, char *raw_map);
+static void	init_program(t_fdf *fdf);
 
 void	init_mlx(t_fdf *fdf, char *raw_map)
 {
 	fdf->control = set_init_controls(&fdf->control);
 	open_fd(fdf, raw_map);
-	
 	if (obtain_split_fd(fdf->fd, &fdf->map) == EXIT_FAILURE)
 	{
 		close(fdf->fd);
@@ -47,6 +47,11 @@ void	init_mlx(t_fdf *fdf, char *raw_map)
 		exit(EXIT_FAILURE);
 		return ;
 	}
+	init_program(fdf);
+}
+
+static void	init_program(t_fdf *fdf)
+{
 	create_image(fdf, 0);
 	draw_menu(fdf);
 	draw_menu_box(fdf);
@@ -60,8 +65,7 @@ t_controls	set_init_controls(t_controls *control)
 	control->zoom = 2;
 	control->rot_angle = 0;
 	control->points_resolution = ADDIT_STEPS;
-	control->height = 1;
-	control->color_height = 1;
+	control->height = 0.1;
 	control->vert = 1;
 	control->horiz = 1;
 	control->perspective = ISOMETRIC;
@@ -77,20 +81,4 @@ static void	open_fd(t_fdf *fdf, char *raw_map)
 		exit(EXIT_FAILURE);
 		return ;
 	}
-}
-
-void	free_broken_prog(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	if (map->map)
-	{
-		while (map->map[i])
-		{
-			free(map->map[i]);
-			i++;
-		}
-	}
-	free(map);
 }

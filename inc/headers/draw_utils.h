@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bresen_utils.h                                     :+:      :+:    :+:   */
+/*   draw_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:01:03 by iostancu          #+#    #+#             */
-/*   Updated: 2022/07/11 10:19:20 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/19 00:06:31 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth);
 float	f_max(float a, float b);
 float	f_abs(float a);
-int 	print_map(t_fdf *fdf);
+int		print_map(t_fdf *fdf);
 
 void	set_perspective(t_fdf *fdf, t_bresen *point, t_vec2 *end);
 void	set_bresen_step_increment(int addit_steps, t_vec2 *step, t_iter max);
@@ -31,6 +31,5 @@ void	set_bresen_step(t_bresen *point, t_vec2 end);
 int		check_image_limits(t_bresen *point, t_vec2 end);
 void	step_increment(t_vec2 *start, t_vec2 step);
 void	get_current_position(t_vec2 start, t_iter *current);
-void	change_height(t_fdf *fdf);;
 
 #endif

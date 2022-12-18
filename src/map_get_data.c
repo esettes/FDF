@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:42 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 18:30:15 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 23:44:08 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	obtain_z_and_color(t_map *m, char **str, int pos)
 	t_iter	iter;
 	int		*int_color;
 
+	pos = -1;
 	while (str[++pos])
 	{
 		ch_aux = ft_split(str[pos], ' ');

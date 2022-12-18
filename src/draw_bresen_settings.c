@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:31 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 00:57:25 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 22:17:36 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	set_bresen_depth(t_fdf *fdf, t_bresen *point, t_vec2 end)
 
 	start.x = point->start.x;
 	start.y = point->start.y;
-	point->depth.z = (fdf->map.map[(int)start.y][(int)start.x]
-		* fdf->control.height) * fdf->control.color_height;
-	point->depth.z1 = (fdf->map.map[(int)end.y][(int)end.x]
-		* fdf->control.height) * fdf->control.color_height;
+	point->depth.z = fdf->map.map[(int)start.y][(int)start.x]
+		* fdf->control.height;
+	point->depth.z1 = fdf->map.map[(int)end.y][(int)end.x]
+		* fdf->control.height;
 }
 
 void	set_bresen_step(t_bresen *point, t_vec2 end)

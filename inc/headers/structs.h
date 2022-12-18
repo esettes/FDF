@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 00:52:03 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/19 00:21:57 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_vec2
 	float	x;
 	float	y;
 }				t_vec2;
+
 /*
  * @param[in] z int
  * @param[in] z1 int
@@ -35,6 +36,7 @@ typedef struct s_depth
 	int	z;
 	int	z1;
 }				t_depth;
+
 /*
  * @param[in] i int
  * @param[in] j int
@@ -44,6 +46,7 @@ typedef struct s_iter
 	int	i;
 	int	j;
 }				t_iter;
+
 /*
  * @param[in] r unsigned int
  * @param[in] g unint
@@ -58,7 +61,7 @@ typedef struct s_rgba
 	unsigned int	a;
 }				t_rgba;
 
-typedef	struct s_bresen
+typedef struct s_bresen
 {
 	t_vec2		start;
 	t_vec2		h_end;
@@ -68,6 +71,7 @@ typedef	struct s_bresen
 	t_vec2		step;
 	t_iter		curr;
 }				t_bresen;
+
 /*
  * @param[in] height float
  * @param[in] zoom float
@@ -75,18 +79,18 @@ typedef	struct s_bresen
  * @param[in] horiz int
  * @param[in] vert int
  */
-typedef	struct s_controls
+typedef struct s_controls
 {
 	float	height;
 	float	rot_angle;
 	int		palette;
-	float	color_height;
 	float	zoom;
 	size_t	perspective;
 	float	points_resolution;
 	int		horiz;
 	int		vert;
 }				t_controls;
+
 /**
  * Save all the values ​​necessary for the mesh construction.
  * 
@@ -103,7 +107,6 @@ typedef struct s_map
 	int			**map;
 	int			**colors;
 	int			**default_colors;
-	//int			z;
 	float		zoom;
 	t_vec2		vertices;
 	t_vec2		px_size;
@@ -111,6 +114,7 @@ typedef struct s_map
 	t_vec2		end;
 	t_vec2		offset;
 }				t_map;
+
 /**
  * Main struct of the program, used to store structs initializations
  * required by MLX and program variables. Simplifies the use of the mesh data.
@@ -124,7 +128,7 @@ typedef struct s_fdf
 	mlx_t		*mlx;
 	t_map		map;
 	t_controls	control;
-	mlx_image_t	*img;		// Has position
+	mlx_image_t	*img;
 	int			fd;
 }				t_fdf;
 

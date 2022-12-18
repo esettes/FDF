@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:23:21 by iostancu          #+#    #+#             */
-/*   Updated: 2022/06/20 13:28:25 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/19 00:20:40 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	loop_fdf(t_fdf *fdf);
 /*
  * Indicate if is the initialization image(0) creation or not(!0)
  */
-int 	create_image(t_fdf *fdf, int start);
-int 	draw_image(t_fdf *fdf);
+int		create_image(t_fdf *fdf, int start);
+int		draw_image(t_fdf *fdf);
 /**
  * Calls create_image() and draw_image().
  */
-int 	modify_mesh(t_fdf *fdf);
+int		modify_mesh(t_fdf *fdf);
 
 #endif

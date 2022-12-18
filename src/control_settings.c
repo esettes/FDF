@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:25 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 01:03:20 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 23:40:20 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,30 +53,6 @@ void	set_control_movement(mlx_key_data_t keydata, t_fdf *fdf)
 	{
 		fdf->control.horiz += 5;
 		modify_mesh(fdf);
-	}
-}
-
-void	set_color_height(mlx_key_data_t keydata, t_fdf *fdf)
-{
-	if (keydata.key == MLX_KEY_J)
-	{
-		if (fdf->control.color_height <= 100)
-		{
-			fdf->control.color_height *= 0.1;
-			change_height(fdf);
-			set_color_array(fdf);
-			modify_mesh(fdf);
-		}
-	}
-	if (keydata.key == MLX_KEY_K)
-	{
-		if (fdf->control.color_height >= -100)
-		{
-			fdf->control.color_height *= -0.1;
-			change_height(fdf);
-			set_color_array(fdf);
-			modify_mesh(fdf);
-		}
 	}
 }
 
@@ -132,7 +108,7 @@ void	set_control_point_resolution(mlx_key_data_t keydata, t_fdf *fdf)
 	}
 	if (keydata.key == MLX_KEY_B)
 	{
-		if (fdf->control.points_resolution <= 12)
+		if (fdf->control.points_resolution <= 100)
 		{
 			fdf->control.points_resolution += 1;
 			modify_mesh(fdf);

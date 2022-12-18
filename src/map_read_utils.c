@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:37:42 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 21:10:00 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 23:53:11 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,19 @@ int	*str_to_int(char *str)
 	free (str);
 	free(ch_aux);
 	return (int_mtrx);
+}
+
+int	check_map_size(char **split_fd, int pos)
+{
+	if (pos >= 1)
+	{
+		if (count_spaces(split_fd[pos])
+			!= count_spaces(split_fd[pos - 1]))
+		{
+			ft_putendl_fd(RED_, "Error: Invalid size map.", 1);
+			free_bronken_map(split_fd, pos);
+			return (EXIT_FAILURE);
+		}
+	}
+	return (EXIT_SUCCESS);
 }

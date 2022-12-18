@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:38:19 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 01:07:09 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/19 00:03:59 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	get_color_and_integer(char **extr, char **ch, t_iter *iter, int *mtrx)
 {
 	*extr = ft_strchr(ch[iter->j], 'x');
 	iter->i = ft_atoi(ch[iter->j]);
-	iter->i *= 0.8;
 	mtrx[iter->j] = iter->i;
 }
 
@@ -39,12 +38,6 @@ void	set_color_for_item(char *extract, int *arr_color, t_iter iter)
 		set_color_to_arr(extract, iter.j, arr_color);
 	else
 		set_color_palet(arr_color, get_color_palette(1), iter.j, iter.i);
-}
-
-void	process_item(char **extr, char **ch, t_iter *i, int *mtrx, int *color)
-{
-	get_color_and_integer(extr, ch, i, mtrx);
-	set_color_for_item(*extr, color, *i);
 }
 
 void	free_strings(char **ch_aux, char *str)

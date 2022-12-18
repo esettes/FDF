@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gnl_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/19 00:41:20 by iostancu          #+#    #+#             */
+/*   Updated: 2022/12/19 00:41:42 by iostancu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "gnl.h"
 
 void	*ft_memmove_gnl(void *dst, const void *src, size_t len)
 {
 	char	*s;
-	char		*d;
-	size_t				i;
+	char	*d;
+	size_t	i;
 
 	s = (char *)src;
 	d = (char *)dst;
@@ -47,7 +59,7 @@ size_t	ft_strlen_eol(const char *s, int lineLenght)
 
 int	ft_strchr_gnl(const char *s, int c)
 {
-	size_t	i;
+	size_t			i;
 	unsigned char	*str;
 
 	i = 0;
@@ -76,7 +88,6 @@ char	*ft_calloc_gnl(size_t count, size_t size)
 	if (!res)
 		return (NULL);
 	i = 0;
-	
 	while (i < all_size)
 		*(res + i++) = 0;
 	return (res);

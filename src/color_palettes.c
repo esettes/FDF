@@ -6,11 +6,13 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:06 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 23:00:05 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/19 00:02:13 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		hex_to_color(char *color);
+void	palette_terrain_2(int *arr, int pos, int z_value);
+void	palette_gamma_2(int *arr, int pos, int z_value);
 
 void	palette_default(int *arr, int pos, int z_value)
 {
@@ -43,6 +45,11 @@ void	palette_terrain(int *arr, int pos, int z_value)
 		arr[pos] = hex_to_color("3ca9af");
 	if (z_value < -70 && z_value >= -200)
 		arr[pos] = hex_to_color("3a98ae");
+	palette_terrain_2(arr, pos, z_value);
+}
+
+void	palette_terrain_2(int *arr, int pos, int z_value)
+{
 	if (z_value < -200)
 		arr[pos] = hex_to_color("3797ad");
 }
@@ -71,30 +78,13 @@ void	palette_gamma(int *arr, int pos, int z_value)
 		arr[pos] = hex_to_color("60699b");
 	if (z_value < -320 && z_value >= -400)
 		arr[pos] = hex_to_color("8879be");
+	palette_gamma_2(arr, pos, z_value);
+}
+
+void	palette_gamma_2(int *arr, int pos, int z_value)
+{
 	if (z_value < -400 && z_value >= -460)
 		arr[pos] = hex_to_color("ac74f9");
 	if (z_value < -460)
 		arr[pos] = hex_to_color("997498");
-}
-
-void	palette_test(int *arr, int pos, int z_value)
-{
-	if (z_value >= 0)
-		arr[pos] = hex_to_color("d773ca");
-	else
-		arr[pos] = hex_to_color("b8ac94");
-}
-
-void	palette_gamma_red(int *arr, int pos, int z_value)
-{
-	if (z_value > 13)
-		arr[pos] = hex_to_color("aca951");
-	if (z_value <= 13 && z_value >= 10)
-		arr[pos] = hex_to_color("ab9553");
-	if (z_value < 10 && z_value >= 7)
-		arr[pos] = hex_to_color("aa7543");
-	if (z_value < 7 && z_value >= 4)
-		arr[pos] = hex_to_color("825536");
-	if (z_value < 4)
-		arr[pos] = hex_to_color("856040");
 }
