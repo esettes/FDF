@@ -2,7 +2,7 @@ GREEN	=\033[0;32m
 LWHITE	= \033[2;37m
 LGREEN	=\033[2;32m
 
-NAME	= gnl
+NAME	= gnl.a
 
 SRCDIR	= ./src/
 SRCNAMES	= $(shell ls $(SRCDIR) | grep -E ".+\.c")

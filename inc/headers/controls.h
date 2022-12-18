@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:33:23 by iostancu          #+#    #+#             */
-/*   Updated: 2022/11/24 21:40:03 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 00:59:41 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	set_control_movement(mlx_key_data_t keydata, t_fdf *fdf);
 void	set_control_view(mlx_key_data_t keydata, t_fdf *fdf);
 void	set_control_rotation(mlx_key_data_t keydata, t_fdf *fdf);
 void	set_control_height(mlx_key_data_t keydata, t_fdf *fdf);
+void	set_color_height(mlx_key_data_t keydata, t_fdf *fdf);
 
 #endif

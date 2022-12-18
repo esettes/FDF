@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:51:18 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 20:58:19 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 00:52:54 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	move_img(mlx_key_data_t keydata, void *param)
 		mlx_close_window(fdf->mlx);
 	if ((key >= 262 && key <= 265))
 		set_control_movement(keydata, fdf);
+	else if (key == MLX_KEY_J || key == MLX_KEY_K)
+		set_color_height(keydata, fdf);
 	else if (key == MLX_KEY_T || key == MLX_KEY_I)
 		set_control_view(keydata, fdf);
 	else if (key == MLX_KEY_N || key == MLX_KEY_M || key == 267

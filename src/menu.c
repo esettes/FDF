@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:29:11 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 21:01:43 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 00:20:04 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,22 @@ void	draw_menu(t_fdf *fdf)
 	mlx_put_string(fdf->mlx, "", aux.x + 10, aux.y += 22);
 	mlx_put_string(fdf->mlx, "[Z/X] Y-Rotation", aux.x + 10, aux.y += 22);
 	mlx_put_string(fdf->mlx, "[-/+] Height multip.", aux.x + 10, aux.y += 22);
+}
+
+void	draw_menu_box(t_fdf *fdf)
+{
+	int	i;
+	int	j;
+
+	i = 1750;
+	while (i < MAX_WIDTH + 300)
+	{
+		j = 100;
+		while (j < MAX_HEIGHT + 100)
+		{
+			mlx_put_pixel(fdf->img, i, j, 0xdecd51);
+			j++;
+		}
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/15 22:44:29 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 00:52:03 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef	struct s_controls
 	float	height;
 	float	rot_angle;
 	int		palette;
+	float	color_height;
 	float	zoom;
 	size_t	perspective;
 	float	points_resolution;

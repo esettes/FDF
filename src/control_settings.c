@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:25 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 20:58:06 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 01:03:20 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,26 @@ void	set_control_movement(mlx_key_data_t keydata, t_fdf *fdf)
 	{
 		fdf->control.horiz += 5;
 		modify_mesh(fdf);
+	}
+}
+
+void	set_color_height(mlx_key_data_t keydata, t_fdf *fdf)
+{
+	if (keydata.key == MLX_KEY_J)
+	{
+		if (fdf->control.color_height <= 50)
+		{
+			fdf->control.color_height *= 0.9;
+			modify_mesh(fdf);
+		}
+	}
+	if (keydata.key == MLX_KEY_K)
+	{
+		if (fdf->control.color_height >= 0)
+		{
+			fdf->control.color_height *= 1.1;
+			modify_mesh(fdf);
+		}
 	}
 }
 

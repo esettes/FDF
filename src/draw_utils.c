@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 20:58:47 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/17 23:41:18 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,22 @@ float	f_abs(float a)
 
 int	check_image_limits(t_bresen *point, t_vec2 end)
 {
-	int		min;
+	int		min_x;
+	int		min_y;
 	t_vec2	offset;
 	t_vec2	start;
 
-	min = 100;
+	min_x = 500;
+	min_y = 100;
 	offset.x = point->offset.x;
 	offset.y = point->offset.y;
 	start.x = point->start.x;
 	start.y = point->start.y;
 	if ((end.x + offset.x < MAX_WIDTH) && (end.y + offset.y < MAX_HEIGHT)
-		&& (end.x + offset.x > min) && (end.y + offset.y > min)
+		&& (end.x + offset.x > min_x) && (end.y + offset.y > min_y)
 		&& (start.x + offset.x < MAX_WIDTH)
 		&& (start.y + offset.y < MAX_HEIGHT)
-		&& (start.x + offset.x > min) && (start.y + offset.y > min))
+		&& (start.x + offset.x > min_x) && (start.y + offset.y > min_y))
 	{
 		return (1);
 	}

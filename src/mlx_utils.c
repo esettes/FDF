@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:14:04 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 21:01:28 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 00:15:20 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	create_image(t_fdf *fdf, int start)
 		mlx_delete_image(fdf->mlx, fdf->img);
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH * IMG_AUMENT, HEIGHT * IMG_AUMENT);
 	offset = set_img_offset();
-	ft_memset(fdf->img->pixels, 0, fdf->img->width * fdf->img->height * 4);
+	//ft_memset(fdf->img->pixels, 0, fdf->img->width * fdf->img->height * 4);
 	mlx_image_to_window(fdf->mlx, fdf->img, -offset.x, -offset.y);
 	return (EXIT_SUCCESS);
 }
@@ -39,6 +39,7 @@ int	draw_image(t_fdf *fdf)
 	set_new_zoom(fdf);
 	if (print_map(fdf))
 		return (EXIT_FAILURE);
+	draw_menu_box(fdf);
 	return (EXIT_SUCCESS);
 }
 

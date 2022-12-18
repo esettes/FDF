@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:38:19 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 23:01:09 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 01:07:09 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	get_color_and_integer(char **extr, char **ch, t_iter *iter, int *mtrx)
 {
 	*extr = ft_strchr(ch[iter->j], 'x');
 	iter->i = ft_atoi(ch[iter->j]);
+	iter->i *= 0.4;
 	mtrx[iter->j] = iter->i;
 }
 

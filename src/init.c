@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/16 23:47:35 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/18 00:55:10 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	init_mlx(t_fdf *fdf, char *raw_map)
 	}
 	create_image(fdf, 0);
 	draw_menu(fdf);
+	draw_menu_box(fdf);
 	draw_image(fdf);
 	loop_fdf(fdf);
 }
@@ -60,6 +61,7 @@ t_controls	set_init_controls(t_controls *control)
 	control->rot_angle = 0;
 	control->points_resolution = ADDIT_STEPS;
 	control->height = 1;
+	control->color_height = 0.5;
 	control->vert = 1;
 	control->horiz = 1;
 	control->perspective = ISOMETRIC;
@@ -76,7 +78,6 @@ static void	open_fd(t_fdf *fdf, char *raw_map)
 		return ;
 	}
 }
-
 
 void	free_broken_prog(t_map *map)
 {
