@@ -6,18 +6,20 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:29:11 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 20:34:33 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/19 02:25:44 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+void	draw_info(t_fdf fdf);
+
 void	draw_menu(t_fdf *fdf)
 {
 	t_vec2	aux;
 
-	aux.x = (WIDTH * IMG_AUMENT) / IMG_AUMENT - (WIDTH * 0.20);
-	aux.y = (HEIGHT * IMG_AUMENT) / IMG_AUMENT - (HEIGHT * 0.90);
+	aux.x = WIDTH - (WIDTH * 0.20);
+	aux.y = HEIGHT - (HEIGHT * 0.90);
 	mlx_put_string(fdf->mlx, "CONTROLS", aux.x + 10, aux.y += 22);
 	mlx_put_string(fdf->mlx, "", aux.x + 10, aux.y += 22);
 	mlx_put_string(fdf->mlx, "[mouse] Scroll to zoom", aux.x + 10,
@@ -50,4 +52,15 @@ void	draw_menu_box(t_fdf *fdf)
 		}
 		i++;
 	}
+	//draw_info(*fdf);
+}
+
+void	draw_info(t_fdf fdf)
+{
+	t_vec2	aux;
+
+	aux.x = WIDTH - (WIDTH * 0.30);
+	aux.y = HEIGHT - (HEIGHT * 0.20);
+	mlx_put_string(fdf.mlx, "Height", aux.x + 10, aux.y += 22);
+	mlx_put_string(fdf.mlx, ft_itoa((int)fdf.control.height), aux.x + 10, aux.y += 22);
 }

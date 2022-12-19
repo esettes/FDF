@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:27:12 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 00:59:00 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/19 02:25:48 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 void		f_bresen(t_fdf *fdf, t_bresen point, t_vec2 end);
 static void	draw_right_segment(t_fdf *fdf, t_bresen point, t_vec2 *end);
 static void	draw_left_segment(t_fdf *fdf, t_bresen point, t_vec2 *end);
+void	draw_info(t_fdf fdf);
 
 int	print_map(t_fdf *fdf)
 {
@@ -43,6 +44,7 @@ int	print_map(t_fdf *fdf)
 		point->start.y++;
 	}
 	free(point);
+	draw_info(*fdf);
 	return (0);
 }
 

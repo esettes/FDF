@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/19 02:09:18 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/19 02:16:25 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_controls	set_init_controls(t_controls *control)
 	control->zoom = 2;
 	control->rot_angle = 0;
 	control->points_resolution = ADDIT_STEPS;
-	control->height = 0.2;
+	control->height = 1;
 	control->vert = 1;
 	control->horiz = 1;
 	control->perspective = ISOMETRIC;
