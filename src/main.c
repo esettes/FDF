@@ -6,13 +6,14 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/19 00:02:34 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/19 02:05:00 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 void	free_mem(t_fdf *fdf);
+int	check_file_extension(char *file);
 
 void	ft_leaks(void)
 {
@@ -25,6 +26,8 @@ int	main(int argc, char	*argv[])
 
 	if (argc < 3)
 	{
+		if (check_file_extension(argv[1]) == EXIT_FAILURE)
+			exit (EXIT_FAILURE);
 		fdf = (t_fdf *)malloc(sizeof(t_fdf));
 		fdf->mlx = NULL;
 		init_mlx(fdf, argv[1]);

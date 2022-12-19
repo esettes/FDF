@@ -6,7 +6,7 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/12/17 23:24:48 by iostancu         ###   ########.fr        #
+#    Updated: 2022/12/19 01:57:34 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ CFLAGS	= -Wall -Wextra -Werror #-fno-omit-frame-pointer -fno-optimize-sibling-ca
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit
 
 ifdef DEBUG
-	CFLAGS += -g3
+	CFLAGS += -g3 -fsanitize=address
 else
 	CFLAGS	+= -Ofast -D NDEBUG
 endif

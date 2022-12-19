@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 23:54:14 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/19 00:30:48 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/19 01:23:00 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ size_t	count_spaces(const char *s)
 
 	i = 0;
 	len = 0;
+	while (s[i] == ' ' && s[i])
+		i++;
 	while (s[i])
 	{
 		if (s[i] == ' ')

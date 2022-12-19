@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 23:17:51 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/19 02:09:18 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_controls	set_init_controls(t_controls *control)
 	control->zoom = 2;
 	control->rot_angle = 0;
 	control->points_resolution = ADDIT_STEPS;
-	control->height = 0.1;
+	control->height = 0.2;
 	control->vert = 1;
 	control->horiz = 1;
 	control->perspective = ISOMETRIC;
@@ -81,4 +81,28 @@ static void	open_fd(t_fdf *fdf, char *raw_map)
 		exit(EXIT_FAILURE);
 		return ;
 	}
+}
+
+int	check_file_extension(char *file)
+{
+	size_t	len;
+	size_t	i;
+	size_t	j;
+	char	*ext;
+
+	len = ft_strlen(file);
+	i = len - 4;
+	j = 0;
+	while (j < i)
+	{
+		file++;
+		j++;
+	}
+	ext = ft_strnstr(file, ".fdf", 4);
+	if (ext == NULL)
+	{
+		ft_putendl_fd(RED_, "Error: Invalid file extension.", 1);
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
 }
