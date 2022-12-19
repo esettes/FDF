@@ -55,12 +55,25 @@ void	draw_menu_box(t_fdf *fdf)
 	//draw_info(*fdf);
 }
 
+// void	draw_info(t_fdf fdf)
+// {
+// 	char	*a;
+
+// 	a = ft_itoa((int)fdf.control.height);
+// 	ft_memmove(a, "\rHeight:     ", 500);
+// 	ft_putstr_fd(a, 1);
+// 	free(a);
+// }
+
 void	draw_info(t_fdf fdf)
 {
 	t_vec2	aux;
+	char	*a;
 
+	a = ft_itoa((int)fdf.control.height);
 	aux.x = WIDTH - (WIDTH * 0.30);
 	aux.y = HEIGHT - (HEIGHT * 0.20);
 	mlx_put_string(fdf.mlx, "Height", aux.x + 10, aux.y += 22);
-	mlx_put_string(fdf.mlx, ft_itoa((int)fdf.control.height), aux.x + 10, aux.y += 22);
+	mlx_put_string(fdf.mlx, a, aux.x + 10, aux.y += 22);
+	free(a);
 }

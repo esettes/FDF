@@ -44,7 +44,6 @@ int	print_map(t_fdf *fdf)
 		point->start.y++;
 	}
 	free(point);
-	draw_info(*fdf);
 	return (0);
 }
 

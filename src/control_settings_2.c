@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+void	draw_info(t_fdf fdf);
 
 void	set_control_rotation(mlx_key_data_t keydata, t_fdf *fdf)
 {
@@ -27,12 +28,14 @@ void	set_control_height(mlx_key_data_t keydata, t_fdf *fdf)
 		|| keydata.key == MLX_KEY_N || keydata.key == MLX_KEY_PAGE_DOWN)
 	{
 		fdf->control.height -= 0.02;
+		draw_info(*fdf);
 		modify_mesh(fdf);
 	}
 	if (keydata.key == MLX_KEY_KP_ADD || keydata.key == MLX_KEY_PAGE_UP
 		|| keydata.key == MLX_KEY_M)
 	{
 		fdf->control.height += 0.02;
+		draw_info(*fdf);
 		modify_mesh(fdf);
 	}
 }
