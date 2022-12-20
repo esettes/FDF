@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/20 04:02:30 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:57:41 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,13 @@ typedef struct s_menu
 	char	*height;
 	char	*zoom;
 	char	*position;
-	char	*all;
+	char	*horiz;
+	char	*vert;
+	char	*itoahoriz;
+	char	*itoavert;
+	char	*itoares;
+	char	*itoazoom;
+	char	*itoaheight;
 }				t_menu;
 /**
  * Save all the values ​​necessary for the mesh construction.
@@ -136,7 +142,6 @@ typedef struct s_fdf
 	t_map		map;
 	t_controls	control;
 	mlx_image_t	*img;
-	mlx_image_t	**menu;
 	int			fd;
 }				t_fdf;
 

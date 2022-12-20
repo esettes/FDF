@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:52:54 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 20:02:20 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:12:00 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	*get_color_palette(int palette)
 		ptr = &palette_gamma;
 	if (palette == 4)
 		ptr = &palette_test;
+	if (palette == 5)
+		ptr = &palette_gamma_random;
 	return (ptr);
 }
 

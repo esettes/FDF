@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 17:51:18 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 20:02:01 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:12:29 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	move_img(mlx_key_data_t keydata, void *param)
 		set_control_height(keydata, fdf);
 	else if (key == MLX_KEY_Z || key == MLX_KEY_X)
 		set_control_rotation(keydata, fdf);
-	else if (key >= MLX_KEY_0 && key <= MLX_KEY_4)
+	else if (key >= MLX_KEY_0 && key <= MLX_KEY_5)
 		set_control_palette(keydata, fdf);
 	else if (key >= MLX_KEY_B && key <= MLX_KEY_V)
 		set_control_point_resolution(keydata, fdf);

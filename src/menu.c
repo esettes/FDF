@@ -6,11 +6,17 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:29:11 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/20 04:06:01 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:39:49 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "structs.h"
+#include "macros.h"
+#include "libft.h"
+#include <stddef.h>
+#include "MLX42.h"
+
+void	free_menu_info(t_menu *m);
 
 void	draw_menu(t_fdf *fdf)
 {
@@ -47,30 +53,46 @@ void	draw_menu_box(t_fdf *fdf)
 	}
 }
 
-mlx_image_t	**draw_controls_info(t_fdf *fdf)
+void	draw_controls_info(t_fdf *fdf)
 {
-	t_vec2		aux;
-	t_menu		m;
-	mlx_image_t	**img;
-	char		*aux1;
-	char		*aux2;
+	t_vec2	aux;
+	t_menu	m;
+	char	*aux1;
+	char	*aux2;
 
-	m.res = ft_strjoin(" Res ", ft_itoa((int)fdf->control.points_resolution));
-	m.height = ft_strjoin("H ", ft_itoa((int)fdf->control.height));
-	m.position = ft_strjoin(ft_strjoin(ft_itoa(fdf->control.horiz), " x "),
-		ft_strjoin( ft_itoa(fdf->control.vert), " y"));
-	m.zoom = ft_strjoin(" Z ", ft_itoa((int)fdf->control.zoom));
+	m.itoares = ft_itoa((int)fdf->control.points_resolution);
+	m.itoaheight = ft_itoa((int)fdf->control.height);
+	m.itoahoriz = ft_itoa((int)fdf->control.horiz);
+	m.itoavert = ft_itoa((int)fdf->control.vert);
+	m.itoazoom = ft_itoa((int)fdf->control.zoom);
+	m.horiz = ft_strjoin(m.itoahoriz, " x ");
+	m.vert = ft_strjoin(m.itoavert, " y");
+	m.res = ft_strjoin(" Res ", m.itoares);
+	m.height = ft_strjoin("H ", m.itoaheight);
+	m.position = ft_strjoin(m.horiz, m.vert);
+	m.zoom = ft_strjoin(" Z ", m.itoazoom);
 	aux1 = ft_strjoin(m.position, m.res);
 	aux2 = ft_strjoin(m.height, m.zoom);
 	aux.x = WIDTH - (WIDTH * 0.26);
 	aux.y = HEIGHT - (HEIGHT * 0.17);
-	fdf->menu[0] = mlx_put_string(fdf->mlx, aux1, aux.x + 10, aux.y += 22);
-	fdf->menu[1] = mlx_put_string(fdf->mlx, aux2, aux.x + 10, aux.y += 22);
-	free(m.res);
-	free(m.height);
-	free(m.position);
-	free(m.zoom);
+	mlx_put_string(fdf->mlx, aux1, aux.x + 10, aux.y += 22);
+	mlx_put_string(fdf->mlx, aux2, aux.x + 10, aux.y += 22);
+	free_menu_info(&m);
 	free(aux1);
 	free(aux2);
-	return (img);
+}
+
+void	free_menu_info(t_menu *m)
+{
+	free(m->itoaheight);
+	free(m->itoahoriz);
+	free(m->itoavert);
+	free(m->itoares);
+	free(m->itoazoom);
+	free(m->horiz);
+	free(m->vert);
+	free(m->res);
+	free(m->height);
+	free(m->position);
+	free(m->zoom);
 }

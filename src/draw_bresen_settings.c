@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:31 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/20 03:41:14 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:40:40 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_vec2	set_bresen_offset(t_fdf *fdf)
 {
 	t_vec2	iso_offset;
 	t_vec2	off;
-	float		top_offset;
+	float	top_offset;
 
 	iso_offset.y = 5;
 	iso_offset.x = 12;

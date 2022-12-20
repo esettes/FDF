@@ -6,11 +6,12 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:31:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/20 01:35:28 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:39:57 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "MLX42.h"
 
 void	free_mem(t_fdf *fdf);
 int		check_file_extension(char *file);

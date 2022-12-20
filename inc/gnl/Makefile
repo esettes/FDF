@@ -10,13 +10,12 @@ SRC	= $(addprefix $(SRCDIR), $(SRCNAMES))
 OBJDIR	= ./obj/
 OBJS	= $(addprefix $(OBJDIR), $(SRCNAMES:.c=.o))
 
-LIBINC	= ./inc/#get_next_line_bonus.h
-FLAGS	= -g3 -Wall -Wextra -Werror
+LIBINC	= ./inc/
+FLAGS	= -Wall -Wextra -Werror
 CC	= clang
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
-	@$(CC) $(FLAGS) -I$(LIBINC) -o $@ -c $< 
-#	@echo "${LWHITE}Compiling $(notdir $<)${LGREEN}✓$(RESET)"
+	@$(CC) $(FLAGS) -I$(LIBINC) -o $@ -c $<
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)

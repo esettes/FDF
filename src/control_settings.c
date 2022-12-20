@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:25 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 23:40:20 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:12:25 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	set_control_palette(mlx_key_data_t keydata, t_fdf *fdf)
 		fdf->control.palette = 3;
 	if (keydata.key == MLX_KEY_4)
 		fdf->control.palette = 4;
+	if (keydata.key == MLX_KEY_5)
+		fdf->control.palette = 5;
 	modify_mesh(fdf);
 }
 
