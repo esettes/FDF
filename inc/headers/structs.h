@@ -136,6 +136,7 @@ typedef struct s_fdf
 	t_map		map;
 	t_controls	control;
 	mlx_image_t	*img;
+	mlx_image_t	**menu;
 	int			fd;
 }				t_fdf;
 

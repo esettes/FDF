@@ -48,8 +48,8 @@ CC	= clang
 CFLAGS	= #-Wall -Wextra -Werror #-fno-omit-frame-pointer -fno-optimize-sibling-calls
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit
 
-ifdef DEBUG
-	CFLAGS += -g3 -fsanitize=address
+ifeq ($(DEBUG),1)
+	CFLAGS	+= -g3
 else
 	CFLAGS	+= -Ofast -D NDEBUG
 endif

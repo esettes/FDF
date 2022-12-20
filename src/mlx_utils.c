@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	draw_controls_info(t_fdf *fdf);
+mlx_image_t	**draw_controls_info(t_fdf *fdf);
 
 static t_vec2	set_img_offset(void);
 
@@ -31,7 +31,11 @@ int	create_image(t_fdf *fdf, int start)
 
 	i = 50;
 	if (start != 0)
+	{
+		mlx_delete_image(fdf->mlx, fdf->menu[0]);
+		mlx_delete_image(fdf->mlx, fdf->menu[1]);
 		mlx_delete_image(fdf->mlx, fdf->img);
+	}
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH * 1.3, HEIGHT * 1.7);
 	offset = set_img_offset();
 	mlx_image_to_window(fdf->mlx, fdf->img, offset.x, offset.y);
@@ -50,13 +54,13 @@ int	create_image(t_fdf *fdf, int start)
 
 int	draw_image(t_fdf *fdf)
 {
-	mlx_image_t	*img;
+	mlx_image_t	**img;
 
 	set_new_zoom(fdf);
 	if (print_map(fdf))
 		return (EXIT_FAILURE);
 	draw_menu(fdf);
-	draw_controls_info(fdf);
+	fdf->menu = draw_controls_info(fdf);
 	draw_menu_box(fdf);
 	return (EXIT_SUCCESS);
 }
