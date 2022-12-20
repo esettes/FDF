@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 21:24:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/19 02:16:25 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/20 03:38:21 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_mlx(t_fdf *fdf, char *raw_map)
 		exit(EXIT_FAILURE);
 		return ;
 	}
-	fdf->mlx = mlx_init(WIDTH, HEIGHT, "Wire-frame (fdf)", true);
+	fdf->mlx = mlx_init(WIDTH - 100, HEIGHT - 50, "Wire-frame (fdf)", true);
 	if (!fdf->mlx)
 	{
 		ft_putendl_fd(RED_, "Error: Can't initialize mlx.", 1);
@@ -62,10 +62,10 @@ static void	init_program(t_fdf *fdf)
 t_controls	set_init_controls(t_controls *control)
 {
 	control->palette = 0;
-	control->zoom = 2;
+	control->zoom = 3;
 	control->rot_angle = 0;
 	control->points_resolution = ADDIT_STEPS;
-	control->height = 1;
+	control->height = 3;
 	control->vert = 1;
 	control->horiz = 1;
 	control->perspective = ISOMETRIC;

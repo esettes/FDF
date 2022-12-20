@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:12:41 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/19 00:21:57 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/20 04:02:30 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,14 @@ typedef struct s_controls
 	int		horiz;
 	int		vert;
 }				t_controls;
-
+typedef struct s_menu
+{
+	char	*res;
+	char	*height;
+	char	*zoom;
+	char	*position;
+	char	*all;
+}				t_menu;
 /**
  * Save all the values ​​necessary for the mesh construction.
  * 

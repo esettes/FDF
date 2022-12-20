@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 22:37:37 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 20:02:36 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/20 01:39:23 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	check_image_limits(t_bresen *point, t_vec2 end)
 	start.y = point->start.y;
 	if ((end.x + offset.x < MAX_WIDTH) && (end.y + offset.y < MAX_HEIGHT)
 		&& (end.x + offset.x > min_x) && (end.y + offset.y > min_y)
-		&& (start.x + offset.x < (WIDTH - (WIDTH * 0.25)))
+		&& (start.x + offset.x < (WIDTH - (WIDTH * 0.2)))
 		&& (start.y + offset.y < MAX_HEIGHT)
 		&& (start.x + offset.x > min_x) && (start.y + offset.y > min_y))
 	{

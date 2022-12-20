@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:35 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 23:14:44 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/20 04:04:31 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	isometric(t_fdf *fdf, t_vec2 *start, t_vec2 *end, t_depth depth)
 	z_zoom = 0.7;
 	start->x = (start->x - start->y) * (cos(45) * 1);
 	start->y = (start->x + start->y) * (sin(45) * z_zoom)
-		- (depth.z * z_zoom * (fdf->control.zoom * 0.2));
+		- (depth.z * (fdf->control.zoom * 0.004));
 	end->x = (end->x - end->y) * (cos(45) * 1);
 	end->y = (end->x + end->y) * (sin(45) * z_zoom)
-		- (depth.z1 * z_zoom * (fdf->control.zoom * 0.2));
+		- (depth.z1 * (fdf->control.zoom * 0.004));
 	(void)fdf;
 }
 

@@ -6,7 +6,7 @@
 /*   By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:53:31 by iostancu          #+#    #+#             */
-/*   Updated: 2022/12/18 22:17:36 by iostancu         ###   ########.fr       */
+/*   Updated: 2022/12/20 03:41:14 by iostancu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ t_vec2	set_bresen_offset(t_fdf *fdf)
 {
 	t_vec2	iso_offset;
 	t_vec2	off;
-	int		top_offset;
+	float		top_offset;
 
-	iso_offset.y = 3.5;
-	iso_offset.x = 9;
-	top_offset = 2;
+	iso_offset.y = 5;
+	iso_offset.x = 12;
+	top_offset = 2.5;
 	off.x = 0;
 	off.y = 0;
 	if (fdf->control.perspective == ISOMETRIC)
@@ -62,7 +62,7 @@ t_vec2	set_bresen_offset(t_fdf *fdf)
 	}
 	else if (fdf->control.perspective == TOP_VIEW)
 	{
-		off.x = IMG_CENTER_X - (fdf->map.px_size.x / (top_offset * 4));
+		off.x = IMG_CENTER_X - (fdf->map.px_size.x / (top_offset * 2));
 		off.y = IMG_CENTER_Y - (fdf->map.px_size.y / (top_offset * 6));
 		fdf->map.offset.x = top_offset;
 		fdf->map.offset.y = top_offset;
