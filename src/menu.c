@@ -12,8 +12,6 @@
 
 #include "fdf.h"
 
-void	draw_info(t_fdf fdf);
-
 void	draw_menu(t_fdf *fdf)
 {
 	t_vec2	aux;
@@ -41,31 +39,20 @@ void	draw_menu_box(t_fdf *fdf)
 	int	i;
 	int	j;
 
-	i = 1750;
-	while (i < MAX_WIDTH + 300)
+	i = WIDTH - (WIDTH * 0.20) - 100;
+	while (i < MAX_WIDTH)
 	{
-		j = 100;
-		while (j < MAX_HEIGHT + 100)
+		j = 0;
+		while (j < MAX_HEIGHT)
 		{
 			mlx_put_pixel(fdf->img, i, j, 0xdecd51);
 			j++;
 		}
 		i++;
 	}
-	//draw_info(*fdf);
 }
 
-// void	draw_info(t_fdf fdf)
-// {
-// 	char	*a;
-
-// 	a = ft_itoa((int)fdf.control.height);
-// 	ft_memmove(a, "\rHeight:     ", 500);
-// 	ft_putstr_fd(a, 1);
-// 	free(a);
-// }
-
-void	draw_info(t_fdf fdf)
+void	draw_controls_info(t_fdf fdf)
 {
 	t_vec2	aux;
 	char	*a;

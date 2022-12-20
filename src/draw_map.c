@@ -19,7 +19,6 @@
 void		f_bresen(t_fdf *fdf, t_bresen point, t_vec2 end);
 static void	draw_right_segment(t_fdf *fdf, t_bresen point, t_vec2 *end);
 static void	draw_left_segment(t_fdf *fdf, t_bresen point, t_vec2 *end);
-void	draw_info(t_fdf fdf);
 
 int	print_map(t_fdf *fdf)
 {

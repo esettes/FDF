@@ -45,7 +45,7 @@ endif
 HEADERS	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/headers/ -I ./inc/MLX42/include/MLX42/
 
 CC	= clang
-CFLAGS	= -Wall -Wextra -Werror #-fno-omit-frame-pointer -fno-optimize-sibling-calls
+CFLAGS	= #-Wall -Wextra -Werror #-fno-omit-frame-pointer -fno-optimize-sibling-calls
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit
 
 ifdef DEBUG

@@ -12,6 +12,8 @@
 
 #include "fdf.h"
 
+void	draw_controls_info(t_fdf fdf);
+
 static t_vec2	set_img_offset(void);
 
 void	loop_fdf(t_fdf *fdf)
@@ -27,9 +29,10 @@ int	create_image(t_fdf *fdf, int start)
 
 	if (start != 0)
 		mlx_delete_image(fdf->mlx, fdf->img);
-	fdf->img = mlx_new_image(fdf->mlx, WIDTH * IMG_AUMENT, HEIGHT * IMG_AUMENT);
+	fdf->img = mlx_new_image(fdf->mlx, WIDTH + 200, HEIGHT + 200);
 	offset = set_img_offset();
-	mlx_image_to_window(fdf->mlx, fdf->img, -offset.x, -offset.y);
+	ft_memset(fdf->img->pixels, 0, fdf->img->width * fdf->img->height * 4);
+	mlx_image_to_window(fdf->mlx, fdf->img, offset.x, offset.y);
 	return (EXIT_SUCCESS);
 }
 
@@ -39,6 +42,7 @@ int	draw_image(t_fdf *fdf)
 	if (print_map(fdf))
 		return (EXIT_FAILURE);
 	draw_menu_box(fdf);
+	draw_controls_info(*fdf);
 	return (EXIT_SUCCESS);
 }
 
@@ -58,7 +62,7 @@ static t_vec2	set_img_offset(void)
 {
 	t_vec2	offset;
 
-	offset.x = ((WIDTH * IMG_AUMENT) / 2) - (WIDTH / 2);
-	offset.y = ((HEIGHT * IMG_AUMENT) / 2) - (HEIGHT / 2);
+	offset.x = -50;
+	offset.y = -50;
 	return (offset);
 }

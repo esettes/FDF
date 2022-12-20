@@ -55,8 +55,8 @@ t_vec2	set_bresen_offset(t_fdf *fdf)
 	off.y = 0;
 	if (fdf->control.perspective == ISOMETRIC)
 	{
-		off.x = IMG_CENTER_X - (fdf->map.px_size.x / (iso_offset.x * 6));
-		off.y = IMG_CENTER_Y - (fdf->map.px_size.y / (iso_offset.y * 6));
+		off.x = IMG_CENTER_X - (fdf->map.px_size.x / (iso_offset.x * 3));
+		off.y = IMG_CENTER_Y - (fdf->map.px_size.y / (iso_offset.y * 3));
 		fdf->map.offset.x = iso_offset.x;
 		fdf->map.offset.y = iso_offset.y;
 	}

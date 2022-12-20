@@ -52,15 +52,15 @@ int	check_image_limits(t_bresen *point, t_vec2 end)
 	t_vec2	offset;
 	t_vec2	start;
 
-	min_x = 500;
-	min_y = 100;
+	min_x = 0;
+	min_y = 0;
 	offset.x = point->offset.x;
 	offset.y = point->offset.y;
 	start.x = point->start.x;
 	start.y = point->start.y;
 	if ((end.x + offset.x < MAX_WIDTH) && (end.y + offset.y < MAX_HEIGHT)
 		&& (end.x + offset.x > min_x) && (end.y + offset.y > min_y)
-		&& (start.x + offset.x < MAX_WIDTH)
+		&& (start.x + offset.x < (WIDTH - (WIDTH * 0.25)))
 		&& (start.y + offset.y < MAX_HEIGHT)
 		&& (start.x + offset.x > min_x) && (start.y + offset.y > min_y))
 	{
