@@ -2,8 +2,17 @@
 This project is about creating a simplified graphic wireframe (fils de fer) representation of a relief landscape linking various points(x, y, z) via segments.
 
 <p align="center">
-  <img height="280px" src="https://github.com/esettes/-42-cursus-FDF/blob/main/src/maps/fdf_new_himalaya_top.png" />
-  <img height="280px" src="https://github.com/esettes/fdf-42/blob/main/src/maps/fdf_himalaya_3d.png" />
+  <img height="210px" src="https://github.com/esettes/-42-cursus-FDF/blob/main/src/maps/fdf_new_himalaya_top.png" />
+  <img height="210px" src="https://github.com/esettes/FDF/blob/main/src/maps/screenshot-5.png" />
+  <img height="210px" src="https://github.com/esettes/FDF/blob/main/src/maps/screenshot-6.png" />
+</p>
+
+<p align="center">
+  <img height="310px" src="https://github.com/esettes/FDF/blob/main/src/maps/screenshot2.png" />
+</p>
+
+<p align="center">
+  <img height="310px" src="https://github.com/esettes/FDF/blob/main/src/maps/screenshot1.png" />
 </p>
 
 <p align="center">
@@ -12,7 +21,7 @@ This project is about creating a simplified graphic wireframe (fils de fer) repr
 </p>
 
 <p align="center">
-  <img height="310px" src="https://github.com/esettes/FDF/blob/main/src/maps/elem-fract-detail.png" />
+  <img height="310px" src="https://github.com/esettes/FDF/blob/main/src/maps/screenshot4.png" />
 </p>
 
 <br>
