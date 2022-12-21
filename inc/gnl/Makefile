@@ -14,7 +14,7 @@ LIBINC	= ./inc/
 FLAGS	= -Wall -Wextra -Werror
 CC	= clang
 
-$(OBJDIR)%.o:$(SRCDIR)%.c
+$(OBJDIR)%.o:$(SRCDIR)%.c obj
 	@$(CC) $(FLAGS) -I$(LIBINC) -o $@ -c $<
 
 $(NAME): $(OBJS)

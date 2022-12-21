@@ -25,7 +25,7 @@ int	main(int argc, char	*argv[])
 {
 	t_fdf	*fdf;
 
-	if (argc < 3)
+	if (argc == 2)
 	{
 		if (check_file_extension(argv[1]) == EXIT_FAILURE)
 			exit (EXIT_FAILURE);
