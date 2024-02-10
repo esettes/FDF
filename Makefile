@@ -6,7 +6,7 @@
 #    By: iostancu <iostancu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:38:39 by iostancu          #+#    #+#              #
-#    Updated: 2022/12/20 15:32:34 by iostancu         ###   ########.fr        #
+#    Updated: 2024/02/10 21:19:14 by iostancu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ G_CHECK = ${LGREEN}✓$(RESET)
 G_OK = ${GREEN}[OK]$(RESET)
 
 NAME	= fdf
+
 
 OS		=	$(shell uname -s)
 
@@ -45,14 +46,14 @@ endif
 HEADERS	= -I include -I ./inc/libft/inc/ -I ./inc/gnl/inc/ -I ./inc/headers/ -I ./inc/MLX42/include/MLX42/
 
 CC	= clang
-CFLAGS	= -Wall -Wextra -Werror #-fno-omit-frame-pointer -fno-optimize-sibling-calls
+CFLAGS	= -O3 -Wall -Wextra -Werror #-fno-omit-frame-pointer -fno-optimize-sibling-calls
 MFLAGS	= -lpthread -framework OpenGL -framework AppKit
 
-ifeq ($(DEBUG),1)
-	CFLAGS	+= -g3 
-else
-	CFLAGS	+= -Ofast -D NDEBUG
-endif
+#ifeq ($(DEBUG),1)
+#	CFLAGS	+= -g3 
+#else
+#	CFLAGS	+= -Ofast -D NDEBUG
+#endif
 
 all: obj $(COMPS) $(NAME)
 
